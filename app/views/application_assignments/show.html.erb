@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Loginid:</b>
+  <%= @application_assignment.loginid %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @application_assignment.position %>
+</p>
+
+<p>
+  <b>Favorite:</b>
+  <%= @application_assignment.favorite %>
+</p>
+
+<p>
+  <b>Is bookmark:</b>
+  <%= @application_assignment.is_bookmark %>
+</p>
+
+
+<%= link_to 'Edit', edit_application_assignment_path(@application_assignment) %> |
+<%= link_to 'Back', application_assignments_path %>
