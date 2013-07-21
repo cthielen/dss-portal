@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApplicationAssignmentTest < ActiveSupport::TestCase
+class RmApplicationAssignmentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

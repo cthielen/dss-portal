@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bookmark:</b>
+  <%= @bookmark_assignment.bookmark_id %>
+</p>
+
+<p>
+  <b>Loginid:</b>
+  <%= @bookmark_assignment.loginid %>
+</p>
+
+
+<%= link_to 'Edit', edit_bookmark_assignment_path(@bookmark_assignment) %> |
+<%= link_to 'Back', bookmark_assignments_path %>

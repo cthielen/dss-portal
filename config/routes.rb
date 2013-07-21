@@ -1,5 +1,14 @@
 DssPortal::Application.routes.draw do
-  resources :application_assignments
+  resources :bookmark_assignments
+
+
+  resources :applications
+
+
+  resources :rm_application_assignments
+
+
+  resources :people
 
 
   resources :bookmarks

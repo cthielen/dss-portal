@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Application:</b>
+  <%= @rm_application_assignment.application_id %>
+</p>
+
+<p>
+  <b>Loginid:</b>
+  <%= @rm_application_assignment.loginid %>
+</p>
+
+
+<%= link_to 'Edit', edit_rm_application_assignment_path(@rm_application_assignment) %> |
+<%= link_to 'Back', rm_application_assignments_path %>
