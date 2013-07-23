@@ -1,3 +1,4 @@
 class Application < ActiveRecord::Base
-  attr_accessible :favorite, :person_id, :position, :type, :type_id
+  belongs_to :category, polymorphic: true
+  attr_accessible :favorite, :person_id, :position, :category_type, :type_id
 end
