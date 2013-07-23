@@ -13,7 +13,7 @@ DssPortal::Application.routes.draw do
 
   resources :bookmarks
 
-  root :to => 'application#index'
+  root :to => 'application#welcome'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
