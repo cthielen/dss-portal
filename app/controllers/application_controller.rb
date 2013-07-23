@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   def welcome
     unless session[:cas_user].nil?
-	  redirect_to :controller => 'application', :action => 'index'
+	  redirect_to :controller => 'applications', :action => 'index'
     end
 
   end
@@ -16,7 +16,7 @@ def logout
   end
   
 	def set_current_user
-		Authorization.current_user = Person.find(session[:cas_user])
+		Authorization.current_user = RmPerson.find(session[:cas_user])
 		@current_user = Authorization.current_user
 		logger.info "#{session[:cas_user]}@#{request.remote_ip}: Set current user to #{Authorization.current_user.inspect}."
 	end
