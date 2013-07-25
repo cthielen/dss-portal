@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130721041327) do
+ActiveRecord::Schema.define(:version => 20130725171658) do
 
   create_table "applications", :force => true do |t|
     t.integer  "position"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(:version => 20130721041327) do
 
   create_table "bookmark_assignments", :force => true do |t|
     t.integer  "bookmark_id"
-    t.string   "loginid"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "person_id"
   end
 
   create_table "bookmarks", :force => true do |t|
@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(:version => 20130721041327) do
 
   create_table "rm_application_assignments", :force => true do |t|
     t.integer  "application_id"
-    t.string   "loginid"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "person_id"
   end
 
 end

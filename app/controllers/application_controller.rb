@@ -24,17 +24,17 @@ def logout
 	end
   
   def find_or_create_person
-    @person = Person.find_by_loginid(session[:cas_user])
-    if @person == nil
-      @rmperson = RmPerson.find(session[:cas_user])
-      @person = Person.new
-      @person.name = @rmperson.name
-      @person.loginid = @rmperson.loginid
-    end
+    @person = Person.find_or_create_by_loginid(session[:cas_user])
+    @rmperson = RmPerson.find(session[:cas_user])
   end
 
   def update_rm_assignments
-    @rm_apps = RmPerson.find(session[:cas_user]).accessible_applications
+    @rm_apps = @rmperson.accessible_applications
+    logger.info "TEST TEST TEST TEST"    
+    logger.info @rm_apps
+    logger.info "TST TST TST TST"    
+    logger.info @person.applications
+
     #@person.applications compared against @rm_apps
     #loop through that list of applications and ensure that it matches the same list in rm_application_assignments - add or remove as necessary
     
