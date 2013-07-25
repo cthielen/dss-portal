@@ -11,31 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725171658) do
+ActiveRecord::Schema.define(:version => 20130725171659) do
 
   create_table "applications", :force => true do |t|
     t.integer  "position"
     t.boolean  "favorite"
     t.integer  "person_id"
-    t.string   "category_type"
-    t.integer  "category_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "bookmark_assignments", :force => true do |t|
-    t.integer  "bookmark_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "person_id"
-  end
-
-  create_table "bookmarks", :force => true do |t|
+    t.boolean  "bookmark"
     t.string   "name"
     t.string   "description"
     t.string   "url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "application_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -44,12 +32,4 @@ ActiveRecord::Schema.define(:version => 20130725171658) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "rm_application_assignments", :force => true do |t|
-    t.integer  "application_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.integer  "person_id"
-  end
-
 end
