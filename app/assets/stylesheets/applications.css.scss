@@ -6,10 +6,10 @@
     border: 1px solid black;
     background-color: white;
 }
-  #sortableFav { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 0; width: 450px; }
-  #sortableFav li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 1em; text-align: center; }
+  #sortableFav { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 0; width: 100%; }
+  #sortableFav li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
 
-  #sortableApp { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 0; width: 450px; }
+  #sortableApp { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 0; width: 100%; }
   #sortableApp li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 1em; text-align: center; }
 
   .clear {clear: both;}

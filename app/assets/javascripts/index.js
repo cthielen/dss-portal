@@ -8,7 +8,7 @@ $(window).load(function()
 	distance: 15,
 	placeholder: "highlight",
 	forcePlaceholderSize: true,
-//event stuff here
+  //event stuff here
 	connectWith: ".connectedSortable"
 	}).disableSelection();
 });
