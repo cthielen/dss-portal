@@ -20,16 +20,17 @@ $(window).load(function()
   {
 	  $('#sortableFav').append(favoriteTemplate(DssPortal.favorites[i]));	
   }
-
+  alert("hello");
   //processing user input
-  $( "#sortable" ).sortable({
+  $("#sortableFav, #sortableApp" ).sortable({
 	distance: 15,
 	placeholder: "highlight",
 	forcePlaceholderSize: true,
     stop: function(event, ui) 
 	  {
         //processing logic goes here
-	  }
+	  },
+connectWith: ".connectedSortable"
 	}).disableSelection();
 
 });
