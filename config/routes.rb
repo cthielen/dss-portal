@@ -1,17 +1,8 @@
 DssPortal::Application.routes.draw do
-  resources :bookmark_assignments
-
-
   resources :applications
 
 
-  resources :rm_application_assignments
-
-
   resources :people
-
-
-  resources :bookmarks
 
   root :to => 'application#welcome'
   # The priority is based upon order of creation:
