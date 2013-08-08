@@ -1,25 +1,29 @@
 $(window).load(function() 
 {
+  alert("index.js LAUNCHED");
 
-
-var taco = _.size({one : 1, two : 2, three : 3});
-
- _.templateSettings = 
+  //Drawing Content to page
+  _.templateSettings = 
   { 
     interpolate : /\{\{(.+?)\}\}/g
   };
+
+  var appTemplate = _.template(' <li class="application" id="{{id}}">{{ name }}</li>');
   var favoriteTemplate = _.template(' <li class="favorite" id="{{id}}">{{ name }}</li>');
 
+  //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
   {
-	  $('#sortable').append(favoriteTemplate(DssPortal.apps[i]));	
+	  $('#sortableApp').append(appTemplate(DssPortal.apps[i]));	
   }
 
-alert("Hi");
+  //fill out favorites
+  for(var i = 0; i < DssPortal.favorites.length;i++)
+  {
+	  $('#sortableFav').append(favoriteTemplate(DssPortal.favorites[i]));	
+  }
 
- var txt1="<li>HAHAHA</li>";  
-  $("#sortable").append(txt1);
-
+  //processing user input
   $( "#sortable" ).sortable({
 	distance: 15,
 	placeholder: "highlight",

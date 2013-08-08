@@ -1,40 +1,31 @@
-<h1>Applications </h1>
+<h1>Favorites </h1>
 
-<ul id="sortable">
- 	<li>
-    app
-	</li>
-	<li>
-		app
-	</li>
-	<li>
-		app
-	</li>
-</ul>
+<ul id="sortableFav"></ul>
 
+
+<h1> Applications</h1>
+
+<ul id="sortableApp"></ul>
 
 <script type="text/json" id="bootstrap">
 {
-	"apps"		: <%= @apps.to_json %>
+	"apps"		: <%= @apps.to_json %>,
+  "favorites"		: <%= @favorites.to_json %>
 }	
 </script>
+
 <script type="text/javascript">
 
-var div = $('<div></div>');
-div.html($('#bootstrap').text());
-
-//var rawset = $('#bootstrap').text();
-
-var data = JSON.parse(div.text());
-alert(data.apps[1].name);
+  var div = $('<div></div>');
+  div.html($('#bootstrap').text());
+  var data = JSON.parse(div.text());
 
 
-var json = '{"result":true,"count":1}';
-var obj = JSON.parse(json);
-
-
-//line about favorites here
-DssPortal.apps = data.apps;
+  //alert(data.apps[1].name);
+  //var json = '{"result":true,"count":1}';
+  //var obj = JSON.parse(json);
+  DssPortal.favorites = data.favorites;
+  DssPortal.apps = data.apps;
 </script>
 
 
