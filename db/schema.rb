@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130808151627) do
+ActiveRecord::Schema.define(:version => 20130808154725) do
 
   create_table "application_assignments", :force => true do |t|
     t.integer  "position"
@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(:version => 20130808151627) do
     t.string   "name"
     t.string   "description"
     t.string   "url"
-    t.integer  "application_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "rm_application_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "people", :force => true do |t|
