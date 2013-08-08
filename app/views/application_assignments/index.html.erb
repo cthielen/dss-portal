@@ -6,7 +6,6 @@
 <ul id="sortableApp" class="connectedSortable drag-list well well-small"></ul>
 <div class="clear"></div>
 
-
 <script type="text/json" id="bootstrap">
 {
 	"apps"		: <%= @apps.to_json %>,
@@ -20,10 +19,6 @@
   div.html($('#bootstrap').text());
   var data = JSON.parse(div.text());
 
-
-  //alert(data.apps[1].name);
-  //var json = '{"result":true,"count":1}';
-  //var obj = JSON.parse(json);
   DssPortal.favorites = data.favorites;
   DssPortal.apps = data.apps;
 </script>

@@ -12,9 +12,9 @@ class ApplicationAssignmentsController < ApplicationController
 		#collect list of RM apps
 		@applications.each do |app|		
 		  if(app.favorite == false)	
-        @apps << { :name => app.name, :id => app.id}
+        @apps << { :name => app.name, :id => app.id, :url => app.url, :description => app.description}
       else 
-        @favorites << { :name => app.name, :id => app.id}   
+        @favorites << { :name => app.name, :id => app.id, :url => app.url, :description => app.description}   
       end  		
    end
 

@@ -6,7 +6,7 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="drag" id="{{id}}">{{ name }}</li>');
+  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><a href ="{{ url }}">{{ name }}</a></li>');
   var favoriteTemplate = _.template(' <li class="drag" id="{{id}}">{{ name }}</li>');
 
   //fill out applications
@@ -28,9 +28,10 @@ $(window).load(function()
 	forcePlaceholderSize: true,
     stop: function(event, ui) 
 	  {
+      alert("drag stopped");
         //processing logic goes here
 	  },
 connectWith: ".connectedSortable"
-	}).disableSelection();
+	});
 
 });
