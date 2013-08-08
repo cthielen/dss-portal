@@ -1,5 +1,5 @@
 DssPortal::Application.routes.draw do
-  resources :applications
+  resources :application_assignments
 
 
   resources :people

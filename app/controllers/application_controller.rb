@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   def welcome
     unless session[:cas_user].nil?
-	  redirect_to :controller => 'applications', :action => 'index'
+	  redirect_to :controller => 'application_assignments', :action => 'index'
     end
 
   end
@@ -33,7 +33,7 @@ def logout
     logger.info "TEST TEST TEST TEST"    
     logger.info @rm_apps
     logger.info "TST TST TST TST"    
-    logger.info @person.applications
+    logger.info @person.application_assignments
 
     #@person.applications compared against @rm_apps
     #loop through that list of applications and ensure that it matches the same list in rm_application_assignments - add or remove as necessary
