@@ -1,15 +1,13 @@
 $(window).load(function() 
 {
-  alert("index.js LAUNCHED");
-
   //Drawing Content to page
   _.templateSettings = 
   { 
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="application" id="{{id}}">{{ name }}</li>');
-  var favoriteTemplate = _.template(' <li class="favorite" id="{{id}}">{{ name }}</li>');
+  var appTemplate = _.template(' <li class="drag" id="{{id}}">{{ name }}</li>');
+  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}">{{ name }}</li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -30,7 +28,7 @@ $(window).load(function()
 	forcePlaceholderSize: true,
     stop: function(event, ui) 
 	  {
-      
+        //processing logic goes here
 	  }
 	}).disableSelection();
 
