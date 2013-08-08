@@ -28,7 +28,6 @@ $(window).load(function()
 	forcePlaceholderSize: true,
     stop: function(event, ui) 
 	  {
-      alert("drag stopped");
         //processing logic goes here
 	  },
 connectWith: ".connectedSortable"

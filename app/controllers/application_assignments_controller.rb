@@ -2,8 +2,7 @@ class ApplicationAssignmentsController < ApplicationController
   # GET /applications
   # GET /applications.json
   def index
-    @applications = ApplicationAssignment.all
-
+    @applications = ApplicationAssignment.all(:order => 'favorite, position')
     #containers to be rendered as json
 		@apps = Array.new
     @favorites = Array.new
