@@ -1,56 +1,72 @@
+<h1> Favorite Apps</h1>
+	    <ul id="sortableFav" class="connectedSortable drag-list well well-small">
+	    <li class="drag"  title="this is the description of the applicaiton. It is very nice.">
+        <h3 class="card-title">Best App</h3>
+       <div> ICON</div>
+ <a href="#" class="btn"><i class="icon-heart"></i></a>
+ <a href="#" class="btn"><i class="icon-heart-empty"></i></a>
+ <a href="#" class="btn"><i class="icon-move"></i></a>
+ <a href="#" class="btn"><i class="icon-arrow-left"></i></a>
+ <a href="#" class="btn"><i class="icon-arrow-right"></i></a>
 
-  <div class="row-fluid">
-      <div class="span12">
-          <div class="hero-unit">
-            <h1>DSS Portal!</h1>
-            <p>This is the DSS Portal website, providing a drop in location for links to available applications.</p>
-            <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-          </div>
-          <div class="row-fluid">
-            <div class="span4">
-              <div class="hero-unit">
-                <h2>OWA</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-             <p><a class="btn" href="#">View details &raquo;</a></p>
-           </div>              
-          </div><!--/span-->
-          <div class="span4">
-             <h2>DaFIS</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Banner</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
+	  	</li>	    
 
-          <div class="row-fluid">
-            <div class="span4">
-              <h2>Roles Manageament</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>Active Directory</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-            <div class="span4">
-              <h2>DSS Messenger</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-        </div><!--/span-->
-      </div><!--/row-->
+      <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+</ul>
 
-      <hr>
+<div class="clear"></div>
 
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
+	<h1>Applications </h1>
+
+	    <ul id="sortableApp" class="connectedSortable drag-list well well-small">
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>	    
+      <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>	    
+      <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    <li class="drag">
+        application test
+	  	</li>
+	    </ul>
+
+<div class="clear"></div>
+
 <script type="text/json" id="bootstrap">
 {
 	"favorites"	: <%= @favorites.to_json %>,

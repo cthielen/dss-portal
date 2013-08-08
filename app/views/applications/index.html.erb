@@ -1,76 +1,41 @@
-<h1> Favorite Apps</h1>
-	    <ul id="sortableFav" class="connectedSortable drag-list well well-small">
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag"  title="this is the description of the applicaiton. It is very nice.">
-        <h3 class="card-title">Best App</h3>
-       <div> ICON</div>
- <a href="#" class="btn"><i class="icon-heart"></i></a>
- <a href="#" class="btn"><i class="icon-heart-empty"></i></a>
- <a href="#" class="btn"><i class="icon-move"></i></a>
- <a href="#" class="btn"><i class="icon-arrow-left"></i></a>
- <a href="#" class="btn"><i class="icon-arrow-right"></i></a>
+<h1>Applications </h1>
 
-
-
-	  	</li>	    
-      <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
+<ul id="sortable">
+ 	<li>
+    app
+	</li>
+	<li>
+		app
+	</li>
+	<li>
+		app
+	</li>
 </ul>
 
-<div class="clear"></div>
 
-	<h1>Applications </h1>
+<script type="text/json" id="bootstrap">
+{
+	"apps"		: <%= @apps.to_json %>
+}	
+</script>
+<script type="text/javascript">
 
-	    <ul id="sortableApp" class="connectedSortable drag-list well well-small">
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>	    
-      <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>	    
-      <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    <li class="drag">
-        application test
-	  	</li>
-	    </ul>
+var div = $('<div></div>');
+div.html($('#bootstrap').text());
 
-<div class="clear"></div>
+//var rawset = $('#bootstrap').text();
+
+var data = JSON.parse(div.text());
+alert(data.apps[1].name);
+
+
+var json = '{"result":true,"count":1}';
+var obj = JSON.parse(json);
+
+
+//line about favorites here
+DssPortal.apps = data.apps;
+</script>
+
+
 
