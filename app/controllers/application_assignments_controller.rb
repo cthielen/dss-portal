@@ -5,10 +5,10 @@ class ApplicationAssignmentsController < ApplicationController
     @applications = ApplicationAssignment.all(:order => 'favorite, position')
     
     # Containers to be rendered as json
-    @apps = Array.new
-    @favorites = Array.new
+    @apps = []
+    @favorites = []
     
-    app = Hash.new
+    app = {}
     
     # Collect list of RM apps
     @applications.each do |app|
