@@ -1,7 +1,5 @@
 DssPortal::Application.routes.draw do
   resources :application_assignments
-
-
   resources :people
 
   root :to => 'application#welcome'
