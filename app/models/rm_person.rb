@@ -4,7 +4,7 @@ class RmPerson < ActiveResource::Base
   self.password = $DSS_RM_SETTINGS['API_KEY_PASSWORD']
   self.element_name = "person"
 
-  def accessible_roles
-    role_assignments.uniq{ |a| a.application_id }
+  def accessible_applications
+    role_assignments.uniq{ |a| a.application_id }.map{ |a| { name: a.application_name, id: a.application_id } }
   end
 end
