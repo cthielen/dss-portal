@@ -20,7 +20,7 @@ $(window).load(function()
   {
 	  $('#sortableFav').append(favoriteTemplate(DssPortal.favorites[i]));	
   }
-  alert("hello");
+  
   //processing user input
   $("#sortableFav, #sortableApp" ).sortable({
 	distance: 15,
