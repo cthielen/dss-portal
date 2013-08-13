@@ -20,7 +20,7 @@ $(window).load(function()
   {
 	  $('#sortableFav').append(favoriteTemplate(DssPortal.favorites[i]));	
   }
-  
+
   //processing user input
   $("#sortableFav, #sortableApp" ).sortable({
 	distance: 15,
@@ -28,27 +28,32 @@ $(window).load(function()
 	forcePlaceholderSize: true,
     stop: function(event, ui) 
 	  {
-        //check DSSportal.app and DSSportal.fav against their current states to verify a change occured
+     //check DSSportal.app and DSSportal.fav against their current states to verify a change occured
+     
+     //if an app was toggled favorite/unfavorite, change its display icon
 
-        //if its different, build an array of hashes  id/fav/position and send to rails
-      var pageLayout = []
-      var appLayout;
+      //if a change was detected, build an array of hashes  id/fav/position and send to rails
+      var pageLayout = [];
+      var appStructure;
       var i = 1;
       $("#sortableFav li").each(function() { 
-        appStructure = {position: i, id: $this.attr('id'), favorite: "true"};      
+        var id = $(this).attr('id');
+        appStructure = {position: i, id: id, favorite: "true"};      
         i++;    
-        appLayout.push(appStructure); 
+        pageLayout.push(appStructure); 
       });
 
-      i = 0;
+      i = 1;
       
       $("#sortableApp li").each(function() { 
-        appStructure = {position: i, id: $this.attr('id'), favorite: "false"};      
+        var id = $(this).attr('id');
+        appStructure = {position: i, id: id, favorite: "false"};      
         i++;    
-        appLayout.push(appStructure); 
+        pageLayout.push(appStructure); 
       });
 
-//        $.post("/favorites/drag_create", pobj, function(data) {
+      //push new page payout to rails for recording
+      $.post("/application_assignments/drag_update", pageLayout, function() {
 //				$("#" + data.old_id).attr('id', data.new_id);
 //			});
 	  },

@@ -24,4 +24,8 @@ class ApplicationAssignmentsController < ApplicationController
       format.json { render json: @applications }
     end
   end
+
+  def drag_update
+
+  end
 end
