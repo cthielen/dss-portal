@@ -38,7 +38,7 @@ $(window).load(function()
       var i = 1;
       $("#sortableFav li").each(function() { 
         var id = $(this).attr('id');
-        appStructure = {position: i, id: id, favorite: "true"};      
+        appStructure = {position: i, app_id: id, favorite: "true"};      
         i++;    
         pageLayout.push(appStructure); 
       });
@@ -47,15 +47,20 @@ $(window).load(function()
       
       $("#sortableApp li").each(function() { 
         var id = $(this).attr('id');
-        appStructure = {position: i, id: id, favorite: "false"};      
+        appStructure = {position: i, app_id: id, favorite: "false"};      
         i++;    
         pageLayout.push(appStructure); 
       });
-    var pobj = {pageLayout: pageLayout}; 
-      //push new page payout to rails for recording
-      $.post("/application_assignments/drag_update", pobj, function() {
-//				$("#" + data.old_id).attr('id', data.new_id);
-			});
+      var pobj = {pageLayout: pageLayout}; 
+
+      $.ajax({
+          type: "POST",
+          url: "/application_assignments/drag_update",
+          data: JSON.stringify(pobj),
+         success: function(){},
+          dataType: "json",
+         contentType: "application/json"
+     });
 	  },
 connectWith: ".connectedSortable"
 	});
