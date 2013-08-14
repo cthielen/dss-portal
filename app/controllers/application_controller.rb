@@ -17,14 +17,14 @@ class ApplicationController < ActionController::Base
   end
   
   def set_current_user
-    Authorization.current_user = RmPerson.find(session[:cas_user])
-    @current_user = Authorization.current_user
+    Authorization.current_user = @current_user = RmPerson.find(session[:cas_user])
+    
     logger.info "#{session[:cas_user]}@#{request.remote_ip}: Set current user to #{Authorization.current_user.inspect}."
   end
   
   def find_or_create_person
-    @person = Person.find_or_create_by_loginid(session[:cas_user])
-    @rm_person = RmPerson.find(session[:cas_user])
+    @person = Person.includes(:application_assignments).find_or_create_by_loginid(session[:cas_user])
+    @rm_person = @current_user
   end
 
   def update_rm_assignments
