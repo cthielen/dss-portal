@@ -51,11 +51,11 @@ $(window).load(function()
         i++;    
         pageLayout.push(appStructure); 
       });
-
+    var pobj = {pageLayout: pageLayout}; 
       //push new page payout to rails for recording
-      $.post("/application_assignments/drag_update", pageLayout, function() {
+      $.post("/application_assignments/drag_update", pobj, function() {
 //				$("#" + data.old_id).attr('id', data.new_id);
-//			});
+			});
 	  },
 connectWith: ".connectedSortable"
 	});

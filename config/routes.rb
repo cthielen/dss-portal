@@ -2,6 +2,12 @@ DssPortal::Application.routes.draw do
   resources :application_assignments
   resources :people
 
+  resources :application_assignments do
+    collection do
+      post 'drag_update'
+    end
+  end
+
   root :to => 'application#welcome'
   # The priority is based upon order of creation:
   # first created -> highest priority.

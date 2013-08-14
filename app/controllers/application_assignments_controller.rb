@@ -26,6 +26,9 @@ class ApplicationAssignmentsController < ApplicationController
   end
 
   def drag_update
+    logger.info "DRAG_UPDATE DRAG_UPDATE DRAG_UPDATE DRAG_UPDATE DRAG_UPDATE DRAG_UPDATE"
+    logger.info params[:pageLayout]
 
+    render :json => {:status => "success"}
   end
 end
