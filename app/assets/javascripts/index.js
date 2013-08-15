@@ -6,8 +6,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><a href ="{{ url }}">{{ name }}</a></li>');
-  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}">{{ name }}</li>');
+  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img src="http://i.imgur.com/IOmyrAV.jpg"></li>');
+  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img src="http://i.imgur.com/IOmyrAV.jpg"></li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -31,7 +31,7 @@ $(window).load(function()
      //check DSSportal.app and DSSportal.fav against their current states to verify a change occured
      
      //if an app was toggled favorite/unfavorite, change its display icon
-
+    
       //if a change was detected, build an array of hashes  id/fav/position and send to rails
       var pageLayout = [];
       var appStructure;
