@@ -7,11 +7,11 @@
     background-color: #98FB98;
 }
 
-  #sortableFav { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 80%; margin-left: 10%;}
-  #sortableFav li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
+  #sortableFav { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 98%; margin-right: 2%; background: #FFE4E1;}
+  #sortableFav li { margin: 3px 3px 3px 0; padding-top: 10px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
 
-  #sortableApp { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 80%; margin-left: 10%;}
-  #sortableApp li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
+  #sortableApp { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 100%; margin-left: 0%;}
+  #sortableApp li { margin: 3px 3px 3px 0; padding-top: 10px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
 
   .clear {clear: both;}
 
@@ -43,7 +43,7 @@
   margin-top: 6px;
 }
 
-#sortableApp a:hover {
+#sortableApp a:hover, #sortableFav a:hover {
   color:#000000;
   text-decoration:underline;
 }

@@ -6,8 +6,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img src="http://i.imgur.com/IOmyrAV.jpg"></li>');
-  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img src="http://i.imgur.com/IOmyrAV.jpg"></li>');
+  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="TEST description HERE"><img src="http://i.imgur.com/ss8rqyg.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
+  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><img src="http://i.imgur.com/IOmyrAV.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -64,5 +64,9 @@ $(window).load(function()
 	  },
 connectWith: ".connectedSortable"
 	});
-
+    
+  $(function() 
+  {
+    $('li').tooltip();
+  });
 });
