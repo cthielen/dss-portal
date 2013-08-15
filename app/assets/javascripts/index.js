@@ -64,9 +64,20 @@ $(window).load(function()
 	  },
 connectWith: ".connectedSortable"
 	});
-    
+  
+  //applies styled tooltips on application cards
   $(function() 
   {
     $('li').tooltip();
   });
+  
+  //display 'reposition handle' on hover to suggest drag and drop
+  $("li").hover(function(){
+
+  $(this).append("<img class='move-icon' src='http://i.imgur.com/o3X5Ish.jpg'>")
+  }, function(){
+
+  $(this).children(".move-icon").remove();
+  })
+
 });

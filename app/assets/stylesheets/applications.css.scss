@@ -36,6 +36,7 @@
 
   li.drag{
   margin-top: 5px;
+  position: relative;
 }
 
   li.drag {
@@ -46,4 +47,11 @@
 #sortableApp a:hover, #sortableFav a:hover {
   color:#000000;
   text-decoration:underline;
+}
+
+.move-icon
+{
+    position:absolute;
+    right: 30%;
+    top: 20%;
 }
