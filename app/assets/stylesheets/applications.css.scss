@@ -7,27 +7,19 @@
     background-color: #98FB98;
 }
 
-  #sortableFav { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 0; width: 100%; }
+  #sortableFav { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 80%; margin-left: 10%;}
   #sortableFav li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
 
-  #sortableApp { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 0; width: 100%; }
+  #sortableApp { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 80%; margin-left: 10%;}
   #sortableApp li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
 
   .clear {clear: both;}
-
-
-.drag-list {
-  margin: 0 0 20px 0;
-  list-style: none;
-  overflow: auto;
-  padding: 1.2%;
-}
 
   .placeholder {
     background: #08c;
   }
 
-  .drag-list li.drag, .drag-list .placeholder {
+  li.drag, .placeholder {
     background: white;
     box-shadow: 0 0 5px -1px rgba(0, 0, 0, .5);
     border-radius: 3px;
@@ -38,25 +30,20 @@
     z-index: 1000;
   }
 
-  .drag-list li.drag:last-child {
+  li.drag:last-child {
     margin-bottom: 0;
   }
 
-.drag-list li.drag .delete-btn {
+  li.drag{
   margin-top: 5px;
 }
 
-.drag-list li.drag .icon-move {
+  li.drag {
   cursor: move;
   margin-top: 6px;
 }
 
-.drag-list select {
-  margin: 3px 0 0 0;
-  height: 25px;
-}
-
-.drag-list a:hover {
+#sortableApp a:hover {
   color:#000000;
   text-decoration:underline;
 }
