@@ -26,6 +26,7 @@ $(window).load(function()
 	distance: 15,
 	placeholder: "highlight",
 	forcePlaceholderSize: true,
+//  cursorAt: {left: -10, top: -10},
     stop: function(event, ui) 
 	  {
      //check DSSportal.app and DSSportal.fav against their current states to verify a change occured
@@ -72,12 +73,15 @@ connectWith: ".connectedSortable"
   });
   
   //display 'reposition handle' on hover to suggest drag and drop
-  $("li").hover(function(){
+$('li').hover(
+       function(){ $(this).addClass('hover') },
+       function(){ $(this).removeClass('hover') }
+) 
 
-  $(this).append("<img class='move-icon' src='http://i.imgur.com/qEshcfP.png'>")
-  }, function(){
+//  $(this).append("<img class='move-icon' src='http://i.imgur.com/qEshcfP.png'>")
+//  }, function(){
 
-  $(this).children(".move-icon").remove();
-  })
+//  $(this).children(".move-icon").remove();
+//  })
 
 });

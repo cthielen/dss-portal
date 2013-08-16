@@ -21,7 +21,7 @@
 
   li.drag, .placeholder {
     background: white;
-    box-shadow: 0 0 5px -1px rgba(0, 0, 0, .5);
+
     border-radius: 3px;
     line-height: 30px;
     margin: 0 0 10px 0;
@@ -55,4 +55,9 @@
     right: 0%;
     top: 0%;
     width:40%;
+}
+
+.hover
+{
+      box-shadow: 0 0 5px -1px rgba(0, 0, 0, .5);
 }
