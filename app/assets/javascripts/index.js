@@ -74,7 +74,7 @@ connectWith: ".connectedSortable"
   //display 'reposition handle' on hover to suggest drag and drop
   $("li").hover(function(){
 
-  $(this).append("<img class='move-icon' src='http://i.imgur.com/o3X5Ish.jpg'>")
+  $(this).append("<img class='move-icon' src='http://i.imgur.com/qEshcfP.png'>")
   }, function(){
 
   $(this).children(".move-icon").remove();
