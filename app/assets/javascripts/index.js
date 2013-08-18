@@ -6,8 +6,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="TEST description HERE"><img src="http://i.imgur.com/ss8rqyg.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
-  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><img src="http://i.imgur.com/IOmyrAV.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="TEST description HERE"><img src="http://i.imgur.com/ss8rqyg.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
+  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="http://i.imgur.com/IOmyrAV.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -24,9 +24,9 @@ $(window).load(function()
   //processing user input
   $("#sortableFav, #sortableApp" ).sortable({
 	distance: 15,
-	placeholder: "highlight",
+	placeholder: "target",
 	forcePlaceholderSize: true,
-//  cursorAt: {left: -10, top: -10},
+  zIndex: 10000, //or greater than any other relative/absolute/fixed elements and droppables
     stop: function(event, ui) 
 	  {
     
@@ -86,11 +86,11 @@ $('li').mousedown(function() {
     $(this).addClass('dragging-card');
 });
 
-$('li').mouseup(function() {
-
+$('li').mouseup(function() 
+{
    $(this).removeClass('dragging-card');
    $(this).removeClass('hover-card');
-
+//   $(this).css({'zIndex' : 10});
 });
 
 
