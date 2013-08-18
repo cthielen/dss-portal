@@ -6,8 +6,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="TEST description HERE"><img src="http://i.imgur.com/ss8rqyg.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
-  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><img src="http://i.imgur.com/IOmyrAV.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
+  var appTemplate = _.template(' <li class="drag" id="{{id}}" title="TEST description HERE"><img src="http://i.imgur.com/ss8rqyg.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
+  var favoriteTemplate = _.template(' <li class="drag" id="{{id}}" title="{{ description }}"><img src="http://i.imgur.com/IOmyrAV.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -29,6 +29,7 @@ $(window).load(function()
 //  cursorAt: {left: -10, top: -10},
     stop: function(event, ui) 
 	  {
+    
      //check DSSportal.app and DSSportal.fav against their current states to verify a change occured
      
      //if an app was toggled favorite/unfavorite, change its display icon
@@ -37,7 +38,7 @@ $(window).load(function()
       var pageLayout = [];
       var appStructure;
       var i = 1;
-      $("#sortableFav li").each(function() { 
+      $("#sortableFav li").each(function() {      
         var id = $(this).attr('id');
         appStructure = {position: i, app_id: id, favorite: "true"};      
         i++;    
@@ -58,7 +59,9 @@ $(window).load(function()
           type: "POST",
           url: "/application_assignments/drag_update",
           data: JSON.stringify(pobj),
-         success: function(){},
+         complete: function(){
+          $('.ui-tooltip').remove();
+          },
           dataType: "json",
          contentType: "application/json"
      });
@@ -72,11 +75,25 @@ connectWith: ".connectedSortable"
     $('li').tooltip();
   });
   
-  //display 'reposition handle' on hover to suggest drag and drop
-$('li').hover(
-       function(){ $(this).addClass('hover') },
-       function(){ $(this).removeClass('hover') }
+  //ON HOVER - apply dropshadow, make relevant UI elemnts appear
+$('li').hover
+(
+       function(){ $(this).addClass('hover-card') },
+       function(){ $(this).removeClass('hover-card') }
 ) 
+  //ON DRAG 
+$('li').mousedown(function() {
+    $(this).addClass('dragging-card');
+});
+
+$('li').mouseup(function() {
+
+   $(this).removeClass('dragging-card');
+   $(this).removeClass('hover-card');
+
+});
+
+
 
 //  $(this).append("<img class='move-icon' src='http://i.imgur.com/qEshcfP.png'>")
 //  }, function(){
