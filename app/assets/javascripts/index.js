@@ -83,6 +83,7 @@ $('li').hover
 ) 
   //ON DRAG 
 $('li').mousedown(function() {
+    $(this).removeClass('hover-card'); 
     $(this).addClass('dragging-card');
 });
 
