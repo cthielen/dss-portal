@@ -1,33 +1,47 @@
 
 //placeholder style on drag-drop operation
-.target {
-    border: 1px solid black;
-    background-color: #98FB98;
+.target 
+{
+  border: 1px solid black;
+  background-color: #98FB98;
 }
 
 //main containers
-  #sortableFav { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 98%; margin-right: 2%; background: #FFE0FF;}
-  #sortableFav li { margin: 3px 3px 3px 0; padding-top: 10px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
+  #sortableFav 
+{ 
+  display:block; 
+  overflow:hidden; 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 10px; 
+  width: 98%; 
+  margin-right: 2%;
+  background: #FFE0FF;
+}
+  #sortableFav li 
+{ margin: 3px 3px 3px 0; padding-top: 10px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
 
   #sortableApp { display:block; overflow:hidden; list-style-type: none; margin: 0; padding: 10px; width: 100%; margin-left: 0%;}
   #sortableApp li { margin: 3px 3px 3px 0; padding-top: 10px; float: left; width: 150px; height: 150px; font-size: 1em; text-align: center; }
 
   .clear {clear: both;}
 
-  .card, .placeholder {
-    background: white;
-    border-radius: 3px;
-    line-height: 30px;
-    margin: 0 0 10px 0;
-    padding: 5px;
-    overflow: hidden;
-  }
+.card 
+{
+  background: white;
+  border-radius: 3px;
+  line-height: 30px;
+  margin: 0 0 10px 0;
+  padding: 5px;
+  overflow: hidden;
+}
 
-  .card:last-child {
-    margin-bottom: 0;
-  }
+.card:last-child 
+{
+  margin-bottom: 0;
+}
 
-  .card
+.card
 {
   font:  18px "Gill Sans", Sans-Serif;
   margin-top: 5px;
@@ -36,39 +50,39 @@
   margin-top: 6px;
 }
 
-#sortableApp a:hover, #sortableFav a:hover {
-  color:#000000;
-  text-decoration:underline;
-}
-
 .hover-card
 {
-box-shadow: 0 0 5px -1px rgba(0, 0, 0, .5);
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, .5);
 }
 
-.hover-card-interface
+#sortableApp a:hover, #sortableFav a:hover 
 {
-  display:block;
-}
-.dragging-card
-{
-border:solid;
-z-index:9999;
-}
-
-.ui-tooltip 
-{
-    font: bold 14px "Helvetica Neue", Sans-Serif;
+  color:#000000;
+  text-decoration:underline;
 }
 
 .card-interface
 {
   display:hidden;
 }
+.hover-card-interface
+{
+  display:block;
+}
+.dragging-card
+{
+  border:solid;
+  z-index:9999;
+}
+
+.ui-tooltip 
+{
+  font: bold 14px "Helvetica Neue", Sans-Serif;
+}
 
 
 
-
+//------scraps below here
 .move-icon
 {
   position:absolute;
