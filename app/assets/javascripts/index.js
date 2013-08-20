@@ -78,8 +78,16 @@ connectWith: ".connectedSortable"
   //ON HOVER - apply dropshadow, make relevant UI elemnts appear
 $('li').hover
 (
-       function(){ $(this).addClass('hover-card') },
-       function(){ $(this).removeClass('hover-card') }
+       function()
+      { 
+        $(this).addClass('hover-card');
+        $(this).find("div").css({visibility: 'visible'});
+      },
+       function()
+      { 
+        $(this).removeClass('hover-card'); 
+        $(this).find("div").css({visibility: 'hidden'});
+      }
 ) 
   //ON DRAG 
 $('li').mousedown(function() {
