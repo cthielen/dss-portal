@@ -93,12 +93,17 @@ $('li').hover
 $('li').mousedown(function() {
     $(this).removeClass('hover-card'); 
     $(this).addClass('dragging-card');
+//    $('body').addClass('target-areas');
+//    $('.connectedSortable').css({outline: 'dashed'});
 });
 
 $('li').mouseup(function() 
 {
    $(this).removeClass('dragging-card');
    $(this).removeClass('hover-card');
+//   $('body').removeClass('target-areas');
+//    $('.connectedSortable').css({outline: 'none'});
+
 //   $(this).css({'zIndex' : 10});
 });
 

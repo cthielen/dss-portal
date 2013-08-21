@@ -7,6 +7,10 @@
   float:left;
 }
 
+.target-areas
+{
+  background-color: #333333;
+}
 //main containers
 #sortableFav 
 { 
@@ -17,7 +21,7 @@
   padding: 0px; 
   width: 98%; 
   margin-right: 2%;
-  background: #B2C2F0;
+  background: #E5E9EF;
 //  border-bottom:solid 1px #999999;
 }
 
@@ -27,9 +31,10 @@
   overflow:hidden; 
   list-style-type: none; 
   margin: 0; 
-  padding: 10px; 
-  width: 100%; 
-  margin-left: 2%;
+  padding: 0px; 
+  width: 98%; 
+  margin-right: 2%;
+  background: #FFFFFF;
 }
 
 .clear {clear: both;}
@@ -135,4 +140,3 @@
   width:40%;
   display: none;
 }
-
