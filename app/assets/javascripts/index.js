@@ -6,8 +6,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="card" id="{{id}}" title="TEST description HERE"><img src="http://i.imgur.com/ss8rqyg.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
-  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="http://i.imgur.com/IOmyrAV.jpg"><a href ="{{ url }}"><h4>{{ name }}</h4></a><img class="move-icon" src="http://i.imgur.com/qEshcfP.png"></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="TEST description HERE"><img src="http://i.imgur.com/ss8rqyg.jpg"><button class="card-interface-favorite" title="Add to Favorites"><i class="icon-heart"></i></button><button class="card-interface-left"><i class="icon-arrow-left"></i></button><button class="card-interface-right"><i class="icon-arrow-right"></i></button><button class="card-interface-edit" title="Edit Bookmark"><i class="icon-edit"></i></button><a href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
+  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="http://i.imgur.com/IOmyrAV.jpg"><button class="card-interface-favorite" title="Add to Favorites"><i class="icon-heart"></i></button><button class="card-interface-left"><i class="icon-arrow-left"></i></button><button class="card-interface-right"><i class="icon-arrow-right"></i></button><button class="card-interface-edit" title="Edit Bookmark"><i class="icon-edit"></i></button><a href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -81,12 +81,12 @@ $('li').hover
        function()
       { 
         $(this).addClass('hover-card');
-        $(this).find("div").css({visibility: 'visible'});
+        $(this).find("button").css({visibility: 'visible'});
       },
        function()
       { 
         $(this).removeClass('hover-card'); 
-        $(this).find("div").css({visibility: 'hidden'});
+        $(this).find("button").css({visibility: 'hidden'});
       }
 ) 
   //ON DRAG 

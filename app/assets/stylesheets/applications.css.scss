@@ -2,8 +2,9 @@
 //placeholder style on drag-drop operation
 .target 
 {
-  border: 1px solid black;
-  background-color: #98FB98;
+ // border: 1px solid black;
+  background-color: #C2FFC2;
+  float:left;
 }
 
 //main containers
@@ -19,17 +20,6 @@
   background: #FFE0FF;
 }
 
-#sortableFav li 
-{ 
-  margin: 3px 3px 3px 0; 
-  padding-top: 10px; 
-  float: left; 
-  width: 150px; 
-  height: 150px; 
-  font-size: 1em; 
-  text-align: center; 
-}
-
 #sortableApp 
 { 
   display:block; 
@@ -38,18 +28,7 @@
   margin: 0; 
   padding: 10px; 
   width: 100%; 
-  margin-left: 0%;
-}
-
-#sortableApp li 
-{ 
-//  margin: 3px 3px 3px 0; 
-//  padding-top: 10px; 
-  float: left; 
-//  width: 150px; 
-//  height: 150px; 
-//  font-size: 1em; 
-//  text-align: center; 
+  margin-left: 2%;
 }
 
 .clear {clear: both;}
@@ -60,19 +39,26 @@
   text-align: center; 
   width: 150px; 
   height: 150px; 
-  font-size: 1em; 
   background: white;
-  border-radius: 3px;
+  border-radius: 10px;
   line-height: 30px;
-  margin: 3px 3px 3px 0; 
+  margin: 3px 3px 3px 3px; 
   padding: 5px;
   overflow: hidden;
   position: relative;
   cursor: move;
-  font:  18px "Gill Sans", Sans-Serif;
-
+  font: 1em "Gill Sans", Sans-Serif;
+  list-style: none;
 }
 
+.card-title
+{
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 150px;
+  height: 30px;
+}
 .card:last-child 
 {
   margin-bottom: 0;
@@ -90,48 +76,41 @@
   text-decoration:underline;
 }
 
-.card-interface
-{
-  visibility:hidden;
-  outline:solid;
-  position:absolute;
-}
-
 .card-interface-favorite
 {
- position: absolute;
-	left: 75px;
-	top: 5px;
+  visibility:hidden;
+  position: absolute;
+	left: 52%;
+	top: 3px;
 	width: 30px;
 	height: 30px;
-  outline:solid;
 }
 
 .card-interface-edit
 {
+  visibility:hidden;
   position: absolute;
-  outline:solid;
-  left: 45px;
-  top: 5px;
+  right: 52%;
+  top: 3px;
   width:30px;
   height:30px;
 }
 
 .card-interface-left
 {
+  visibility:hidden;
   position: absolute;
-  outline:solid;
   left: 0px;
-  top: 40px;
+  top: 35px;
   width:25px;
   height:75px;  
 }
 .card-interface-right
 {
+  visibility:hidden;
   position: absolute;
-  outline:solid;
-  left: 125px;
-  top: 40px;
+  right: 0px;
+  top: 35px;
   width:25px;
   height:75px; 
 }
@@ -139,7 +118,7 @@
 .card-icon
 {
   position: absolute;
-  left: 37px;
+  left: 25%;
   top: 35px;
 }
 .dragging-card
@@ -162,10 +141,3 @@
   display: none;
 }
 
-
-.cardList
-{
-position:relative;
-height: 150px;
-width:150px;
-}
