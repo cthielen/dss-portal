@@ -27,7 +27,12 @@ class ApplicationController < ActionController::Base
     @rm_person = @current_user
   end
 
+
+  # OPTIMIZE ME - this function will blindly create/delete in rapid succession, activerecord writes could be eliminated 
+  # with better logic
   def update_rm_assignments
+
+    #Obtain rm applications assigned to user
     @rm_apps = @rm_person.accessible_applications
     
     # Ensure application_assignments matches @rm_apps for apps which come from RM.
@@ -36,12 +41,17 @@ class ApplicationController < ActionController::Base
     @rm_apps.each do |app|
       app_assignment = @person.application_assignments.find_or_create_by_rm_application_id(app[:id])
       
+      #Ensure rm_app_data for given app was recently updated
+      
+      #If url is blank, remove assignment
+     
       # Update attributes
       app_assignment.name = app[:name]
       #app_assignment.description = role.description RM does not currently publish application descriptions this way.
       #app_assignment.url = app.url
       app_assignment.save!
     end
+
     
     # Go through @person.application_assignments and remove any non-bookmark ones which are not in @rm_apps
     @person.application_assignments.keep_if do |assignment|
