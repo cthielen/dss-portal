@@ -42,19 +42,20 @@ class ApplicationController < ActionController::Base
       app_assignment = @person.application_assignments.find_or_create_by_rm_application_id(app[:id])
       
       #Ensure rm_app_data for given app was recently updated
-#      app_attribute = RmApplicationAttribute.find_or_create_by_rm_application_id(app[:id])
+      app_attribute = RmApplicationAttribute.find_or_create_by_rm_application_id(app[:id])
 #      if app_attribute.updated_at < 72.hours.ago
-#        #query rm application for particular attributes on the application
-#        @app_attribute_data = RmApplication.find_by_id(app[:id])
-#        #record data into app_attribute
-#        app_attribute.name = @app_attribute_data[:name]
-#        app_attribute.description = @app_attribute_data[:name]
+        #query rm application for particular attributes on the application
+      @app_attribute_data = RmApplication.find(app[:id])
+      logger.info @app_attribute_data
+        #record data into app_attribute
+        app_attribute.name = @app_attribute_data.name
+        app_attribute.description = @app_attribute_data.description
 #        app_attribute.icon_path = @app_attribute_data[:image]
-#        app_attribute.save
+        app_attribute.save
       # Verifies RM had icon data, otherwise uses default icon
       # if @rm_app_data.image.present?                           Icon field does not currently exist in RM
       #   app_assignment.image = app_attribute.image    
-      # else
+#       else
 #     app.assignment.image = 
       # end
 
@@ -65,8 +66,8 @@ class ApplicationController < ActionController::Base
       #  app_assignment.destroy        Url field does not currently exist in RM
 #      end
       # Update attributes
-      app_assignment.name = app[:name]
-#      app_assignment.description = app_attribute.description
+      app_assignment.name = app_attribute.name
+      app_assignment.description = app_attribute.description
 #      app_assignment.url = app_attribute.url
      app_assignment.image = "http://i.imgur.com/ss8rqyg.jpg"
 
