@@ -1,5 +1,6 @@
 $(window).load(function() 
 {
+
   //Drawing Content to page
   _.templateSettings = 
   { 
@@ -21,6 +22,9 @@ $(window).load(function()
 	  $('#sortableFav').append(favoriteTemplate(DssPortal.favorites[i]));	
   }
 
+   //applies styled tooltips on application cards
+   $('li').tooltip();
+
   //processing user input
   $("#sortableFav, #sortableApp" ).sortable({
 	distance: 15,
@@ -29,13 +33,59 @@ $(window).load(function()
   zIndex: 10000, //or greater than any other relative/absolute/fixed elements and droppables
     stop: function(event, ui) 
 	  {
-    
-     //check DSSportal.app and DSSportal.fav against their current states to verify a change occured
-     
-     //if an app was toggled favorite/unfavorite, change its display icon
-    
-      //if a change was detected, build an array of hashes  id/fav/position and send to rails
-      var pageLayout = [];
+      SendState();
+	  },
+  connectWith: ".connectedSortable"
+	});
+  
+  //ON HOVER - apply dropshadow, make relevant UI elemnts appear
+  $('li').hover
+  (
+     function()
+    { 
+      $(this).addClass('hover-card');
+      $(this).find("button").css({visibility: 'visible'});
+    },
+     function()
+    { 
+      $(this).removeClass('hover-card'); 
+      $(this).find("button").css({visibility: 'hidden'});
+    }
+  ) 
+
+  //ON DRAG 
+  $('li').mousedown(function() {
+      $(this).removeClass('hover-card'); 
+      $(this).addClass('dragging-card');
+  });
+
+  $('li').mouseup(function() 
+  {
+     $(this).removeClass('dragging-card');
+     $(this).removeClass('hover-card');
+
+  });
+
+  $('.card-interface-left').click(function() 
+  { 
+    var elementToBeMoved = $(this).parent();
+    $(elementToBeMoved).insertBefore($(elementToBeMoved).prev());
+    SendState();
+  });
+
+  $('.card-interface-right').click(function() 
+  { 
+    var elementToBeMoved = $(this).parent();
+    $(elementToBeMoved).insertAfter($(elementToBeMoved).next());
+    SendState();
+  });
+
+
+});
+
+function SendState()
+{
+        var pageLayout = [];
       var appStructure;
       var i = 1;
       $("#sortableFav li").each(function() {      
@@ -65,54 +115,4 @@ $(window).load(function()
           dataType: "json",
          contentType: "application/json"
      });
-	  },
-connectWith: ".connectedSortable"
-	});
-  
-  //applies styled tooltips on application cards
-  $(function() 
-  {
-    $('li').tooltip();
-  });
-  
-  //ON HOVER - apply dropshadow, make relevant UI elemnts appear
-$('li').hover
-(
-       function()
-      { 
-        $(this).addClass('hover-card');
-        $(this).find("button").css({visibility: 'visible'});
-      },
-       function()
-      { 
-        $(this).removeClass('hover-card'); 
-        $(this).find("button").css({visibility: 'hidden'});
-      }
-) 
-  //ON DRAG 
-$('li').mousedown(function() {
-    $(this).removeClass('hover-card'); 
-    $(this).addClass('dragging-card');
-//    $('body').addClass('target-areas');
-//    $('.connectedSortable').css({outline: 'dashed'});
-});
-
-$('li').mouseup(function() 
-{
-   $(this).removeClass('dragging-card');
-   $(this).removeClass('hover-card');
-//   $('body').removeClass('target-areas');
-//    $('.connectedSortable').css({outline: 'none'});
-
-//   $(this).css({'zIndex' : 10});
-});
-
-
-
-//  $(this).append("<img class='move-icon' src='http://i.imgur.com/qEshcfP.png'>")
-//  }, function(){
-
-//  $(this).children(".move-icon").remove();
-//  })
-
-});
+}
