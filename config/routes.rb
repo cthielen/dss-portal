@@ -1,4 +1,7 @@
 DssPortal::Application.routes.draw do
+  resources :rm_application_attributes
+
+
   resources :icons
 
 

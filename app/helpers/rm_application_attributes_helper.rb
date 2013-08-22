@@ -1,0 +1,2 @@
+module RmApplicationAttributesHelper
+end
