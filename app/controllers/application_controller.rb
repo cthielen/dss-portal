@@ -49,9 +49,11 @@ class ApplicationController < ActionController::Base
         #record data into app_attribute
         app_attribute.name = @app_attribute_data.name
         app_attribute.description = @app_attribute_data.description
-#        app_attribute.icon_path = @app_attribute_data[:image]
+        app_attribute.url = @app_attribute_data.url
+#        app_attribute.icon_path = @app_attribute_data.icon_path
         app_attribute.save
       end
+
       # Verifies RM had icon data, otherwise uses default icon
       # if @rm_app_data.image.present?                           Icon field does not currently exist in RM
       #   app_assignment.image = app_attribute.image    
@@ -68,6 +70,7 @@ class ApplicationController < ActionController::Base
       # Update attributes
       app_assignment.name = app_attribute.name
       app_assignment.description = app_attribute.description
+      app_assignment.url = app_attribute.url
 #      app_assignment.url = app_attribute.url
      app_assignment.image = "http://i.imgur.com/ss8rqyg.jpg"
 
