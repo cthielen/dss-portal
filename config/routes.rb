@@ -14,6 +14,13 @@ DssPortal::Application.routes.draw do
     end
   end
 
+  resources :application_assignments do
+    collection do
+      post 'create_or_update'
+    end
+  end
+
+  match '/manage', to: 'application_assignments#manage'
   root :to => 'application#welcome'
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -54,7 +54,7 @@ $(window).load(function()
   ) 
 
   //ON DRAG 
-  $('li').mousedown(function() {
+  $('#sortableApp li, #sortableFav li').mousedown(function() {
       $(this).removeClass('hover-card'); 
       $(this).addClass('dragging-card');
   });
@@ -91,6 +91,10 @@ $(window).load(function()
 
   });
 */
+
+
+
+
 });
 
 function SendState()

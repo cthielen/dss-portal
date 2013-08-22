@@ -1,10 +1,10 @@
-<%= form_for(@application) do |f| %>
-  <% if @application.errors.any? %>
+<%= form_for(@application_assignment) do |f| %>
+  <% if @application_assignment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+      <h2><%= pluralize(@application_assignment.errors.count, "error") %> prohibited this application from being saved:</h2>
 
       <ul>
-      <% @application.errors.full_messages.each do |msg| %>
+      <% @application_assignment.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,26 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :position %><br />
-    <%= f.number_field :position %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :favorite %><br />
-    <%= f.check_box :favorite %>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :person_id %><br />
-    <%= f.number_field :person_id %>
-  </div>
-  <div class="field">
-    <%= f.label :category_type %><br />
-    <%= f.text_field :category_type %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br />
-    <%= f.number_field :category_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
   </div>
 <% end %>
