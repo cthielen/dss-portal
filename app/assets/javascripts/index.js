@@ -44,12 +44,12 @@ $(window).load(function()
      function()
     { 
       $(this).addClass('hover-card');
-      $(this).find("button").css({visibility: 'visible'});
+//      $(this).find("button").css({visibility: 'visible'});
     },
      function()
     { 
       $(this).removeClass('hover-card'); 
-      $(this).find("button").css({visibility: 'hidden'});
+//      $(this).find("button").css({visibility: 'hidden'});
     }
   ) 
 
@@ -66,7 +66,7 @@ $(window).load(function()
 
   });
 
-  $('.card-interface-left').click(function() 
+/*  $('.card-interface-left').click(function() 
   { 
     var elementToBeMoved = $(this).parent();
     $(elementToBeMoved).insertBefore($(elementToBeMoved).prev());
@@ -88,8 +88,9 @@ $(window).load(function()
     else
       $('#sortableApp').append(elementToBeMoved);
     SendState();
-  });
 
+  });
+*/
 });
 
 function SendState()
