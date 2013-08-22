@@ -80,6 +80,15 @@ $(window).load(function()
     SendState();
   });
 
+  $('.card-interface-favorite').click(function() 
+  { 
+    var elementToBeMoved = $(this).parent();
+    if(elementToBeMoved.parent().attr('id') == 'sortableApp')
+      $('#sortableFav').append(elementToBeMoved);
+    else
+      $('#sortableApp').append(elementToBeMoved);
+    SendState();
+  });
 
 });
 
