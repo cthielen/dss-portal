@@ -65,68 +65,38 @@ $(window).load(function()
      $(this).removeClass('hover-card');
 
   });
-
-/*  $('.card-interface-left').click(function() 
-  { 
-    var elementToBeMoved = $(this).parent();
-    $(elementToBeMoved).insertBefore($(elementToBeMoved).prev());
-    SendState();
-  });
-
-  $('.card-interface-right').click(function() 
-  { 
-    var elementToBeMoved = $(this).parent();
-    $(elementToBeMoved).insertAfter($(elementToBeMoved).next());
-    SendState();
-  });
-
-  $('.card-interface-favorite').click(function() 
-  { 
-    var elementToBeMoved = $(this).parent();
-    if(elementToBeMoved.parent().attr('id') == 'sortableApp')
-      $('#sortableFav').append(elementToBeMoved);
-    else
-      $('#sortableApp').append(elementToBeMoved);
-    SendState();
-
-  });
-*/
-
-
-
-
 });
 
 function SendState()
 {
-        var pageLayout = [];
-      var appStructure;
-      var i = 1;
-      $("#sortableFav li").each(function() {      
-        var id = $(this).attr('id');
-        appStructure = {position: i, app_id: id, favorite: "true"};      
-        i++;    
-        pageLayout.push(appStructure); 
-      });
+  var pageLayout = [];
+  var appStructure;
+  var i = 1;
+  $("#sortableFav li").each(function() {      
+    var id = $(this).attr('id');
+    appStructure = {position: i, app_id: id, favorite: "true"};      
+    i++;    
+    pageLayout.push(appStructure); 
+  });
 
-      i = 1;
-      
-      $("#sortableApp li").each(function() { 
-        var id = $(this).attr('id');
-        appStructure = {position: i, app_id: id, favorite: "false"};      
-        i++;    
-        pageLayout.push(appStructure); 
-      });
-      var pobj = {pageLayout: pageLayout}; 
+  i = 1;
+  
+  $("#sortableApp li").each(function() { 
+    var id = $(this).attr('id');
+    appStructure = {position: i, app_id: id, favorite: "false"};      
+    i++;    
+    pageLayout.push(appStructure); 
+  });
+  var pobj = {pageLayout: pageLayout}; 
 
-      $.ajax({
-          type: "POST",
-          url: "/application_assignments/drag_update",
-          data: JSON.stringify(pobj),
-         complete: function(){
-          $('.ui-tooltip').remove();
-          },
-          dataType: "json",
-         contentType: "application/json"
-     });
+  $.ajax({
+      type: "POST",
+      url: "/application_assignments/drag_update",
+      data: JSON.stringify(pobj),
+     complete: function(){
+      $('.ui-tooltip').remove();
+      },
+      dataType: "json",
+     contentType: "application/json"
+  });
 }
