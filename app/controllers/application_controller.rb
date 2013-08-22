@@ -42,13 +42,21 @@ class ApplicationController < ActionController::Base
       app_assignment = @person.application_assignments.find_or_create_by_rm_application_id(app[:id])
       
       #Ensure rm_app_data for given app was recently updated
-      
+      app_attribute = RmApplicationAttribute.find_or_create_by_rm_application_id(app[:id])
+      if app_attribute.updated_at < 72.hours.ago
+        #query rm application for data
+        #record data into app_attribute
+
+      end
+
       #If url is blank, remove assignment
-     
+      if app_attribute.url.blank?
+        app_assignment.destroy
+      end
       # Update attributes
       app_assignment.name = app[:name]
-      #app_assignment.description = role.description RM does not currently publish application descriptions this way.
-      #app_assignment.url = app.url
+      app_assignment.description = app_attribute.description
+      app_assignment.url = app_attribute.url
       app_assignment.save!
     end
 
