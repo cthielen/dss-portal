@@ -7,8 +7,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"><button class="card-interface-favorite" title="Add to Favorites"><i class="icon-heart icon-white"></i></button><button class="card-interface-left"><i class="icon-arrow-left"></i></button><button class="card-interface-right"><i class="icon-arrow-right"></i></button><button class="card-interface-edit" title="Edit Bookmark"><i class="icon-edit"></i></button><a title="Launch Website" href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
-  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"><button class="card-interface-favorite" title="Add to Favorites"><i class="icon-heart icon-white"></i></button><button class="card-interface-left"><i class="icon-arrow-left"></i></button><button class="card-interface-right"><i class="icon-arrow-right"></i></button><button class="card-interface-edit" title="Edit Bookmark"><i class="icon-edit"></i></button><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4></a></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"><a title="Launch Website" href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
+  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4></a></li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
