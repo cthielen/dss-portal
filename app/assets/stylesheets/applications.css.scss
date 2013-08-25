@@ -32,6 +32,11 @@
   border: 4px solid #999999;
 }
 
+#sortableFav .card
+{
+background: #EFEFEF;
+}
+
 #sortableApp 
 { 
   display:block; 
@@ -59,9 +64,23 @@
   overflow: hidden;
   position: relative;
   cursor: move;
-  font: 1em "Gill Sans", Sans-Serif;
   list-style: none;
 }
+
+.card h4
+{
+  font-weight: normal;
+}
+
+.card .link
+{ 
+  position:absolute; 
+  width:100%;
+  height:100%;
+  bottom:0;
+  left: 0;
+  z-index: 1;
+}   
 
 .card-title
 {
@@ -128,4 +147,9 @@
   padding:10px;
   padding-top: 3px;
   border-bottom: solid 1px #BBBBBB;
+}
+
+.editor
+{
+display:none;
 }

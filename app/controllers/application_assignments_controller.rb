@@ -43,15 +43,6 @@ class ApplicationAssignmentsController < ApplicationController
      # format.html { render json: @assignment}
       format.json { render json: @assignment }
     end
-     
-    
- # if @application_assignment.save
- #     format.html {   flash.now[:notice] = 'Application saved!'}
- #     format.json { flash.now[:notice] = 'Application saved!'}
- #   else
- #     format.html { flash.now[:notice] = 'Error saving application!' }
- #     format.json { flash.now[:notice] = 'Error saving application!' }
- #   end
   end
 
   def edit

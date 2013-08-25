@@ -7,8 +7,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"><a title="Launch Website" href ="{{ url }}"><h4>{{ name }}</h4></a></li>');
-  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4></a></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"><a title="Launch Website" href ="{{ url }}"><h4>{{ name }}</h4><span></span></a><span class="editor">EDITOREDITOREDITOR</span></li>');
+  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4><span class="link"></span></a><span class="editor">EDITOREDITOREDITOR</span></li>');
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -28,6 +28,7 @@ $(window).load(function()
   //processing user input
   $("#sortableFav, #sortableApp" ).sortable({
 	distance: 15,
+  delay: 300,
 	placeholder: "target",
 	forcePlaceholderSize: true,
   zIndex: 10000, //or greater than any other relative/absolute/fixed elements and droppables
