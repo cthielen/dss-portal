@@ -37,6 +37,9 @@ class ApplicationAssignmentsController < ApplicationController
      @assignment.url = params[:url]
      @assignment.bookmark = true
      @assignment.favorite = false
+     first_letter = @assignment.name.chars.first.downcase
+     icon_path = Icon.find_by_letter(first_letter).image.url
+     @assignment.image = icon_path
      @assignment.save
     
     respond_to do |format|

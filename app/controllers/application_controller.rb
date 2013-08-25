@@ -71,10 +71,10 @@ class ApplicationController < ActionController::Base
         app_assignment.name = app_attribute.name
         app_assignment.description = app_attribute.description
         app_assignment.url = app_attribute.url
-        #assign image to app assignment
-        first_letter = app_assignment.name.chars.first.downcase
-        icon_path = Icon.find_by_letter(first_letter).image.url
-        app_assignment.image = icon_path
+        #if rm doesn't have an icon, use a default
+          first_letter = app_assignment.name.chars.first.downcase
+          icon_path = Icon.find_by_letter(first_letter).image.url
+          app_assignment.image = icon_path
         app_assignment.save!
 #      end
     end
