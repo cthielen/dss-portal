@@ -65,19 +65,19 @@ class ApplicationController < ActionController::Base
 
       #If url is blank, remove assignment
 #      if app_attribute.url.blank?
-      #  app_assignment.destroy        Url field does not currently exist in RM
+#        app_assignment.destroy
+#      else
+        # Update attributes
+        app_assignment.name = app_attribute.name
+        app_assignment.description = app_attribute.description
+        app_assignment.url = app_attribute.url
+        #assign image to app assignment
+        first_letter = app_assignment.name.chars.first.downcase
+        icon_path = Icon.find_by_letter(first_letter).image.url
+        app_assignment.image = icon_path
+        app_assignment.save!
 #      end
-      # Update attributes
-      app_assignment.name = app_attribute.name
-      app_assignment.description = app_attribute.description
-      app_assignment.url = app_attribute.url
-#      app_assignment.url = app_attribute.url
-     app_assignment.image = "http://i.imgur.com/ss8rqyg.jpg"
-
-      app_assignment.save!
     end
-
-    
     # Go through @person.application_assignments and remove any non-bookmark ones which are not in @rm_apps
     @person.application_assignments.keep_if do |assignment|
       assignment.bookmark or @rm_apps.find_index{ |r| r[:id] == assignment.rm_application_id }
