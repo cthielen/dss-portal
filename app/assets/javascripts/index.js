@@ -7,8 +7,9 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"><a title="Launch Website" href ="{{ url }}"><h4>{{ name }}</h4><span></span></a><span class="editor">EDITOREDITOREDITOR</span></li>');
-  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4><span class="link"></span></a><span class="editor">EDITOREDITOREDITOR</span></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><span class="input-append"><span class="add-on">http</span><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"></span></span></li>');
+  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><span class="input-append"><span class="add-on">http</span><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"></span></span></li>');
+
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
@@ -32,10 +33,10 @@ $(window).load(function()
 	placeholder: "target",
 	forcePlaceholderSize: true,
   zIndex: 10000, //or greater than any other relative/absolute/fixed elements and droppables
-    stop: function(event, ui) 
-	  {
-      SendState();
-	  },
+  stop: function(event, ui) 
+  {
+    SendState();
+  },
   connectWith: ".connectedSortable"
 	});
   
@@ -66,6 +67,23 @@ $(window).load(function()
      $(this).removeClass('hover-card');
 
   });
+
+  $('.editor-toggle').click(function()
+  {  
+    $(".editor").toggle();
+    $(".content").toggle();
+    $('.link').toggle();
+
+    if($('.card').tooltip('option', 'disabled'))
+    {
+      $('.card').tooltip('option', {'disabled' : false});
+    }    
+    else
+    {
+      $('.card').tooltip('option', {'disabled' : true});
+    }
+  });
+
 });
 
 function SendState()
