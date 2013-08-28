@@ -12,6 +12,7 @@ class ApplicationAssignmentsController < ApplicationController
   end
 
   def drag_update
+    logger.info params[:pageLayout]
     assignments = params[:pageLayout]
     favPosition = 1
     appPosition = 1
@@ -62,9 +63,6 @@ class ApplicationAssignmentsController < ApplicationController
   end
 
    def update
-    logger.info "TESTTTTTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
-    logger.info params[:id]
-    logger.info params[:application_assignment]
     @assignment = ApplicationAssignment.find(params[:id])
 #    submission_hash = {"name" => params[:name],"description" => params[:description],"url" => params[:url]}
     @assignment.update_attributes(params[:application_assignment])

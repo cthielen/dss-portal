@@ -7,8 +7,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a></li>');
-  var bookmarkTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button></span></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}{{id}}</h4></span><span class="link"></span></a></li>');
+  var bookmarkTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}{{id}}</h4><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button></span></li>');
 
 
   //fill out applications
@@ -30,7 +30,7 @@ $(window).load(function()
   {
     if((DssPortal.favorites[i].bookmark) == true)
     {
-       $('#sortableApp').append(bookmarkTemplate(DssPortal.favorites[i]));
+       $('#sortableFav').append(bookmarkTemplate(DssPortal.favorites[i]));
     }
     else
     {
@@ -139,7 +139,7 @@ function SendState()
   var pageLayout = [];
   var appStructure;
   var i = 1;
-  $("#sortableFav li").each(function() {      
+  $("#sortableFav li").each(function() {   
     var id = $(this).attr('id');
     appStructure = {position: i, app_id: id, favorite: "true"};      
     i++;    
