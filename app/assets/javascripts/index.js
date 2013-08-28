@@ -7,8 +7,8 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}{{id}}</h4></span><span class="link"></span></a></li>');
-  var bookmarkTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}{{id}}</h4><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button></span></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a></li>');
+  var bookmarkTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4><span class="link"></span></a></span><span class="edit-form"><input class="editor-name" value="{{ name }}" type="text"><input class="editor-description" value="{{ description }}" type="text"><input class="editor-url" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button></span></li>');
 
 
   //fill out applications
@@ -37,6 +37,8 @@ $(window).load(function()
 	    $('#sortableFav').append(appTemplate(DssPortal.favorites[i]));	
     }
   }
+  
+  $('#sortableApp').append(' <li class="card" id="" title=""><span class="create-content"><button class="create-toggle btn btn-success btn-large"><i class="icon-white icon-plus"></i></button><h4>Create Application Bookmark</h4></span><span class="create-form"><input class="create-name" placeholder="Name" type="text"><input class="create-description" placeholder="Description" type="text"><input class="create-url" placeHolder="website URL" type="text"><button class="create btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Create</button></span></li>');
 
    //applies styled tooltips on application cards
    $('li').tooltip();
@@ -48,6 +50,7 @@ $(window).load(function()
 	placeholder: "target",
 	forcePlaceholderSize: true,
   zIndex: 10000, //or greater than any other relative/absolute/fixed elements and droppables
+  items: "li:not(:last-child)",
   stop: function(event, ui) 
   {
     SendState();
@@ -84,30 +87,19 @@ $(window).load(function()
   });
 
   $('.editor-toggle').click(function()
-  { $(".editor").toggle();
-        $(".content").toggle();
-/*
-    $('.card').each(function()
+  { 
+    $('.edit-form').toggle();
+    $(this).toggleClass('active');
+    $('.content').toggle();
+    $('.content .link').toggle();     
+    if($('.content').parent().tooltip('option', 'disabled'))
     {
-      if($(this).find('.editor').length != 0) 
-      {
-        $(".editor").toggle();
-        $(".content").toggle();
-        $('.link').toggle();
-        $(this).toggleClass('active');
-      
-        if($('.card').tooltip('option', 'disabled'))
-        {
-          $('.card').tooltip('option', {'disabled' : false});
-        }    
-        else
-        {
-          $('.card').tooltip('option', {'disabled' : true});
-        }
-      }
-
-    });
-*/
+      $('.content').parent().tooltip('option', {'disabled' : false});
+    }    
+    else
+    {
+      $('.card').tooltip('option', {'disabled' : true});
+    }
   });
 
   $('.editor-save').click(function()
@@ -118,20 +110,43 @@ $(window).load(function()
     var url = $(this).parent().children('.editor-url').val();
     var application_assignment = {name: name, description: description, url: url};
     var data = {id: id, application_assignment: application_assignment};
-/*    $.ajax({
+    $.ajax({
       type: "PUT",
-      url: "/application_assignments/987",
+      url: "/application_assignments/" + id,
       data: JSON.stringify(data),
       dataType: "json",
      contentType: "application/json"
     });
-*/
+
     $(this).parent().parent().children('a').attr('href', url);
     $(this).parent().parent().attr('title', description);
     $(this).parent().parent().find('h4').text(name);
         
    });
 
+
+  $('.create-toggle').click(function()
+  {
+      $('.create-content').toggle();
+      $('.create-form').toggle();
+  });
+
+ $('.create').click(function()
+  {
+    var name = $(this).parent().children('.create-name').val();
+    var description = $(this).parent().children('.create-description').val();
+    var url = $(this).parent().children('.create-url').val();
+    var application_assignment = {name: name, description: description, url: url};
+    $.ajax({
+      type: "POST",
+      url: "/application_assignments/",
+      data: JSON.stringify(application_assignment),
+      dataType: "json",
+     contentType: "application/json"
+    });        
+
+   });
+    
 });
 
 function SendState()

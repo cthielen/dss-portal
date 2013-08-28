@@ -69,4 +69,14 @@ class ApplicationAssignmentsController < ApplicationController
     render :json => {:status => "success"}
   end
 
+  def create
+    @assignment = @person.application_assignments.new(params[:application_assignment])
+    @assignment.bookmark = true
+    @assignment.favorite = false
+    first_letter = @assignment.name.chars.first.downcase
+    icon_path = Icon.find_by_letter(first_letter).image.url
+    @assignment.image = icon_path
+    @assignment.save
+render :json => {:status => "success"}
+  end
 end
