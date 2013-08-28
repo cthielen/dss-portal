@@ -7,20 +7,35 @@ $(window).load(function()
     interpolate : /\{\{(.+?)\}\}/g
   };
 
-  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><span class="input-append"><span class="add-on">http</span><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"></span></span></li>');
-  var favoriteTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"></i><a title="Launch Website" href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><span class="input-append"><span class="add-on">http</span><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"></span></span></li>');
+  var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a></li>');
+  var bookmarkTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a><span class="editor"><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button></span></li>');
 
 
   //fill out applications
   for(var i = 0; i < DssPortal.apps.length;i++)
   {
-	  $('#sortableApp').append(appTemplate(DssPortal.apps[i]));	
+    if((DssPortal.apps[i].bookmark) == true)
+    {
+      	  $('#sortableApp').append(bookmarkTemplate(DssPortal.apps[i]));
+    }
+    else
+    {
+	    $('#sortableApp').append(appTemplate(DssPortal.apps[i]));
+
+    }
   }
 
   //fill out favorites
   for(var i = 0; i < DssPortal.favorites.length;i++)
   {
-	  $('#sortableFav').append(favoriteTemplate(DssPortal.favorites[i]));	
+    if((DssPortal.favorites[i].bookmark) == true)
+    {
+       $('#sortableApp').append(bookmarkTemplate(DssPortal.favorites[i]));
+    }
+    else
+    {
+	    $('#sortableFav').append(appTemplate(DssPortal.favorites[i]));	
+    }
   }
 
    //applies styled tooltips on application cards
@@ -69,20 +84,53 @@ $(window).load(function()
   });
 
   $('.editor-toggle').click(function()
-  {  
-    $(".editor").toggle();
-    $(".content").toggle();
-    $('.link').toggle();
+  { $(".editor").toggle();
+        $(".content").toggle();
+/*
+    $('.card').each(function()
+    {
+      if($(this).find('.editor').length != 0) 
+      {
+        $(".editor").toggle();
+        $(".content").toggle();
+        $('.link').toggle();
+        $(this).toggleClass('active');
+      
+        if($('.card').tooltip('option', 'disabled'))
+        {
+          $('.card').tooltip('option', {'disabled' : false});
+        }    
+        else
+        {
+          $('.card').tooltip('option', {'disabled' : true});
+        }
+      }
 
-    if($('.card').tooltip('option', 'disabled'))
-    {
-      $('.card').tooltip('option', {'disabled' : false});
-    }    
-    else
-    {
-      $('.card').tooltip('option', {'disabled' : true});
-    }
+    });
+*/
   });
+
+  $('.editor-save').click(function()
+  {
+    var id = $(this).parent().parent().attr('id');
+    var name = $(this).parent().children('.editor-name').val();
+    var description = $(this).parent().children('.editor-description').val();
+    var url = $(this).parent().children('.editor-url').val();
+    var application_assignment = {name: name, description: description, url: url};
+    var data = {id: id, application_assignment: application_assignment};
+/*    $.ajax({
+      type: "PUT",
+      url: "/application_assignments/987",
+      data: JSON.stringify(data),
+      dataType: "json",
+     contentType: "application/json"
+    });
+*/
+    $(this).parent().parent().children('a').attr('href', url);
+    $(this).parent().parent().attr('title', description);
+    $(this).parent().parent().find('h4').text(name);
+        
+   });
 
 });
 

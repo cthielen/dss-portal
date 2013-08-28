@@ -60,4 +60,15 @@ class ApplicationAssignmentsController < ApplicationController
   def manage
     @bookmark_apps = @person.application_assignments.where(:bookmark => true)
   end
+
+   def update
+    logger.info "TESTTTTTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
+    logger.info params[:id]
+    logger.info params[:application_assignment]
+    @assignment = ApplicationAssignment.find(params[:id])
+#    submission_hash = {"name" => params[:name],"description" => params[:description],"url" => params[:url]}
+    @assignment.update_attributes(params[:application_assignment])
+    render :json => {:status => "success"}
+  end
+
 end

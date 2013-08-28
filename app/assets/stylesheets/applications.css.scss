@@ -153,3 +153,12 @@ background: #EFEFEF;
 {
   display: none;
 }
+
+
+.editor-active
+{
+ -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid yellow;
+}

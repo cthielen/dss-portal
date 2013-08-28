@@ -5,6 +5,7 @@
 <ul id="sortableApp" class="connectedSortable"></ul>
 <div class="clear"></div>
 
+<span><input class="editor-name" id="appendedInput" value="{{ name }}" type="text"><input class="editor-description" id="appendedInput" value="{{ description }}" type="text"><input class="editor-url" id="appendedInput" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button></span>
 <script type="text/json" id="bootstrap">
 {
 	"apps"		: <%= @apps.to_json %>,
