@@ -143,8 +143,15 @@ $(window).load(function()
       data: JSON.stringify(application_assignment),
       dataType: "json",
      contentType: "application/json"
-    });        
-
+    }); 
+    //insert newly created card into list
+    
+    //reset interface to be ready for new applications       
+    $(this).parent().children('.create-name').val("");
+    $(this).parent().children('.create-description').val("");
+    $(this).parent().children('.create-url').val("");
+    $('.create-content').toggle();
+    $('.create-form').toggle();
    });
     
 });
