@@ -7,5 +7,4 @@ class ApplicationAssignment < ActiveRecord::Base
   validates :image, presence: true
   validates :rm_application_id, presence: true
   validates :name, presence: true
-  validates :url, presence: true
 end
