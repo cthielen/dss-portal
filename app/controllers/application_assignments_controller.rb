@@ -81,7 +81,10 @@ class ApplicationAssignmentsController < ApplicationController
     first_letter = @assignment.name.chars.first.downcase
     icon_path = Icon.find_by_letter(first_letter).image.url
     @assignment.image = icon_path
+    logger.info "TESTETTSESETSEETS"
+    logger.info @assignment.bookmark
+    logger.info @assignment.favorite
     @assignment.save
-render :json => {:status => "success"}
+    render :json => {:status => "success"}
   end
 end
