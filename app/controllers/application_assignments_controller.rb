@@ -55,7 +55,12 @@ class ApplicationAssignmentsController < ApplicationController
 
   def destroy
     @bookmark_app = ApplicationAssignment.find(params[:id])
-    @bookmark_app.destroy
+    if @bookmark_app.destroy
+      render :json => {:status => "success"}
+    else
+      render :json => {:status => "failure"}
+    end
+    
   end
 
   def manage

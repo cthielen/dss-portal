@@ -8,7 +8,7 @@ $(window).load(function()
   };
 
   var appTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4></span><span class="link"></span></a></li>');
-  var bookmarkTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4><span class="link"></span></a></span><span class="edit-form"><input class="editor-name" value="{{ name }}" type="text"><input class="editor-description" value="{{ description }}" type="text"><input class="editor-url" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button></span></li>');
+  var bookmarkTemplate = _.template(' <li class="card" id="{{id}}" title="{{ description }}"><span class="content"><img src="{{image}}"><a href="{{ url }}"><h4>{{ name }}</h4><span class="link"></span></a></span><span class="edit-form"><input class="editor-name" value="{{ name }}" type="text"><input class="editor-description" value="{{ description }}" type="text"><input class="editor-url" value="{{ url }}" type="text"><button class="editor-save btn btn-success btn-mini"><i class="icon-white icon-ok"></i> Save</button><button class="btn btn-danger btn-mini editor-delete"><i class="icon-white icon-trash"></i> Delete</button></span></li>');
 
 
   //fill out applications
@@ -153,6 +153,21 @@ $(window).load(function()
     $('.create-content').toggle();
     $('.create-form').toggle();
    });
+
+  $('.editor-delete').click(function()
+  {
+    var id = $(this).parent().parent().attr('id');
+    $.ajax({
+      type: "DELETE",
+      url: "/application_assignments/" +id,
+      data: JSON.stringify(id),
+      dataType: "json",
+     contentType: "application/json"
+    }); 
+
+    $(this).closest('li').remove();
+
+  });
     
 });
 
