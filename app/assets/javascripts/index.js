@@ -178,7 +178,6 @@ function SendState()
   var i = 1;
   $("#sortableFav li").each(function() {   
     var id = $(this).attr('id');
-    alert(id);
     appStructure = {position: i, app_id: id, favorite: "true"};      
     i++;    
     pageLayout.push(appStructure); 
@@ -188,7 +187,6 @@ function SendState()
   
   $("#sortableApp li").each(function() { 
     var id = $(this).attr('id');
-    alert(id);
     appStructure = {position: i, app_id: id, favorite: "false"};      
     i++;
     if( id.length >= 1)   
