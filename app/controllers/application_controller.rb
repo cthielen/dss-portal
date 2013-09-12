@@ -5,12 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :update_rm_assignments
   protect_from_forgery
   
-  def welcome
-    if session[:cas_user]
-      redirect_to :controller => 'application_assignments', :action => 'index'
-    end
-  end
-  
   def logout
     logger.info "#{session[:cas_user]}@#{request.remote_ip}: Logged out."
     CASClient::Frameworks::Rails::Filter.logout(self)

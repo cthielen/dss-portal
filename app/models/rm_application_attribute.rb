@@ -1,5 +1,4 @@
 class RmApplicationAttribute < ActiveRecord::Base
-  attr_accessible :description, :name, :url, :image, :rm_application_id
-  has_attached_file :image
+  attr_accessible :description, :name, :url, :rm_application_id
   validates :rm_application_id, presence: true
 end
