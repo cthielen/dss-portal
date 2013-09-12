@@ -11,7 +11,7 @@ gem 'sqlite3'
 gem 'declarative_authorization'
 gem 'rubycas-client'
 gem "activeresource", :require => 'active_resource'
-gem "paperclip", "~> 3.1"
+
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails", "~> 2.2.6"
 gem 'jquery-ui-rails', '~> 4.0.3'
