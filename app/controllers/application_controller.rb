@@ -27,12 +27,9 @@ class ApplicationController < ActionController::Base
     @rm_person = @current_user
   end
 
-
-  # OPTIMIZE ME - this function will blindly create/delete in rapid succession, activerecord writes could be eliminated 
-  # with better logic
+  # OPTIMIZE ME - this function will blindly create/delete in rapid succession, activerecord writes could be eliminated with better logic
   def update_rm_assignments
-
-    #Obtain rm applications assigned to user
+    # Obtain RM applications assigned to user
     @rm_apps = @rm_person.accessible_applications
     
     # Ensure application_assignments matches @rm_apps for apps which come from RM.
@@ -45,18 +42,14 @@ class ApplicationController < ActionController::Base
       app_attribute = RmApplicationAttribute.find_or_initialize_by_rm_application_id(app[:id])
       
       if app_attribute.new_record? or app_attribute.updated_at < 72.hours.ago
-        logger.debug "Updating app attribute #{app_attribute.id}/#{app_attribute.name}"
-        
-        # Query rm application for particular attributes on the application
+        # Cache RM application data into app_attribute
         @app_attribute_data = RmApplication.find(app[:id])
-        # Record data into app_attribute
+        
         app_attribute.name = @app_attribute_data.name
         app_attribute.description = @app_attribute_data.description
         app_attribute.url = @app_attribute_data.url
-        #app_attribute.icon_path = @app_attribute_data.icon_path
+        app_attribute.icon_path = @app_attribute_data.icon_path
         app_attribute.save!
-      else
-        logger.debug "Not updating app attribute #{app_attribute.id}/#{app_attribute.name}"
       end
 
       app_assignment.name = app_attribute.name
@@ -64,9 +57,13 @@ class ApplicationController < ActionController::Base
       app_assignment.url = app_attribute.url
       
       # If RM doesn't specify an icon use a default
-      first_letter = app_assignment.name.chars.first.downcase
-      icon_path = Icon.find_by_letter(first_letter).image.url
-      app_assignment.image = icon_path
+      first_letter = app_assignment.name[0].downcase
+      begin
+        icon_path = Icon.find_by_letter(first_letter).image.url
+        app_assignment.image = icon_path
+      rescue NoMethodError
+        logger.error "Icon.find_by_letter('#{first_letter}') failed to return a result. Run rake db:seed."
+      end
       app_assignment.save!
     end
 
