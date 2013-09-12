@@ -2,58 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    
     <title>DSS Portal</title>
+    
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-    <style type="text/css">
-
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-
-      @media (max-width: 980px) {
-        /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
-          float: none;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-      }
-
-    </style>
+    <meta name="description" content="Application portal at UC Davis">
+    <meta name="author" content="Lloyd Wheeler, Christopher Thielen, UCD DSS IT.">
   </head>
-
-
- <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a href ="/" class="brand">DSS Portal</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav pull-right">
-            <li><button class="btn btn-info btn-small editor-toggle"><i class="icon-white icon-edit"></i> Edit Mode</button></li>
-            <li><a href="/logout">Log out</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div>
-    </div><!-- /navbar-inner -->
-  </div><!-- /navbar -->
+  <body>  
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a href ="/" class="brand">DSS Portal</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              <li><button class="btn btn-info btn-small editor-toggle"><i class="icon-white icon-edit"></i> Edit Mode</button></li>
+              <li><a href="/logout">Log out</a></li>
+            </ul>
+          </div> <!-- /.nav-collapse -->
+        </div>
+      </div> <!-- /navbar-inner -->
+    </div> <!-- /navbar -->
 
     <div class="container-fluid">
       <%= yield %>
-
-    </div><!--/.fluid-container-->
-
+    </div>
   </body>
 </html>
-

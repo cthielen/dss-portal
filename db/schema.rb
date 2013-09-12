@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822231515) do
+ActiveRecord::Schema.define(:version => 20130912214614) do
 
   create_table "application_assignments", :force => true do |t|
     t.integer  "position"
@@ -48,12 +48,8 @@ ActiveRecord::Schema.define(:version => 20130822231515) do
     t.string   "name"
     t.string   "description"
     t.string   "url"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "rm_application_id"
     t.string   "icon_path"
   end

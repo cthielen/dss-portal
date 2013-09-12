@@ -31,9 +31,10 @@ class ApplicationController < ActionController::Base
     # Note that some apps (bookmarks) do not come from RM and further, some RM apps
     # may have portal-side data (i.e. 'favorited').
     @rm_apps.each do |app|
+      # Look up the local app_assignment that represents this RM app/person duple
       app_assignment = @person.application_assignments.find_or_create_by_rm_application_id(app[:id])
       
-      # Ensure rm_app_data for given app was recently updated
+      # Look up the local app data for this RM app (we cache certain attributes)
       app_attribute = RmApplicationAttribute.find_or_initialize_by_rm_application_id(app[:id])
       
       if app_attribute.new_record? or app_attribute.updated_at < 72.hours.ago
@@ -44,6 +45,7 @@ class ApplicationController < ActionController::Base
         app_attribute.description = @app_attribute_data.description
         app_attribute.url = @app_attribute_data.url
         app_attribute.icon_path = @app_attribute_data.icon_path
+        
         app_attribute.save!
       end
 
@@ -52,9 +54,7 @@ class ApplicationController < ActionController::Base
       app_assignment.url = app_attribute.url
       
       # If RM doesn't specify an icon use a default
-      first_letter = app_assignment.name[0].downcase
-      icon_path = "/assets/#{first_letter}.jpg"
-      app_assignment.image = icon_path
+      app_assignment.image = "/assets/#{app_assignment.name[0].downcase}.jpg"
       app_assignment.save!
     end
 
@@ -63,6 +63,7 @@ class ApplicationController < ActionController::Base
     @person.application_assignments.keep_if do |assignment|
       assignment.bookmark or @rm_apps.find_index{ |r| r[:id] == assignment.rm_application_id }
     end
+    
     @person.save!
   end
 end
