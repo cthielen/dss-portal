@@ -6,12 +6,11 @@ class ApplicationAssignmentsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render json: @applications }
+      #format.json { render json: @applications }
     end
   end
 
   def drag_update
-    logger.info params[:pageLayout]
     assignments = params[:pageLayout]
     favPosition = 1
     appPosition = 1
@@ -27,58 +26,33 @@ class ApplicationAssignmentsController < ApplicationController
       end
       record.save
     end
-   render :json => {:status => "success"}
-  end
-
-  def create_or_update
-     @assignment = @person.application_assignments.find_or_create_by_name(params[:name])
-     @assignment.name = params[:name]
-     @assignment.description = params[:description]
-     @assignment.url = params[:url]
-     @assignment.bookmark = true
-     @assignment.favorite = false
-     first_letter = @assignment.name.chars.first.downcase
-     icon_path = "/assets/#{first_letter}.jpg"
-     @assignment.image = icon_path
-     @assignment.save
     
-    respond_to do |format|
-      format.json { render json: @assignment }
-    end
-  end
-
-  def edit
-    @bookmark_app = ApplicationAssignment.find(params[:id])
+    render :json => { :status => "success" }
   end
 
   def destroy
     @bookmark_app = ApplicationAssignment.find(params[:id])
+
     if @bookmark_app.destroy
-      render :json => {:status => "success"}
+      render :json => { :status => "success" }
     else
-      render :json => {:status => "failure"}
+      render :json => { :status => "failure" }
     end
     
   end
 
-  def manage
-    @bookmark_apps = @person.application_assignments.where(:bookmark => true)
-  end
-
-   def update
+  def update
     @assignment = ApplicationAssignment.find(params[:id])
-#    submission_hash = {"name" => params[:name],"description" => params[:description],"url" => params[:url]}
     @assignment.update_attributes(params[:application_assignment])
-    render :json => {:status => "success"}
+    
+    render :json => { :status => "success" }
   end
 
   def create
     @assignment = @person.application_assignments.new(params[:application_assignment])
     @assignment.bookmark = true
     @assignment.favorite = false
-    first_letter = @assignment.name.chars.first.downcase
-    icon_path = "/assets/#{first_letter}.jpg"
-    @assignment.image = icon_path
+    @assignment.image = "/assets/#{@assignment.name[0].downcase}.jpg"
     @assignment.save
     render :json => {:status => 200, :assignment => @assignment}
   end

@@ -1,11 +1,10 @@
-
 # Drawing Content to page
 
 # Fill out applications
 
 # Fill out favorites
 
-#applies styled tooltips on application cards
+# Applies styled tooltips on application cards
 
 #processing user input
 #or greater than any other relative/absolute/fixed elements and droppables
@@ -20,7 +19,14 @@
 
 #insert newly created card into list
 
-#reset interface to be ready for new applications       
+jQuery ->
+  $("a[rel=popover]").popover()
+  $(".tooltip").tooltip()
+  $("a[rel=tooltip]").tooltip()
+
+window.DssPortal = {}
+
+# Reset interface to be ready for new applications       
 SendState = ->
   pageLayout = []
   appStructure = undefined
