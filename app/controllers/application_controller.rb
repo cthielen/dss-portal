@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
         app_attribute.name = @app_attribute_data.name
         app_attribute.description = @app_attribute_data.description
         app_attribute.url = @app_attribute_data.url
-        app_attribute.icon_path = @app_attribute_data.icon_path
+        app_attribute.icon_path = @app_attribute_data.icon
         
         app_attribute.save!
       end
