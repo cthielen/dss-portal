@@ -11,20 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912214614) do
+ActiveRecord::Schema.define(:version => 20130912220540) do
 
   create_table "application_assignments", :force => true do |t|
     t.integer  "position"
-    t.boolean  "favorite",          :default => false
+    t.boolean  "favorite",                    :default => false
     t.integer  "person_id"
-    t.boolean  "bookmark",          :default => false
-    t.string   "name"
-    t.string   "description"
-    t.string   "url"
-    t.integer  "rm_application_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.string   "image"
+    t.boolean  "bookmark",                    :default => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.integer  "rm_application_attribute_id"
   end
 
   create_table "icons", :force => true do |t|

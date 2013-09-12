@@ -65,8 +65,8 @@ SendState = ->
 
 $(window).load ->
   _.templateSettings = interpolate: /\{\{(.+?)\}\}/g
-  appTemplate = _.template(" <li class=\"card\" id=\"{{id}}\" title=\"{{ description }}\"><span><img src=\"{{image}}\"><a href=\"{{ url }}\"><h4>{{ name }}</h4></span><span class=\"link\"></span></a></li>")
-  bookmarkTemplate = _.template(" <li class=\"card\" id=\"{{id}}\" title=\"{{ description }}\"><span class=\"content\"><img src=\"{{image}}\"><a href=\"{{ url }}\"><h4>{{ name }}</h4><span class=\"link\"></span></a></span><span class=\"edit-form\"><input class=\"editor-name\" value=\"{{ name }}\" type=\"text\"><input class=\"editor-description\" value=\"{{ description }}\" type=\"text\"><input class=\"editor-url\" value=\"{{ url }}\" type=\"text\"><button class=\"editor-save btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Save</button><button class=\"btn btn-danger btn-mini editor-delete\"><i class=\"icon-white icon-trash\"></i> Delete</button></span></li>")
+  appTemplate = _.template(" <li class=\"card\" id=\"{{id}}\" title=\"{{ description }}\"><span><img src=\"{{icon}}\"><a href=\"{{ url }}\"><h4>{{ name }}</h4></span><span class=\"link\"></span></a></li>")
+  bookmarkTemplate = _.template(" <li class=\"card\" id=\"{{id}}\" title=\"{{ description }}\"><span class=\"content\"><img src=\"{{icon}}\"><a href=\"{{ url }}\"><h4>{{ name }}</h4><span class=\"link\"></span></a></span><span class=\"edit-form\"><input class=\"editor-name\" value=\"{{ name }}\" type=\"text\"><input class=\"editor-description\" value=\"{{ description }}\" type=\"text\"><input class=\"editor-url\" value=\"{{ url }}\" type=\"text\"><button class=\"editor-save btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Save</button><button class=\"btn btn-danger btn-mini editor-delete\"><i class=\"icon-white icon-trash\"></i> Delete</button></span></li>")
   i = 0
 
   while i < DssPortal.apps.length
