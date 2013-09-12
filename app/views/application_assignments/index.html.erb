@@ -1,9 +1,9 @@
-<ul id="sortableFav" class="connectedSortable"></ul>
-<div class="clear"></div>
-<div class="divider"></div>
+<ul id="sortableFav" class="connectedSortable" />
+<div class="clear" />
+<div class="divider" />
 
-<ul id="sortableApp" class="connectedSortable"></ul>
-<div class="clear"></div>
+<ul id="sortableApp" class="connectedSortable" />
+<div class="clear" />
 
 <script type="text/json" id="bootstrap">
 {
@@ -13,7 +13,6 @@
 </script>
 
 <script type="text/javascript">
-
   var div = $('<div></div>');
   div.html($('#bootstrap').text());
   var data = JSON.parse(div.text());
@@ -21,6 +20,3 @@
   DssPortal.favorites = data.favorites;
   DssPortal.apps = data.apps;
 </script>
-
-
-
