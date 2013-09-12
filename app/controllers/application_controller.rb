@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   # OPTIMIZE ME - this function will blindly create/delete in rapid succession, activerecord writes could be eliminated with better logic
+  # Check for recent application permission additions/changes/revocations on roles management for the logged in user.
   def update_rm_assignments
     # Obtain RM applications assigned to user
     @rm_apps = @rm_person.accessible_applications
@@ -67,6 +68,7 @@ class ApplicationController < ActionController::Base
       app_assignment.save!
     end
 
+    # Check for permission revocation 
     # Go through @person.application_assignments and remove any non-bookmark ones which are not in @rm_apps
     @person.application_assignments.keep_if do |assignment|
       assignment.bookmark or @rm_apps.find_index{ |r| r[:id] == assignment.rm_application_id }
