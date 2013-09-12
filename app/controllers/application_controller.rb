@@ -59,12 +59,8 @@ class ApplicationController < ActionController::Base
       
       # If RM doesn't specify an icon use a default
       first_letter = app_assignment.name[0].downcase
-      begin
-        icon_path = Icon.find_by_letter(first_letter).image.url
-        app_assignment.image = icon_path
-      rescue NoMethodError
-        logger.error "Icon.find_by_letter('#{first_letter}') failed to return a result. Run rake db:seed."
-      end
+      icon_path = "/assets/#{first_letter}"
+      app_assignment.image = icon_path
       app_assignment.save!
     end
 

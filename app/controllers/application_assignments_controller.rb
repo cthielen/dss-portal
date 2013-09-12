@@ -39,7 +39,7 @@ class ApplicationAssignmentsController < ApplicationController
      @assignment.bookmark = true
      @assignment.favorite = false
      first_letter = @assignment.name.chars.first.downcase
-     icon_path = Icon.find_by_letter(first_letter).image.url
+     icon_path = "/assets/#{first_letter}"
      @assignment.image = icon_path
      @assignment.save
     
@@ -79,7 +79,7 @@ class ApplicationAssignmentsController < ApplicationController
     @assignment.bookmark = true
     @assignment.favorite = false
     first_letter = @assignment.name.chars.first.downcase
-    icon_path = Icon.find_by_letter(first_letter).image.url
+    icon_path = "/assets/#{first_letter}"
     @assignment.image = icon_path
     logger.info "TESTETTSESETSEETS"
     logger.info @assignment.bookmark
