@@ -3,6 +3,7 @@ class ApplicationAssignmentsController < ApplicationController
     @apps = @person.application_assignments.non_favorite.all(:order => 'favorite, position')
     @favorites = @person.application_assignments.favorite.all(:order => 'favorite, position')
     @application_assignment = @person.application_assignments.new
+    
     respond_to do |format|
       format.html
       format.json { render json: @applications }
@@ -37,7 +38,7 @@ class ApplicationAssignmentsController < ApplicationController
      @assignment.bookmark = true
      @assignment.favorite = false
      first_letter = @assignment.name.chars.first.downcase
-     icon_path = "/assets/#{first_letter}"
+     icon_path = "/assets/#{first_letter}.jpg"
      @assignment.image = icon_path
      @assignment.save
     
@@ -76,11 +77,8 @@ class ApplicationAssignmentsController < ApplicationController
     @assignment.bookmark = true
     @assignment.favorite = false
     first_letter = @assignment.name.chars.first.downcase
-    icon_path = "/assets/#{first_letter}"
+    icon_path = "/assets/#{first_letter}.jpg"
     @assignment.image = icon_path
-    logger.info "TESTETTSESETSEETS"
-    logger.info @assignment.bookmark
-    logger.info @assignment.favorite
     @assignment.save
     render :json => {:status => 200, :assignment => @assignment}
   end

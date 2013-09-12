@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
       
       # If RM doesn't specify an icon use a default
       first_letter = app_assignment.name[0].downcase
-      icon_path = "/assets/#{first_letter}"
+      icon_path = "/assets/#{first_letter}.jpg"
       app_assignment.image = icon_path
       app_assignment.save!
     end
