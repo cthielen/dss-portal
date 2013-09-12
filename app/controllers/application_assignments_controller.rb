@@ -85,6 +85,6 @@ class ApplicationAssignmentsController < ApplicationController
     logger.info @assignment.bookmark
     logger.info @assignment.favorite
     @assignment.save
-    render :json => {:status => "success"}
+    render :json => {:status => 200, :assignment => @assignment}
   end
 end

@@ -82,7 +82,6 @@ class ApplicationController < ActionController::Base
     @person.application_assignments.keep_if do |assignment|
       assignment.bookmark or @rm_apps.find_index{ |r| r[:id] == assignment.rm_application_id }
     end
-    
     @person.save!
   end
 end
