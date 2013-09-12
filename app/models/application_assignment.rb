@@ -8,5 +8,5 @@ class ApplicationAssignment < ActiveRecord::Base
   validates_presence_of :person_id
   validates_presence_of :name
 
-  attr_accessible :favorite, :person_id, :position, :name, :url, :description, :bookmark, :rm_application_id
+  attr_accessible :favorite, :person_id, :position, :name, :url, :description, :bookmark
 end
