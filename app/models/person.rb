@@ -4,4 +4,8 @@ class Person < ActiveRecord::Base
   has_many :application_assignments, :dependent => :destroy
 
   attr_accessible :loginid, :name
+  def as_json(options={})
+    {:loginid       => self.loginid,
+     :application_assignments => self.application_assignments}
+  end
 end

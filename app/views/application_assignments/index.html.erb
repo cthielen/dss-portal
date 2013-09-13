@@ -8,7 +8,8 @@
 <script type="text/json" id="bootstrap">
 {
 	"apps"		: <%= @apps.to_json %>,
-  "favorites"		: <%= @favorites.to_json %>
+  "favorites"		: <%= @favorites.to_json %>,
+  "person"		: <%= @person.to_json %>
 }	
 </script>
 
@@ -19,4 +20,5 @@
 
   DssPortal.favorites = data.favorites;
   DssPortal.apps = data.apps;
+  DssPortal.person = data.person;
 </script>
