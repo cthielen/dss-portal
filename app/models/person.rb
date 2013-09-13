@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
   attr_accessible :loginid, :name
   def as_json(options={})
     {:loginid       => self.loginid,
+      :id => self.id,
      :application_assignments => self.application_assignments}
   end
 end

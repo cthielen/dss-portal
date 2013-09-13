@@ -63,6 +63,41 @@ SendState = ->
     dataType: "json"
     contentType: "application/json"
 
+SendStateTwo = ->
+  i = 1
+  $("#sortableFav li").each ->
+    app_id = $(this).attr("id")
+    position = i
+    favorite = "true"
+    i++
+    updateAssignment(app_id, position, favorite)
+
+  i = 1
+  $("#sortableApp li").each ->
+    app_id = $(this).attr("id")
+    position = i
+    favorite = "false"
+    i++
+    updateAssignment(app_id, position, favorite)
+
+updateAssignment = (app_id, position, favorite) ->
+  application_assignment = 
+    id: app_id
+    position: position
+    favorite: favorite
+  pobj = application_assignment: application_assignment
+  $.ajax
+    type: "PUT"
+    url: "/application_assignments/" + app_id
+    data: JSON.stringify(pobj)
+    complete: ->
+      $(".ui-tooltip").remove()
+
+    dataType: "json"
+    contentType: "application/json"
+
+
+
 $(window).load ->
   _.templateSettings = interpolate: /\{\{(.+?)\}\}/g
   appTemplate = _.template(" <li class=\"card\" id=\"{{id}}\" title=\"{{ description }}\"><span><img src=\"{{icon}}\"><a href=\"{{ url }}\"><h4>{{ name }}</h4></span><span class=\"link\"></span></a></li>")
@@ -93,7 +128,8 @@ $(window).load ->
     zIndex: 10000
     items: "li:not(:last-child)"
     stop: (event, ui) ->
-      SendState()
+      SendStateTwo()
+
 
     connectWith: ".connectedSortable"
 

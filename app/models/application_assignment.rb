@@ -11,6 +11,6 @@ class ApplicationAssignment < ActiveRecord::Base
   attr_accessible :favorite, :person_id, :position, :bookmark, :rm_application_attribute_id
 
   def as_json(options={})
-    { :id => self.id, :favorite => self.favorite, :person_id => self.person_id, :bookmark => self.bookmark, :name => self.rm_application_attribute.name, :url => self.rm_application_attribute.url, :description => self.rm_application_attribute.description, :icon => self.rm_application_attribute.icon_path }
+    { :id => self.id, :favorite => self.favorite, :position => self.position, :person_id => self.person_id, :bookmark => self.bookmark, :name => self.rm_application_attribute.name, :url => self.rm_application_attribute.url, :description => self.rm_application_attribute.description, :icon => self.rm_application_attribute.icon_path }
   end
 end
