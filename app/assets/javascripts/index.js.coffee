@@ -82,7 +82,7 @@ $(window).load ->
     else
       $("#sortableFav").append appTemplate(DssPortal.favorites[i])
     i++
-  $("#sortableApp").append " <li class=\"card\" id=\"\" title=\"\"><span class=\"create-content\"><button class=\"create-toggle btn btn-success btn-large\"><i class=\"icon-white icon-plus\"></i></button><h4>Create Application Bookmark</h4></span><span class=\"create-form\"><input class=\"create-name\" placeholder=\"Name\" type=\"text\"><input class=\"create-description\" placeholder=\"Description\" type=\"text\"><input class=\"create-url\" placeHolder=\"website URL\" type=\"text\"><button class=\"create btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Create</button></span></li>"
+  $("#sortableApp").append " <li class=\"card ui-state-disabled\" id=\"\" title=\"\"><span class=\"create-content\"><button class=\"create-toggle btn btn-success btn-large\"><i class=\"icon-white icon-plus\"></i></button><h4>Create Application Bookmark</h4></span><span class=\"create-form\"><input class=\"create-name\" placeholder=\"Name\" type=\"text\"><input class=\"create-description\" placeholder=\"Description\" type=\"text\"><input class=\"create-url\" placeHolder=\"website URL\" type=\"text\"><button class=\"create btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Create</button></span></li>"
   $("li").tooltip()
   $("#sortableFav, #sortableApp").sortable
     distance: 15
@@ -90,7 +90,7 @@ $(window).load ->
     placeholder: "target"
     forcePlaceholderSize: true
     zIndex: 10000
-    items: "li:not(:last-child)"
+    items: "li:not(.ui-state-disabled)"
     stop: (event, ui) ->
       SendState()
 
