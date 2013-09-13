@@ -28,42 +28,6 @@ window.DssPortal = {}
 
 # Reset interface to be ready for new applications       
 SendState = ->
-  pageLayout = []
-  appStructure = undefined
-  i = 1
-  $("#sortableFav li").each ->
-    id = $(this).attr("id")
-    appStructure =
-      position: i
-      app_id: id
-      favorite: "true"
-
-    i++
-    pageLayout.push appStructure
-
-  i = 1
-  $("#sortableApp li").each ->
-    id = $(this).attr("id")
-    appStructure =
-      position: i
-      app_id: id
-      favorite: "false"
-
-    i++
-    pageLayout.push appStructure  if id.length >= 1
-
-  pobj = pageLayout: pageLayout
-  $.ajax
-    type: "POST"
-    url: "/application_assignments/drag_update"
-    data: JSON.stringify(pobj)
-    complete: ->
-      $(".ui-tooltip").remove()
-
-    dataType: "json"
-    contentType: "application/json"
-
-SendStateTwo = ->
   i = 1
   $("#sortableFav li").each ->
     app_id = $(this).attr("id")
@@ -128,7 +92,7 @@ $(window).load ->
     zIndex: 10000
     items: "li:not(:last-child)"
     stop: (event, ui) ->
-      SendStateTwo()
+      SendState()
 
 
     connectWith: ".connectedSortable"

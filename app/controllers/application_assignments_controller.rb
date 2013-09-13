@@ -6,27 +6,6 @@ class ApplicationAssignmentsController < ApplicationController
     @favorites = @person.application_assignments.favorite.all(:order => 'favorite, position')
   end
 
-  def drag_update
-    assignments = params[:pageLayout]
-    
-    favPosition = 1
-    appPosition = 1
-    
-    assignments.each do |assignment|
-      record = ApplicationAssignment.find(assignment[:app_id])    
-      record.favorite = assignment[:favorite]
-      if assignment[:favorite] == "true"
-        record.position = favPosition
-        favPosition += 1     
-      else 
-        record.position = appPosition
-        appPosition += 1
-      end
-      
-      record.save!
-    end
-  end
-
   def destroy
     @bookmark_app = ApplicationAssignment.find(params[:id])
     @bookmark_app.destroy
