@@ -1,4 +1,6 @@
 class CachedApplication < ActiveRecord::Base
+  using_access_control
+  
   validates_presence_of :rm_id
 
   attr_accessible :description, :name, :url, :rm_id

@@ -1,4 +1,6 @@
 class Person < ActiveRecord::Base
+  using_access_control
+  
   has_many :application_assignments, :dependent => :destroy
 
   validates_presence_of :loginid
@@ -12,6 +14,18 @@ class Person < ActiveRecord::Base
   # Returns identifying string for logging purposes. Useful if you need multiple models for users
   def log_identifier
     loginid
+  end
+  
+  def role_symbols
+    tokens = []
+
+    #role_assignments.each do |r|
+      #tokens << r.token.to_sym if r.application_name == "DSS Messenger"
+      # uncomment this line to override dss-rm roles
+      tokens = [:access] 
+      #end
+
+    tokens
   end
   
   # Updates local data with information from RM API

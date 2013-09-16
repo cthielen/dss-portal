@@ -1,4 +1,5 @@
 class ApplicationAssignmentsController < ApplicationController
+  filter_resource_access
   respond_to :html, :json
   
   def index

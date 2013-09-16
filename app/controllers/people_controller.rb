@@ -1,4 +1,5 @@
-class PeopleController < ApplicationController 
+class PeopleController < ApplicationController
+  filter_resource_access
   respond_to :html, :json
 
   def update

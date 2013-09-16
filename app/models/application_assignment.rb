@@ -1,4 +1,6 @@
 class ApplicationAssignment < ActiveRecord::Base
+  using_access_control
+  
   scope :favorite, -> { where(favorite: true) }
   scope :non_favorite, -> { where(favorite: false) }
 
