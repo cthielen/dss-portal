@@ -7,14 +7,20 @@ group :production do
   gem 'unicorn'
 end
 
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+
 gem 'declarative_authorization'
+
 gem 'rubycas-client'
+
 gem "activeresource", :require => 'active_resource'
 
 gem 'jquery-rails'
-gem "twitter-bootstrap-rails", "~> 2.2.6"
-gem 'jquery-ui-rails', '~> 4.0.3'
+gem "twitter-bootstrap-rails", "~> 2.2.8"
+gem 'jquery-ui-rails', '~> 4.0.4'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
