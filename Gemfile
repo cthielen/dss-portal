@@ -7,9 +7,14 @@ group :production do
   gem 'unicorn'
 end
 
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+
 gem 'declarative_authorization'
+
 gem 'rubycas-client'
+
 gem "activeresource", :require => 'active_resource'
 
 gem 'jquery-rails'
