@@ -11,26 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912220540) do
+ActiveRecord::Schema.define(:version => 20130916210726) do
 
   create_table "application_assignments", :force => true do |t|
     t.integer  "position"
-    t.boolean  "favorite",                    :default => false
+    t.boolean  "favorite",              :default => false
     t.integer  "person_id"
-    t.boolean  "bookmark",                    :default => false
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-    t.integer  "rm_application_attribute_id"
+    t.boolean  "bookmark",              :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "cached_application_id"
   end
 
-  create_table "icons", :force => true do |t|
-    t.string   "letter"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+  create_table "cached_applications", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "url"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "rm_id"
+    t.string   "icon_path"
   end
 
   create_table "people", :force => true do |t|
@@ -38,16 +38,7 @@ ActiveRecord::Schema.define(:version => 20130912220540) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "rm_application_attributes", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "url"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.integer  "rm_application_id"
-    t.string   "icon_path"
+    t.integer  "rm_id"
   end
 
 end
