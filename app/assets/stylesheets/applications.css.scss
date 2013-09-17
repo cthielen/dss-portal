@@ -33,20 +33,6 @@ body {
   background-color: #333333;
 }
 
-// main containers
-#sortableFav 
-{ 
-  display:block; 
-  overflow:hidden; 
-  list-style-type: none; 
-  margin: 0; 
-  padding: 0px; 
-  margin-right: 12%;
-  margin-left: 12%;
-  background: #EFEFEF;
-
-}
-
 #sortableFav .card
 {
 background: #EFEFEF;
@@ -184,4 +170,21 @@ background: #EFEFEF;
 a
 {
   color: #000000;
+}
+
+#sortableFav 
+{ 
+  display: inline-block;
+  overflow:hidden; 
+  list-style-type: none; 
+  padding: 0px; 
+  margin:0 auto;
+  background: #EFEFEF;
+}
+
+#outerContainer {
+    margin-right: 12%;
+    margin-left: 12%;
+    text-align: center;
+    position: relative;
 }
