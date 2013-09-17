@@ -27,8 +27,7 @@ body {
 
 
 // placeholder style on drag-drop operation
-.target 
-{
+.target {
   background-color: #C2FFC2;
   float:left;
   margin: 15px; 
@@ -37,45 +36,50 @@ body {
   height: 150px; 
 }
 
-.target-areas
-{
+.target-areas {
   background-color: #333333;
 }
 
 // main containers
-#sortableFav 
-{ 
-  display:block; 
-  overflow:hidden; 
-  list-style-type: none; 
-  margin: 0; 
-  padding: 0px; 
+#favorites {
+  display: block;
+  overflow: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   margin-right: 12%;
   margin-left: 12%;
-  background: #EFEFEF;
-
+  margin: auto auto;
+  
+  text-align: center;
+  color: #888;
+  font-size: 11pt;
+  padding: 1em;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  text-shadow: 1px 1px #dedede;
+  width: 60%;
+  
+  .card {
+    background: #EFEFEF;
+  }
 }
 
-#sortableFav .card
-{
-background: #EFEFEF;
-}
-
-#sortableApp 
-{ 
-  display:block; 
-  overflow:hidden; 
-  list-style-type: none; 
+#applications { 
+  display: block;
+  overflow: hidden;
+  list-style-type: none;
   margin-right: 12%;
   margin-left: 12%;
-  padding: 0px; 
-  background: #FFFFFF;
+  padding: 0px;
+  background: #fff;
 }
 
-.clear {clear: both;}
+.clear {
+  clear: both;
+}
 
-.card 
-{
+.card {
   float: left; 
   text-align: center; 
   width: 150px; 
@@ -89,25 +93,22 @@ background: #EFEFEF;
   position: relative;
   cursor: move;
   list-style: none;
+  
+  h4 {
+    font-weight: normal;
+  }
+
+  .link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
 }
 
-.card h4
-{
-  font-weight: normal;
-}
-
-.card .link
-{ 
-  position:absolute; 
-  width:100%;
-  height:100%;
-  bottom:0;
-  left: 0;
-  z-index: 1;
-}   
-
-.card-title
-{
+.card-title {
   position: absolute;
   bottom: 0px;
   text-align: center;
@@ -124,21 +125,18 @@ background: #EFEFEF;
   box-shadow: 0 0 5px -1px rgba(0, 0, 0, .5);
 }
 
-
-#sortableApp a:hover, #sortableFav a:hover, h4 a:hover
-{
+#applications a:hover, #favorites a:hover, h4 a:hover {
   color:#888888;
 }
 
-.dragging-card
-{
-  z-index:9999;
+.dragging-card {
+  z-index: 9999;
 }
 
-.ui-tooltip 
-{
+.ui-tooltip  {
   font: bold 14px "Helvetica Neue", Sans-Serif;
 }
+
 //------scraps below here
 .move-icon
 {
@@ -183,14 +181,13 @@ background: #EFEFEF;
   display:none;
 }
 
-.editor-active
-{
- -webkit-border-radius: 10px;
+.editor-active {
+  -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid yellow;
 }
-a
-{
-  color: #000000;
+
+a {
+  color: #000;
 }

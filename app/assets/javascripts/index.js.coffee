@@ -29,7 +29,7 @@ window.DssPortal = {}
 # Reset interface to be ready for new applications       
 SendState = ->
   i = 1
-  $("#sortableFav li").each ->
+  $("#favorites li").each ->
     app_id = $(this).attr("id")
     position = i
     favorite = "true"
@@ -37,7 +37,7 @@ SendState = ->
     updateAssignment(app_id, position, favorite)
 
   i = 1
-  $("#sortableApp li").each ->
+  $("#applications li").each ->
     app_id = $(this).attr("id")
     position = i
     favorite = "false"
@@ -70,21 +70,21 @@ $(window).load ->
 
   while i < DssPortal.apps.length
     if (DssPortal.apps[i].bookmark) is true
-      $("#sortableApp").append bookmarkTemplate(DssPortal.apps[i])
+      $("#applications").append bookmarkTemplate(DssPortal.apps[i])
     else
-      $("#sortableApp").append appTemplate(DssPortal.apps[i])
+      $("#applications").append appTemplate(DssPortal.apps[i])
     i++
   i = 0
 
   while i < DssPortal.favorites.length
     if (DssPortal.favorites[i].bookmark) is true
-      $("#sortableFav").append bookmarkTemplate(DssPortal.favorites[i])
+      $("#favorites").append bookmarkTemplate(DssPortal.favorites[i])
     else
-      $("#sortableFav").append appTemplate(DssPortal.favorites[i])
+      $("#favorites").append appTemplate(DssPortal.favorites[i])
     i++
-  $("#sortableApp").append " <li class=\"card ui-state-disabled\" id=\"\" title=\"\"><span class=\"create-content\"><button class=\"create-toggle btn btn-success btn-large\"><i class=\"icon-white icon-plus\"></i></button><h4>Create Application Bookmark</h4></span><span class=\"create-form\"><input class=\"create-name\" placeholder=\"Name\" type=\"text\"><input class=\"create-description\" placeholder=\"Description\" type=\"text\"><input class=\"create-url\" placeHolder=\"website URL\" type=\"text\"><button class=\"create btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Create</button></span></li>"
+  $("#applications").append " <li class=\"card ui-state-disabled\" id=\"\" title=\"\"><span class=\"create-content\"><button class=\"create-toggle btn btn-success btn-large\"><i class=\"icon-white icon-plus\"></i></button><h4>Create Application Bookmark</h4></span><span class=\"create-form\"><input class=\"create-name\" placeholder=\"Name\" type=\"text\"><input class=\"create-description\" placeholder=\"Description\" type=\"text\"><input class=\"create-url\" placeHolder=\"website URL\" type=\"text\"><button class=\"create btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Create</button></span></li>"
   $("li").tooltip()
-  $("#sortableFav, #sortableApp").sortable
+  $("#favorites, #applications").sortable
     distance: 15
     delay: 300
     placeholder: "target"
@@ -102,7 +102,7 @@ $(window).load ->
   ), ->
     $(this).removeClass "hover-card"
 
-  $("#sortableApp li, #sortableFav li").mousedown ->
+  $("#applications li, #favorites li").mousedown ->
     $(this).removeClass "hover-card"
     $(this).addClass "dragging-card"
 
