@@ -1,5 +1,5 @@
 DssPortal::Application.routes.draw do
-  resources :application_assignments do
+  resources :application_assignments, :path => "/" do
     collection do
       post 'drag_update'
     end
