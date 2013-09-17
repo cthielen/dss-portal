@@ -1,15 +1,21 @@
-<div id="outerContainer"><ul id="sortableFav" class="connectedSortable"> </ul></div>
-<div class="clear" />
-<div class="divider" />
+<div class="container-fluid" id="main-container">
+  <div class="jumbotron">
+    <h1>Welcome, <%= @current_user.name %></h1>
+  </div>
 
-<ul id="sortableApp" class="connectedSortable"> </ul>
-<div class="clear" />
+  <div class="row-fluid">
+    <div class="span12">
+      <ul id="favorites" class="connectedSortable well"><span id="favorites-hint">Drag favorite applications here for quick access</span></ul>
+      <ul id="applications" class="connectedSortable"></ul>
+    </div>
+  </div> <!-- row-fluid -->
+</div> <!-- container-fluid -->
 
 <script type="text/json" id="bootstrap">
 {
 	"apps"		: <%= @apps.to_json %>,
   "favorites"		: <%= @favorites.to_json %>,
-  "person"		: <%= @person.to_json %>
+  "person"		: <%= @current_user.to_json %>
 }	
 </script>
 
