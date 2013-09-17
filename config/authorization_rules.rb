@@ -1,7 +1,7 @@
 authorization do
   role :access do
     # Allow access to the main page
-    has_permission_on :application_assignments, :to => [:index]
+    has_permission_on :application_assignments, :to => [:index, :update, :create, :destroy]
 
     # Allow updating of self (happens automatically on main page load)
     has_permission_on :people, :to => [:update] do
