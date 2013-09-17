@@ -2,7 +2,7 @@ authorization do
   role :access do
     # Allow access to the main page
     has_permission_on :application_assignments, :to => [:index, :update, :create, :destroy] do
-      if_attribute :loginid => is {user.loginid}
+      if_attribute :person_id => is {user.id}
     end
 
     # Allow updating of self (happens automatically on main page load)
