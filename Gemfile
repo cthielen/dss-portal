@@ -20,6 +20,7 @@ gem "activeresource", :require => 'active_resource'
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'jquery-ui-rails', '~> 4.0.4'
+gem 'js-routes', :git => 'git://github.com/railsware/js-routes.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
