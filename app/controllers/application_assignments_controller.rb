@@ -9,6 +9,7 @@ class ApplicationAssignmentsController < ApplicationController
     
     @apps = current_user.application_assignments.non_favorite.all(:order => 'favorite, position')
     @favorites = current_user.application_assignments.favorite.all(:order => 'favorite, position')
+    @current_user = current_user
   end
 
   def destroy
