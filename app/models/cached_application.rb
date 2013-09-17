@@ -18,7 +18,7 @@ class CachedApplication < ActiveRecord::Base
     else
       self.icon_path = "/assets/#{rm_app_data.name[0].downcase}.jpg"
     end
-  
+    
     self.save! if self.changed?
   end
 end
