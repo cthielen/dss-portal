@@ -1,9 +1,6 @@
 class ApplicationAssignment < ActiveRecord::Base
   using_access_control
   
-  scope :favorite, -> { where(favorite: true) }
-  scope :non_favorite, -> { where(favorite: false) }
-
   belongs_to :person
   belongs_to :cached_application
 

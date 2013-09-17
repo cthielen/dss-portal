@@ -5,6 +5,9 @@ authorization do
       if_attribute :person_id => is {user.id}
     end
 
+    # Allow reading access to cached applications (required for normal functionality)
+    has_permission_on :cached_applications, :to => :update
+
     # Allow updating of self (happens automatically on main page load)
     has_permission_on :people, :to => [:update] do
       if_attribute :loginid => is {user.loginid}
