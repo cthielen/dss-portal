@@ -59,6 +59,7 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
     declarative_authorization (0.5.7)
+    ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.0.1)
     highline (1.6.19)
@@ -164,6 +165,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   declarative_authorization
+  ejs
   jquery-rails
   jquery-ui-rails (~> 4.0.4)
   js-routes!
