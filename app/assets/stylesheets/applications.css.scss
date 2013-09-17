@@ -1,6 +1,6 @@
 body {
-  padding-top: 60px;
-  padding-bottom: 40px;
+  margin: 0;
+  padding: 0;
 }
 
 .sidebar-nav {
@@ -12,7 +12,8 @@ body {
   
   h1 {
     font-weight: 400;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
@@ -47,17 +48,14 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-right: 12%;
-  margin-left: 12%;
   margin: auto auto;
   
   text-align: center;
-  color: #888;
+  color: #999;
   font-size: 11pt;
   padding: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   margin-top: 0.5em;
-  text-shadow: 1px 1px #dedede;
   width: 60%;
   
   .card {
@@ -69,8 +67,6 @@ body {
   display: block;
   overflow: hidden;
   list-style-type: none;
-  margin-right: 12%;
-  margin-left: 12%;
   padding: 0px;
   background: #fff;
 }
