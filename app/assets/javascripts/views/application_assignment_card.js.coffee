@@ -1,7 +1,7 @@
 DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend(
-  tagName: "div"
+  tagName: "li"
   id: ""
-  className: ""
+  className: "card"
   
   initialize: ->
     @$el.html JST["templates/application_assignments/card"]()

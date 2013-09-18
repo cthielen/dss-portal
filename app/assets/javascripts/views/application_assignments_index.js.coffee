@@ -16,5 +16,6 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
   render: ->
     _.each @assignmentCardViews, (card) =>
       @$('#applications').append card.render().$el
+
     @
 )

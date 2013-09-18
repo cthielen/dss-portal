@@ -69,6 +69,7 @@ body {
   list-style-type: none;
   padding: 0px;
   background: #fff;
+  text-align: center;
 }
 
 .clear {
@@ -76,15 +77,16 @@ body {
 }
 
 .card {
-  float: left; 
-  text-align: center; 
-  width: 150px; 
-  height: 150px; 
-  background: white;
+//  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
   line-height: 30px;
-  margin: 15px; 
-  padding: 5px;
+//  margin: 15px;
+  padding: 20px;
   overflow: hidden;
   position: relative;
   cursor: move;
