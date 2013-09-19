@@ -3,6 +3,8 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend(
   id: ""
   className: "card"
   
+  # new_card also has class ui-state-disabled
+  
   initialize: ->
     @$el.html JST["templates/application_assignments/card"]()
     
@@ -12,4 +14,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend(
     @$('img').attr('src', @model.get('icon'))
     @$('h4').html @model.get('name')
     @
+  
+  isFavorite: ->
+    @model.get('favorite')
 )

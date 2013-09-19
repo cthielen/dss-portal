@@ -14,8 +14,17 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
         @assignmentCardViews.push assignmentView
     
   render: ->
+    @$('#favorites').empty()
+    @$('#applications').empty()
+    
+    @$('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
+    
     _.each @assignmentCardViews, (card) =>
-      @$('#applications').append card.render().$el
+      if card.isFavorite()
+        @$('#favorites span').remove()
+        @$('#favorites').append card.render().$el
+      else
+        @$('#applications').append card.render().$el
 
     @
 )
