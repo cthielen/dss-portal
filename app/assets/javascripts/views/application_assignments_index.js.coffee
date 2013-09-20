@@ -1,4 +1,4 @@
-DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
+DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   tagName: "div"
   id: "applicationAssignments"
   className: "row-fluid"
@@ -24,8 +24,8 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
     #     forcePlaceholderSize: true
     #     zIndex: 100
         items: "li:not(.ui-state-disabled)"
-    #     # stop: (event, ui) ->
-    #     #   SendState()
+        update: (event, ui) ->
+          DssPortal.current_user.save()
         connectWith: ".connectedSortable"
     
   render: ->
@@ -48,4 +48,3 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
     @$('#applications').append @newBookmarkView.render().$el
     
     @
-)

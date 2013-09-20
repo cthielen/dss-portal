@@ -1,4 +1,4 @@
-DssPortal.Routers.ApplicationAssignments = Backbone.Router.extend(
+DssPortal.Routers.ApplicationAssignments = Backbone.Router.extend
   initialize: (options) ->
     @indexView = new DssPortal.Views.ApplicationAssignmentsIndex().render()
     $("#applicationAssignments").replaceWith @indexView.el
@@ -13,4 +13,3 @@ DssPortal.Routers.ApplicationAssignments = Backbone.Router.extend(
     bookmark_id = parseInt(bookmark_id)
     
     # TODO: Write me.
-)

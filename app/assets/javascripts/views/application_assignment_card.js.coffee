@@ -1,4 +1,4 @@
-DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend(
+DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   tagName: "li"
   id: ""
   className: "card"
@@ -11,9 +11,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend(
       @$el.html JST["templates/application_assignments/card"]()
     
   render: ->
-    if @isNewBookmarkCard()
-      
-    else
+    unless @isNewBookmarkCard()
       @$('li').attr('title', @model.get('description'))
       @$('a').attr('href', @model.get('url'))
       @$('img').attr('src', @model.get('icon'))
@@ -27,4 +25,3 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend(
   # One card will not have a model. This is the 'New Bookmark' card found at the end of the grid.
   isNewBookmarkCard: ->
     not @model
-)
