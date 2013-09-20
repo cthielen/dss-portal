@@ -1,5 +1,6 @@
 /*
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
  *= require bootstrap_and_overrides
- *= require jquery.ui.all
- *= require_tree .
+ *= require applications
 */

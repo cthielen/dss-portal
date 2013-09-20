@@ -49,7 +49,6 @@ body {
   margin: 0;
   padding: 0;
   margin: auto auto;
-  
   text-align: center;
   color: #999;
   font-size: 11pt;
@@ -57,18 +56,29 @@ body {
   margin-bottom: 2em;
   margin-top: 0.5em;
   width: 60%;
-  
-  .card {
-    background: #EFEFEF;
-  }
 }
 
 #applications { 
-  display: block;
-  overflow: hidden;
+//  display: block;
+//  overflow: hidden;
   list-style-type: none;
-  padding: 0px;
-  background: #fff;
+  padding: 0;
+  margin: 0;
+//  background: #fff;
+  text-align: center;
+  
+  .new-bookmark span {
+    button {
+      width: 75px;
+      height: 75px;
+      background-image: linear-gradient(to bottom, #aaa, #888);
+    }
+    .btn-success {
+      &:hover {
+        background-color: #888;
+      }
+    }
+  }
 }
 
 .clear {
@@ -76,15 +86,16 @@ body {
 }
 
 .card {
-  float: left; 
-  text-align: center; 
-  width: 150px; 
-  height: 150px; 
-  background: white;
+//  float: left;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
   line-height: 30px;
-  margin: 15px; 
-  padding: 5px;
+//  margin: 15px;
+  padding: 20px;
   overflow: hidden;
   position: relative;
   cursor: move;

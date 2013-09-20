@@ -38,9 +38,16 @@ class Person < ActiveRecord::Base
     
     # Update accessible applications (application_assignments)
     rm_person.accessible_applications.each do |app|
+      # Disable access control as a regular user will be updating a CachedApplication.
+      # This is safe as the data is pulled from RM and is self-contained in this function.
+      # There's no simple way to do this in authorization_rules afaik.
+      Authorization.ignore_access_control(true)
+      
       application = CachedApplication.find_or_create_by_rm_id(app[:id])
       
       application.refresh!
+      
+      Authorization.ignore_access_control(false)
       
       # Ensure this application_assignment exists
       application_assignments.find_or_create_by_person_id_and_cached_application_id(self.id, application.id)

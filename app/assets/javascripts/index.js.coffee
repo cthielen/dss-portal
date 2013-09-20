@@ -1,31 +1,3 @@
-# Drawing Content to page
-
-# Fill out applications
-
-# Fill out favorites
-
-# Applies styled tooltips on application cards
-
-#processing user input
-#or greater than any other relative/absolute/fixed elements and droppables
-
-#ON HOVER - apply dropshadow, make relevant UI elemnts appear
-
-#      $(this).find("button").css({visibility: 'visible'});
-
-#      $(this).find("button").css({visibility: 'hidden'});
-
-#ON DRAG 
-
-#insert newly created card into list
-
-# jQuery ->
-#   $("a[rel=popover]").popover()
-#   $(".tooltip").tooltip()
-#   $("a[rel=tooltip]").tooltip()
-# 
-# window.DssPortal = {}
-# 
 # # Reset interface to be ready for new applications       
 # SendState = ->
 #   i = 1
@@ -63,39 +35,7 @@
 # 
 # 
 # $(window).load ->
-#   _.templateSettings = interpolate: /\{\{(.+?)\}\}/g
-#   appTemplate = _.template(" <li class=\"card\" id=\"{{id}}\" title=\"{{ description }}\"><span><img src=\"{{icon}}\"><a href=\"{{ url }}\"><h4>{{ name }}</h4></span><span class=\"link\"></span></a></li>")
-#   bookmarkTemplate = _.template(" <li class=\"card\" id=\"{{id}}\" title=\"{{ description }}\"><span class=\"content\"><img src=\"{{icon}}\"><a href=\"{{ url }}\"><h4>{{ name }}</h4><span class=\"link\"></span></a></span><span class=\"edit-form\"><input class=\"editor-name\" value=\"{{ name }}\" type=\"text\"><input class=\"editor-description\" value=\"{{ description }}\" type=\"text\"><input class=\"editor-url\" value=\"{{ url }}\" type=\"text\"><button class=\"editor-save btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Save</button><button class=\"btn btn-danger btn-mini editor-delete\"><i class=\"icon-white icon-trash\"></i> Delete</button></span></li>")
-#   i = 0
-# 
-#   while i < DssPortal.apps.length
-#     if (DssPortal.apps[i].bookmark) is true
-#       $("#applications").append bookmarkTemplate(DssPortal.apps[i])
-#     else
-#       $("#applications").append appTemplate(DssPortal.apps[i])
-#     i++
-#   i = 0
-# 
-#   while i < DssPortal.favorites.length
-#     if (DssPortal.favorites[i].bookmark) is true
-#       $("#favorites").append bookmarkTemplate(DssPortal.favorites[i])
-#     else
-#       $("#favorites").append appTemplate(DssPortal.favorites[i])
-#     i++
-#   $("#applications").append " <li class=\"card ui-state-disabled\" id=\"\" title=\"\"><span class=\"create-content\"><button class=\"create-toggle btn btn-success btn-large\"><i class=\"icon-white icon-plus\"></i></button><h4>Create Application Bookmark</h4></span><span class=\"create-form\"><input class=\"create-name\" placeholder=\"Name\" type=\"text\"><input class=\"create-description\" placeholder=\"Description\" type=\"text\"><input class=\"create-url\" placeHolder=\"website URL\" type=\"text\"><button class=\"create btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Create</button></span></li>"
 #   $("li").tooltip()
-#   $("#favorites, #applications").sortable
-#     distance: 15
-#     delay: 300
-#     placeholder: "target"
-#     forcePlaceholderSize: true
-#     zIndex: 10000
-#     items: "li:not(.ui-state-disabled)"
-#     stop: (event, ui) ->
-#       SendState()
-# 
-# 
-#     connectWith: ".connectedSortable"
 # 
 #   $("li").hover (->
 #     $(this).addClass "hover-card"
