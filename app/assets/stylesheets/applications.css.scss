@@ -59,11 +59,12 @@ body {
 }
 
 #applications { 
-  display: block;
-  overflow: hidden;
+//  display: block;
+//  overflow: hidden;
   list-style-type: none;
-  padding: 0px;
-  background: #fff;
+  padding: 0;
+  margin: 0;
+//  background: #fff;
   text-align: center;
   
   .new-bookmark span {
@@ -85,8 +86,8 @@ body {
 }
 
 .card {
-//  float: left;
-  display: inline-block;
+  float: left;
+//  display: inline-block;
   vertical-align: middle;
   text-align: center;
   width: 150px;

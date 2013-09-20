@@ -1,8 +1,3 @@
-# jQuery ->
-#   $("a[rel=popover]").popover()
-#   $(".tooltip").tooltip()
-#   $("a[rel=tooltip]").tooltip()
-# 
 # # Reset interface to be ready for new applications       
 # SendState = ->
 #   i = 1
@@ -40,20 +35,7 @@
 # 
 # 
 # $(window).load ->
-#   $("#applications").append " <li class=\"card ui-state-disabled\" id=\"\" title=\"\"><span class=\"create-content\"><button class=\"create-toggle btn btn-success btn-large\"><i class=\"icon-white icon-plus\"></i></button><h4>Create Application Bookmark</h4></span><span class=\"create-form\"><input class=\"create-name\" placeholder=\"Name\" type=\"text\"><input class=\"create-description\" placeholder=\"Description\" type=\"text\"><input class=\"create-url\" placeHolder=\"website URL\" type=\"text\"><button class=\"create btn btn-success btn-mini\"><i class=\"icon-white icon-ok\"></i> Create</button></span></li>"
-
 #   $("li").tooltip()
-
-#   $("#favorites, #applications").sortable
-#     distance: 15
-#     delay: 300
-#     placeholder: "target"
-#     forcePlaceholderSize: true
-#     zIndex: 10000
-#     items: "li:not(.ui-state-disabled)"
-#     stop: (event, ui) ->
-#       SendState()
-#     connectWith: ".connectedSortable"
 # 
 #   $("li").hover (->
 #     $(this).addClass "hover-card"

@@ -20,6 +20,11 @@ window.DssPortal =
     # Enable tooltips globally
     #$("body").tooltip
       #selector: '[rel=tooltip]'
+      
+    # $("a[rel=popover]").popover()
+    # $(".tooltip").tooltip()
+    # $("a[rel=tooltip]").tooltip()
+      
     
     # Prevent body scrolling when modal is open
     # $("body").on "shown", (e) ->
