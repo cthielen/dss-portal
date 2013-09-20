@@ -65,6 +65,19 @@ body {
   padding: 0px;
   background: #fff;
   text-align: center;
+  
+  .new-bookmark span {
+    button {
+      width: 75px;
+      height: 75px;
+      background-image: linear-gradient(to bottom, #aaa, #888);
+    }
+    .btn-success {
+      &:hover {
+        background-color: #888;
+      }
+    }
+  }
 }
 
 .clear {
