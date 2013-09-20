@@ -15,17 +15,18 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
         @assignmentCardViews.push assignmentView
     
     @newBookmarkView = new DssPortal.Views.ApplicationAssignmentCard()
-    
-    @$('#favorites, #applications').sortable
-      distance: 10
-      delay: 150
-      placeholder: "target"
-      forcePlaceholderSize: true
-      zIndex: 1000
-      items: "li:not(.ui-state-disabled)"
-      # stop: (event, ui) ->
-      #   SendState()
-      connectWith: ".connectedSortable"
+  
+    $(document).ready =>
+      @$('#favorites, #applications').sortable
+        distance: 5
+        delay: 200
+        # placeholder: "target" # why does this cause issues with display: inline-block?
+    #     forcePlaceholderSize: true
+    #     zIndex: 100
+        items: "li:not(.ui-state-disabled)"
+    #     # stop: (event, ui) ->
+    #     #   SendState()
+        connectWith: ".connectedSortable"
     
   render: ->
     # Empty both card container areas

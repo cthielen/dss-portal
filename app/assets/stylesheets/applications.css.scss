@@ -86,9 +86,9 @@ body {
 }
 
 .card {
-  float: left;
-//  display: inline-block;
-  vertical-align: middle;
+//  float: left;
+  display: inline-block;
+  vertical-align: top;
   text-align: center;
   width: 150px;
   height: 150px;
