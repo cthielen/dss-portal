@@ -9,7 +9,8 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     @$el.html JST["templates/application_assignments/index"]()
     
     # Create views for each favorite/bookmark but only if they have a URL
-    DssPortal.applicationAssignments.each (assignment) =>
+    DssPortal.current_user.applicationAssignments.each (assignment) =>
+      console.log 'position: ' + assignment.get('position')
       if assignment.get('url')
         assignmentView = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
         @assignmentCardViews.push assignmentView
@@ -25,7 +26,9 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     #     zIndex: 100
         items: "li:not(.ui-state-disabled)"
         update: (event, ui) ->
-          DssPortal.current_user.save()
+          assignment_id = $(ui.item).data('application-assignment-id')
+          assignment_model = DssPortal.current_user.applicationAssignments.where({id: assignment_id})
+          assignment_model.trigger 'change', ui.item.index()
         connectWith: ".connectedSortable"
     
   render: ->

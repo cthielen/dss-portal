@@ -7,7 +7,6 @@ class ApplicationAssignmentsController < ApplicationController
     
     current_user.refresh!
     
-    @application_assignments = current_user.application_assignments
     @current_user = current_user
   end
 
