@@ -10,7 +10,6 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     
     # Create views for each favorite/bookmark but only if they have a URL
     DssPortal.current_user.applicationAssignments.each (assignment) =>
-      console.log 'position: ' + assignment.get('position')
       if assignment.get('url')
         assignmentView = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
         @assignmentCardViews.push assignmentView
@@ -19,16 +18,11 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   
     $(document).ready =>
       @$('#favorites, #applications').sortable
-        distance: 5
+        distance: 10
         delay: 200
-        # placeholder: "target" # why does this cause issues with display: inline-block?
-    #     forcePlaceholderSize: true
-    #     zIndex: 100
         items: "li:not(.ui-state-disabled)"
         update: (event, ui) ->
-          assignment_id = $(ui.item).data('application-assignment-id')
-          assignment_model = DssPortal.current_user.applicationAssignments.where({id: assignment_id})
-          assignment_model.trigger 'change', ui.item.index()
+          DssPortal.current_user.syncAssignmentPositions()
         connectWith: ".connectedSortable"
     
   render: ->

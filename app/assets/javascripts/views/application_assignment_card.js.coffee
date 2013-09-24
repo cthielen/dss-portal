@@ -3,10 +3,8 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   id: ""
   className: "card"
   
-  initialize: (options) ->
-    # Store the model ID in the DOM. Not normally recommended but required
-    # due to needing this information during jQuery UI 'drop' events.
-    @$el.data 'application-assignment-id', @model.id if @model
+  initialize: ->
+    @$el.data('application-assignment-id', @model.id) if @model
     
     if @isNewBookmarkCard()
       @$el.addClass 'new-bookmark ui-state-disabled'
