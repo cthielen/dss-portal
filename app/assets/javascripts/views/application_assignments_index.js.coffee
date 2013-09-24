@@ -8,6 +8,8 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     
     @$el.html JST["templates/application_assignments/index"]()
     
+    @listenTo DssPortal.current_user, "sync", @render
+    
     # Create views for each favorite/bookmark but only if they have a URL
     DssPortal.current_user.applicationAssignments.each (assignment) =>
       if assignment.get('url')
@@ -30,13 +32,15 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     @$('#favorites').empty()
     @$('#applications').empty()
     
+    console.log 'rendering index'
+    
     # Insert the favorites hint text. It will be removed if any favorites exist
     @$('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
     
     # Render all cards, both favorites and regular
     _.each @assignmentCardViews, (card) =>
       if card.isFavorite()
-        @$('#favorites span').remove()
+        @$('#favorites>span').remove()
         @$('#favorites').append card.render().$el
       else
         @$('#applications').append card.render().$el
