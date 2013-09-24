@@ -5,7 +5,9 @@ class Person < ActiveRecord::Base
 
   validates_presence_of :loginid
 
-  attr_accessible :loginid, :name
+  attr_accessible :loginid, :name, :application_assignments_attributes
+  
+  accepts_nested_attributes_for :application_assignments, :allow_destroy => true
 
   def as_json(options={})
     { :loginid => self.loginid, :id => self.id, :application_assignments => self.application_assignments }

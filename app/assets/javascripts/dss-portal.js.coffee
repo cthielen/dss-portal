@@ -5,7 +5,6 @@ window.DssPortal =
   Routers: {}
   
   initialize: (data) ->
-    @applicationAssignments = new DssPortal.Collections.ApplicationAssignments data.application_assignments
     @current_user = new DssPortal.Models.Person data.current_user
     
     # Create a view state to be shared amongst all views

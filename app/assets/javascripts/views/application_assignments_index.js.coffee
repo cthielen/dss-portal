@@ -1,4 +1,4 @@
-DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
+DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   tagName: "div"
   id: "applicationAssignments"
   className: "row-fluid"
@@ -8,8 +8,10 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
     
     @$el.html JST["templates/application_assignments/index"]()
     
+    @listenTo DssPortal.current_user, "sync", @render
+    
     # Create views for each favorite/bookmark but only if they have a URL
-    DssPortal.applicationAssignments.each (assignment) =>
+    DssPortal.current_user.applicationAssignments.each (assignment) =>
       if assignment.get('url')
         assignmentView = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
         @assignmentCardViews.push assignmentView
@@ -18,14 +20,11 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
   
     $(document).ready =>
       @$('#favorites, #applications').sortable
-        distance: 5
+        distance: 10
         delay: 200
-        # placeholder: "target" # why does this cause issues with display: inline-block?
-    #     forcePlaceholderSize: true
-    #     zIndex: 100
         items: "li:not(.ui-state-disabled)"
-    #     # stop: (event, ui) ->
-    #     #   SendState()
+        update: (event, ui) ->
+          DssPortal.current_user.syncAssignmentPositions()
         connectWith: ".connectedSortable"
     
   render: ->
@@ -33,13 +32,15 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
     @$('#favorites').empty()
     @$('#applications').empty()
     
+    console.log 'rendering index'
+    
     # Insert the favorites hint text. It will be removed if any favorites exist
     @$('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
     
     # Render all cards, both favorites and regular
     _.each @assignmentCardViews, (card) =>
       if card.isFavorite()
-        @$('#favorites span').remove()
+        @$('#favorites>span').remove()
         @$('#favorites').append card.render().$el
       else
         @$('#applications').append card.render().$el
@@ -48,4 +49,3 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend(
     @$('#applications').append @newBookmarkView.render().$el
     
     @
-)
