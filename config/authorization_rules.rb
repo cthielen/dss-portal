@@ -10,10 +10,6 @@ authorization do
       if_attribute :loginid => is {user.loginid}
     end
   end
-  
-  role :guest do
-	has_permission_on :people, :to => [:create]
-  end
 end
 
 privileges do

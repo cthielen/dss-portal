@@ -12,7 +12,11 @@ class Person < ActiveRecord::Base
   def as_json(options={})
     { :loginid => self.loginid, :id => self.id, :application_assignments => self.application_assignments }
   end
-  
+
+  def rm_person
+    @rm_person ||= RmPerson.find(loginid)
+  end
+
   # Returns identifying string for logging purposes. Useful if you need multiple models for users
   def log_identifier
     loginid
@@ -21,19 +25,14 @@ class Person < ActiveRecord::Base
   def role_symbols
     tokens = []
 
-    #role_assignments.each do |r|
-      #tokens << r.token.to_sym if r.application_name == "DSS Messenger"
-      # uncomment this line to override dss-rm roles
-      tokens = [:access] 
-      #end
-
+    rm_person.role_assignments.each do |r|
+      tokens << r.token.to_sym if r.application_name == "DSS Messenger"
+      end
     tokens
   end
   
   # Updates local data with information from RM API
-  def refresh!
-    rm_person = RmPerson.find(loginid)
-    
+  def refresh!    
     # Update basic attributes
     self.name = rm_person.name
     self.rm_id = rm_person.id
