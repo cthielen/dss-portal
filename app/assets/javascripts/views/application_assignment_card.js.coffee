@@ -3,6 +3,10 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   id: ""
   className: "card"
   
+  events:
+    "click .icon-pencil": "edit"
+    "click .icon-trash": "delete"
+
   initialize: ->
     if @isNewBookmarkCard()
       @$el.addClass 'new-bookmark ui-state-disabled'
@@ -26,3 +30,9 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   # One card will not have a model. This is the 'New Bookmark' card found at the end of the grid.
   isNewBookmarkCard: ->
     not @model
+
+  edit: ->
+    console.log "edit"
+
+  delete: ->
+    console.log "delete"
