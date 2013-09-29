@@ -6,6 +6,8 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   events:
     "click .icon-pencil": "edit"
     "click .icon-trash": "delete"
+    "mouseenter" : "showControls"
+    "mouseleave" : "hideControls"
 
   initialize: ->
     if @isNewBookmarkCard()
@@ -30,6 +32,12 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   # One card will not have a model. This is the 'New Bookmark' card found at the end of the grid.
   isNewBookmarkCard: ->
     not @model
+
+  showControls: ->
+    @$(".delayed-links").delay(1000).fadeIn()
+
+  hideControls: ->
+    @$(".delayed-links").delay(1000).fadeOut()
 
   edit: ->
     console.log "edit"
