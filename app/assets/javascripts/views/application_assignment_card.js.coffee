@@ -34,10 +34,10 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
     not @model
 
   showControls: ->
-    @$(".delayed-links").delay(1000).fadeIn()
+    @$(".delayed-links").delay(1000).fadeIn() if @model.get("bookmark")
 
   hideControls: ->
-    @$(".delayed-links").delay(1000).fadeOut()
+    @$(".delayed-links").delay(200).fadeOut()
 
   edit: ->
     console.log "edit"
