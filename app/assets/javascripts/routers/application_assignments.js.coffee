@@ -11,7 +11,8 @@ DssPortal.Routers.ApplicationAssignments = Backbone.Router.extend
   index: ->
 
   newBookmark: ->
-    console.log "New!"
+    @view = new DssPortal.Views.NewBookmark()
+    modal = new Backbone.BootstrapModal(content: @view, title: "New Bookmark", cancelText: false, okText: "Create").open()
 
   editBookmark: (bookmark_id) ->
     bookmark_id = parseInt(bookmark_id)
