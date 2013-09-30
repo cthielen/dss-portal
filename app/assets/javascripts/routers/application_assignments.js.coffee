@@ -6,8 +6,12 @@ DssPortal.Routers.ApplicationAssignments = Backbone.Router.extend
   routes:
     ""                   : "index"
     "bookmarks/:id/edit" : "editBookmark"
+    "newBookmark"        : "newBookmark"
 
   index: ->
+
+  newBookmark: ->
+    console.log "New!"
 
   editBookmark: (bookmark_id) ->
     bookmark_id = parseInt(bookmark_id)

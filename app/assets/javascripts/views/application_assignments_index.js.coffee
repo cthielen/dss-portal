@@ -22,9 +22,10 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
       @$('#favorites, #applications').sortable
         distance: 10
         delay: 200
+        cursor: "move"
         items: "li:not(.ui-state-disabled)"
         update: (event, ui) ->
-          DssPortal.current_user.syncAssignmentPositions()
+          DssPortal.current_user.syncAssignmentPositions() if this is ui.item.parent()[0]
         connectWith: ".connectedSortable"
     
   render: ->

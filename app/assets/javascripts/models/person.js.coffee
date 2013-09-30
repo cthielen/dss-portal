@@ -12,7 +12,7 @@ DssPortal.Models.Person = Backbone.Model.extend
     
     # Obtain assignment order from the DOM
     
-    $('ul#applications>li').each (i, el) =>
+    $('ul#applications>li:not(.new-bookmark)').each (i, el) =>
       pos = i + 1 # jQuery starts counting at 0, our backend starts at 1
       assignment_id = $(el).data('application-assignment-id')
       assignments[assignment_id] = {}
