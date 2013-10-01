@@ -1,8 +1,9 @@
 DssPortal.Views.NewBookmark = Backbone.View.extend
 
   initialize: ->
-    console.log @model
-    @$el.html JST["templates/application_assignments/bookmark_form"]()
+    @collection = @options.person.applicationAssignments
+    @model = new @collection.model()
+    @$el.html JST["templates/application_assignments/bookmark_form"](@model.toJSON())
     @bind("cancel", @removeFromDOM)
     @bind("ok", @save)
     
@@ -11,7 +12,16 @@ DssPortal.Views.NewBookmark = Backbone.View.extend
     modal.remove()
 
   save: (modal) ->
-    window.location.hash = "#/index"
+    @model.set
+      name: $("input[name='name'").val()
+      description: $("input[name='description']").val()
+      url: $("input[name='url']").val()
+      person_id: DssPortal.current_user.get("id")
+      cached_application: "koko"
+    
+    @collection.add(@model.toJSON())
+    console.log @collection
+    @options.person.save()
     
   render: ->
     @
