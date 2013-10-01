@@ -50,5 +50,5 @@ DssPortal.Models.Person = Backbone.Model.extend
         favorite: assignment.get('favorite')
         position: assignment.get('position')
         _destroy: assignment.get('_destroy')
-
+    debugger
     person: json

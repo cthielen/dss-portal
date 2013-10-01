@@ -29,14 +29,17 @@ class ApplicationAssignmentsController < ApplicationController
   end
 
   def create
-    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Created bookmark."
-    
-    @assignment = current_user.application_assignments.new(params[:application_assignment])
-    @assignment.bookmark = true
-    @assignment.favorite = false
-    @assignment.image = "/assets/#{@assignment.name[0].downcase}.jpg"
-    @assignment.save!
-    
-    respond_with @assignment
+    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Created assignment."
+
+    @assignment = ApplicationAssignment.new(params[:application_assignment])
+
+    respond_to do |format|
+      if @assignment.save
+        format.json { render json: @assignment, status: :created, location: @assignment }
+      else
+        format.json { render json: @assignment.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
 end
