@@ -19,7 +19,6 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
     
   render: ->
     unless @isNewBookmarkCard()
-      console.log @model
       @$el.data('application-assignment-id', @model.id)
       @$('li').attr('title', @model.get('cached_application').description)
       @$('a').attr('href', @model.get('cached_application').url)

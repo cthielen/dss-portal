@@ -14,7 +14,7 @@ class ApplicationAssignment < ActiveRecord::Base
     self.position = max_position ? max_position + 1 : 1
   end
 
-  attr_accessible :favorite, :person_id, :position, :bookmark, :cached_application_id
+  attr_accessible :favorite, :person_id, :position, :bookmark, :cached_application_attributes
 
   def as_json(options={})
     {

@@ -14,6 +14,7 @@ DssPortal.Views.NewBookmark = Backbone.View.extend
   save: (modal) ->
     DssPortal.current_user.applicationAssignments.add(
       person_id: DssPortal.current_user.get("id")
+      bookmark: true
       cached_application:
         name: $("input[name='name'").val()
         description: $("input[name='description']").val()

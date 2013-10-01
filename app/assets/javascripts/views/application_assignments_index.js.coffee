@@ -37,12 +37,14 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     @$('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
     
     # Render all cards, both favorites and regular
-    _.each @assignmentCardViews, (card) =>
-      if card.isFavorite()
-        @$('#favorites>span').remove()
-        @$('#favorites').append card.render().$el
-      else
-        @$('#applications').append card.render().$el
+    DssPortal.current_user.applicationAssignments.each (assignment) =>
+      if assignment.get('cached_application').url
+        view = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
+        if view.isFavorite()
+          @$('#favorites>span').remove()
+          @$('#favorites').append view.render().$el
+        else
+          @$('#applications').append view.render().$el
     
     # Render the 'New Bookmark' card. It is always at the end
     @$('#applications').append @newBookmarkView.render().$el
