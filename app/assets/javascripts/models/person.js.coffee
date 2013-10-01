@@ -49,6 +49,7 @@ DssPortal.Models.Person = Backbone.Model.extend
           node.cached_application_attributes = {
             url: assignment.get('cached_application').url
             name: assignment.get('cached_application').name
+            icon_path: assignment.get('cached_application').icon_path
           }
         node.id= assignment.get('id')
         node.favorite = assignment.get('favorite')

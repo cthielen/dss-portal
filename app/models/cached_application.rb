@@ -1,7 +1,7 @@
 class CachedApplication < ActiveRecord::Base
   using_access_control
   
-  attr_accessible :description, :name, :url, :rm_id
+  attr_accessible :description, :name, :url, :rm_id, :icon_path
   
   def as_json(options={})
     {

@@ -7,9 +7,8 @@ DssPortal.Views.NewBookmark = Backbone.View.extend
     @bind("ok", @save)
     
   removeFromDOM: (modal) ->
-    console.log "removing"
     window.location.hash = "#/index"
-    modal.remove()
+    modal.close()
 
   save: (modal) ->
     DssPortal.current_user.applicationAssignments.add(
@@ -19,8 +18,14 @@ DssPortal.Views.NewBookmark = Backbone.View.extend
         name: $("input[name='name'").val()
         description: $("input[name='description']").val()
         url: $("input[name='url']").val()
+        icon_path: "/assets/#{$("input[name='name'").val().toLowerCase()[0]}.jpg"
     )
-    DssPortal.current_user.save()
+    DssPortal.current_user.save(null,
+      success: (person) =>
+        window.location.hash = "#/index"
+      error: (person, error) =>
+        console.log error
+    )
     
   render: ->
     @
