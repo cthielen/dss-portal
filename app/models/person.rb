@@ -44,7 +44,7 @@ class Person < ActiveRecord::Base
       # There's no simple way to do this in authorization_rules afaik.
       Authorization.ignore_access_control(true)
       
-      application = CachedApplication.find_or_create_by_rm_id(app[:id])
+      application = CachedApplication.find_or_initialize_by_rm_id(app[:id])
       
       application.refresh!
       
