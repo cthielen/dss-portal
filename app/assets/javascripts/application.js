@@ -4,6 +4,7 @@
 //= require jquery.ui.sortable
 //= require underscore
 //= require backbone
+//= require backbone.bootstrap-modal
 //= require routes
 //= require dss-portal
 //= require_tree ./models
