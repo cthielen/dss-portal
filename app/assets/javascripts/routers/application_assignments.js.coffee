@@ -6,7 +6,7 @@ DssPortal.Routers.ApplicationAssignments = Backbone.Router.extend
   routes:
     ""                   : "index"
     "bookmarks/:id/edit" : "editBookmark"
-    "newBookmark"        : "newBookmark"
+    "bookmarks/new"        : "newBookmark"
 
   index: ->
 
