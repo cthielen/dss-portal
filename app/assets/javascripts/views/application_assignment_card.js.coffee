@@ -18,9 +18,15 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
     
   render: ->
     unless @isNewBookmarkCard()
+      # Prepend 'http://' for urls that do not specify to force absolute urls
+      if @model.get('cached_application').url.slice(0,4) is 'http'
+        href = @model.get('cached_application').url
+      else
+        href = 'http://' + @model.get('cached_application').url
+
       @$el.data('application-assignment-id', @model.id)
       @$('li').attr('title', @model.get('cached_application').description)
-      @$('a').attr('href', @model.get('cached_application').url)
+      @$('a').attr('href', href)
       @$('img').attr('src', @model.get('cached_application').icon_path)
       @$('h4').html @model.get('cached_application').name
     

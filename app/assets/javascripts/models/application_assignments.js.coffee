@@ -3,6 +3,9 @@ DssPortal.Models.ApplicationAssignment = Backbone.Model.extend(
     name: null
     description: null
     url: null
+    cached_application:
+      name: null
+      url: null
 )
 DssPortal.Collections.ApplicationAssignments = Backbone.Collection.extend(
   model: DssPortal.Models.ApplicationAssignment
