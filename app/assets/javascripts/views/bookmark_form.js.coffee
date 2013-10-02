@@ -1,4 +1,4 @@
-DssPortal.Views.NewBookmark = Backbone.View.extend
+DssPortal.Views.BookmarkForm = Backbone.View.extend
 
   initialize: ->
     @$el.html JST["templates/application_assignments/bookmark_form"]()

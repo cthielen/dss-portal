@@ -40,7 +40,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
     @$(".delayed-links").delay(200).fadeOut()
 
   edit: ->
-    console.log "edit"
+    window.location.hash = "#/bookmarks/#{@model.get('id')}/edit"
 
   delete: ->
     console.log "delete"
