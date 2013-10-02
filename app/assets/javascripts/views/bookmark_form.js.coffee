@@ -11,11 +11,23 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     @$el.html JST["templates/application_assignments/bookmark_form"]()
     # Modal documentation requires non-event arrays?
     @bind("cancel", @removeFromDOM)
-    @bind("ok", @save)
+    @bind("ok", @validate)
     
   removeFromDOM: (modal) ->
     window.location.hash = "#/index"
     modal.close()
+
+  validate: (modal) ->
+    errors = false
+    $('p.error-message').remove()
+    $('.error').removeClass('error')
+    $("input[type='text']").each (i,e) =>
+      if $(e).val() is ''
+        errors = true
+        modal.preventClose()
+        $(e).closest('.control-group').addClass('error')
+        $(e).closest('.control-group .controls').append('<p class="help-block error-message">May not be blank</p>')
+    @save() if !errors
 
   save: (modal) ->
     if @options.id
