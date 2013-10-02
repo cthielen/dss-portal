@@ -43,4 +43,10 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
     window.location.hash = "#/bookmarks/#{@model.get('id')}/edit"
 
   delete: ->
-    console.log "delete"
+    bootbox.confirm "Are you sure you want to delete <strong>" + @model.get('cached_application').name + "</strong>?", (result) =>
+      if result
+        # delete the bookmark and remove card
+        @model.destroy()
+        # dismiss the dialog
+        @$(".modal-header a.close").trigger "click"
+

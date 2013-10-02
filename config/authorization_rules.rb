@@ -1,7 +1,7 @@
 authorization do
   role :access do
     # Allow access to the main page
-    has_permission_on :application_assignments, :to => [:index, :update, :create, :destroy] do
+    has_permission_on :application_assignments, :to => [:index, :update, :create, :destroy, :delete] do
       if_attribute :person_id => is {user.id}
     end
 
