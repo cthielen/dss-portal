@@ -17,5 +17,5 @@ DssPortal.Routers.ApplicationAssignments = Backbone.Router.extend
   editBookmark: (bookmark_id) ->
     bookmark_id = parseInt(bookmark_id)
     
-    @view = new DssPortal.Views.BookmarkForm()
+    @view = new DssPortal.Views.BookmarkForm(id: bookmark_id)
     new Backbone.BootstrapModal(content: @view, title: "Edit Bookmark", okText: "Submit").open()
