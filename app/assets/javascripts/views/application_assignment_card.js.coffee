@@ -6,7 +6,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   events:
     "click .icon-pencil": "edit"
     "click .icon-trash": "delete"
-    "click": "NewBookmark"
+    "click": "newBookmark"
     "mouseenter" : "showControls"
     "mouseleave" : "hideControls"
 
@@ -20,10 +20,10 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   render: ->
     unless @isNewBookmarkCard()
       @$el.data('application-assignment-id', @model.id)
-      @$('li').attr('title', @model.get('description'))
-      @$('a').attr('href', @model.get('url'))
-      @$('img').attr('src', @model.get('icon'))
-      @$('h4').html @model.get('name')
+      @$('li').attr('title', @model.get('cached_application').description)
+      @$('a').attr('href', @model.get('cached_application').url)
+      @$('img').attr('src', @model.get('cached_application').icon_path)
+      @$('h4').html @model.get('cached_application').name
     
     @
   
@@ -40,7 +40,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   hideControls: ->
     @$(".delayed-links").delay(200).fadeOut()
 
-  NewBookmark: ->
+  newBookmark: ->
     window.location.hash = "#/newBookmark" if @isNewBookmarkCard()
 
   edit: ->

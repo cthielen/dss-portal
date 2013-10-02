@@ -30,13 +30,11 @@ DssPortal.Models.Person = Backbone.Model.extend
     
     # Update the collection with information gathered from the DOM above
     @applicationAssignments.each (assignment) =>
-      if assignment.get('url')
+      if assignment.get('cached_application').url
         assignment.set
           favorite: assignments[assignment.id].favorite
           position: assignments[assignment.id].position
-        ,
-          silent: true
-    
+
     # Trigger a save
     @save()
   
@@ -46,9 +44,18 @@ DssPortal.Models.Person = Backbone.Model.extend
     # Note we use Rails' nested attributes here
     if @applicationAssignments.length
       json.application_assignments_attributes = @applicationAssignments.map (assignment) =>
-        id: assignment.get('id')
-        favorite: assignment.get('favorite')
-        position: assignment.get('position')
-        _destroy: assignment.get('_destroy')
+        node = {}
+        if assignment.get('bookmark') is true
+          node.cached_application_attributes = {
+            url: assignment.get('cached_application').url
+            name: assignment.get('cached_application').name
+            icon_path: assignment.get('cached_application').icon_path
+          }
+        node.id= assignment.get('id')
+        node.favorite = assignment.get('favorite')
+        node.position = assignment.get('position')
+        node.bookmark = assignment.get('bookmark')
+        node._destroy = assignment.get('_destroy')
+        node
 
     person: json

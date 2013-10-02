@@ -9,6 +9,12 @@ authorization do
     has_permission_on :people, :to => [:create, :update] do
       if_attribute :loginid => is {user.loginid}
     end
+
+    # Allow creating cached_application only for bookmarks
+    has_permission_on :cached_applications, :to => [:create, :update] do
+      if_attribute :rm_id => is {nil}
+      if_attribute :bookmark => is {true}
+    end
   end
 end
 

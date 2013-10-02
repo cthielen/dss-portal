@@ -1,10 +1,18 @@
 class CachedApplication < ActiveRecord::Base
   using_access_control
   
-  validates_presence_of :rm_id
-
-  attr_accessible :description, :name, :url, :rm_id
+  attr_accessible :description, :name, :url, :rm_id, :icon_path
   
+  def as_json(options={})
+    {
+      :id => self.id,
+      :name => self.name,
+      :description => self.description,
+      :url => self.url,
+      :icon_path => self.icon_path
+    }
+  end
+
   # Updates local data with information from RM API
   def refresh!
     # Save on some network requests by updating applications once a day
