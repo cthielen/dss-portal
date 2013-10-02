@@ -3,6 +3,9 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   id: "applicationAssignments"
   className: "row-fluid"
   
+  events:
+    "click .new-bookmark": "newBookmark"
+
   initialize: ->
     @assignmentCardViews = []
     
@@ -50,3 +53,6 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     @$('#applications').append @newBookmarkView.render().$el
     
     @
+
+  newBookmark: ->
+    window.location.hash = "#/newBookmark"

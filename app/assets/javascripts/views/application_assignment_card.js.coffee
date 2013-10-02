@@ -6,7 +6,6 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   events:
     "click .icon-pencil": "edit"
     "click .icon-trash": "delete"
-    "click": "newBookmark"
     "mouseenter" : "showControls"
     "mouseleave" : "hideControls"
 
@@ -39,9 +38,6 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
 
   hideControls: ->
     @$(".delayed-links").delay(200).fadeOut()
-
-  newBookmark: ->
-    window.location.hash = "#/newBookmark" if @isNewBookmarkCard()
 
   edit: ->
     console.log "edit"
