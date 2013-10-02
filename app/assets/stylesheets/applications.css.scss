@@ -106,17 +106,17 @@ body {
 
   .delayed-links {
     position: absolute;
-    width: 90%;
-    top: 0;
-    left: 0;
+    top: 20px;
+    right: 40px;
     z-index: 1;
     text-align: right;
     display:none;
 
     .control {
       font-size: 110%;
-      margin-right: 2px;
+      margin-bottom: 5px;
       cursor:pointer;
+      display: block;
     }
   }
 }
