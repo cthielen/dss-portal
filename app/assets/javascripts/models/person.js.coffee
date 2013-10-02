@@ -54,6 +54,7 @@ DssPortal.Models.Person = Backbone.Model.extend
         node.id= assignment.get('id')
         node.favorite = assignment.get('favorite')
         node.position = assignment.get('position')
+        node.bookmark = assignment.get('bookmark')
         node._destroy = assignment.get('_destroy')
         node
 
