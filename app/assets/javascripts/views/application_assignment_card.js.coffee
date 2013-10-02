@@ -6,7 +6,6 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   events:
     "click .icon-pencil": "edit"
     "click .icon-trash": "delete"
-    "click": "newBookmark"
     "mouseenter" : "showControls"
     "mouseleave" : "hideControls"
 
@@ -40,11 +39,14 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
   hideControls: ->
     @$(".delayed-links").delay(200).fadeOut()
 
-  newBookmark: ->
-    window.location.hash = "#/newBookmark" if @isNewBookmarkCard()
-
   edit: ->
-    console.log "edit"
+    window.location.hash = "#/bookmarks/#{@model.get('id')}/edit"
 
   delete: ->
-    console.log "delete"
+    bootbox.confirm "Are you sure you want to delete <strong>" + @model.get('cached_application').name + "</strong>?", (result) =>
+      if result
+        # delete the bookmark and remove card
+        @model.destroy()
+        # dismiss the dialog
+        @$(".modal-header a.close").trigger "click"
+

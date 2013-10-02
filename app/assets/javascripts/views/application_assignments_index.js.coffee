@@ -3,12 +3,16 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   id: "applicationAssignments"
   className: "row-fluid"
   
+  events:
+    "click .new-bookmark": "newBookmark"
+
   initialize: ->
     @assignmentCardViews = []
     
     @$el.html JST["templates/application_assignments/index"]()
     
     @listenTo DssPortal.current_user, "sync", @render
+    @listenTo DssPortal.current_user.applicationAssignments, "destroy", @render
     
     # Create views for each favorite/bookmark but only if they have a URL
     DssPortal.current_user.applicationAssignments.each (assignment) =>
@@ -50,3 +54,6 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     @$('#applications').append @newBookmarkView.render().$el
     
     @
+
+  newBookmark: ->
+    window.location.hash = "#/newBookmark"
