@@ -35,7 +35,8 @@ DssPortal.Models.Person = Backbone.Model.extend
           favorite: assignments[assignment.id].favorite
           position: assignments[assignment.id].position
 
-    # Trigger a save
+    # Sort, then trigger a save
+    @applicationAssignments.sort()
     @save()
   
   toJSON: ->

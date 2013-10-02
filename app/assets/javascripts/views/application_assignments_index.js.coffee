@@ -56,4 +56,4 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     @
 
   newBookmark: ->
-    window.location.hash = "#/newBookmark"
+    window.location.hash = "#/bookmarks/new"
