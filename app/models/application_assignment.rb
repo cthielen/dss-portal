@@ -2,7 +2,7 @@ class ApplicationAssignment < ActiveRecord::Base
   using_access_control
   
   belongs_to :person
-  belongs_to :cached_application
+  belongs_to :cached_application, :dependent => :destroy
 
   validates_presence_of :person_id, :cached_application, :position
 
