@@ -39,6 +39,9 @@ DssPortal.Models.Person = Backbone.Model.extend
     @applicationAssignments.sort()
     @save()
   
+  parse: (response) ->
+    @applicationAssignments.reset response.application_assignments
+  
   toJSON: ->
     json = {}
 
