@@ -21,7 +21,7 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     errors = false
     $('p.error-message').remove()
     $('.error').removeClass('error')
-    $("input[type='text']").each (i,e) =>
+    @$("input[type='text']").each (i,e) =>
       if $(e).val() is ''
         errors = true
         modal.preventClose()
