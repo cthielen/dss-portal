@@ -5,6 +5,7 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   
   events:
     "click .new-bookmark": "newBookmark"
+    "keyup #search" : "searchCards"
 
   initialize: ->
     @assignmentCardViews = []
@@ -56,3 +57,8 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
 
   newBookmark: ->
     window.location.hash = "#/bookmarks/new"
+
+  searchCards: ->
+    $('li.card').show()
+    $('li.card span a h4').each ->
+      $(this).closest('li.card').hide() if $(this).text().toLowerCase().indexOf($('input#search').val().toLowerCase()) is -1

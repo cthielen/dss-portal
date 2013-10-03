@@ -11,7 +11,7 @@ authorization do
     end
 
     # Allow creating cached_application only for bookmarks
-    has_permission_on :cached_applications, :to => [:create, :update] do
+    has_permission_on :cached_applications, :to => [:create, :update, :delete] do
       if_attribute :rm_id => is {nil}
       if_attribute :bookmark => is {true}
     end

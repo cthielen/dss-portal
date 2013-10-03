@@ -43,28 +43,17 @@ body {
 
 // main containers
 #favorites {
-  display: block;
-  overflow: hidden;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  margin: auto auto;
+  margin: 0.5em auto 2em;
   text-align: center;
-  color: #999;
   font-size: 11pt;
-  padding: 1em;
-  margin-bottom: 2em;
-  margin-top: 0.5em;
-  width: 60%;
+  width: 75%;
 }
 
 #applications { 
-//  display: block;
-//  overflow: hidden;
   list-style-type: none;
   padding: 0;
   margin: 0;
-//  background: #fff;
   text-align: center;
   
   .new-bookmark span {
@@ -86,16 +75,12 @@ body {
 }
 
 .card {
-//  float: left;
   display: inline-block;
   vertical-align: top;
   text-align: center;
   width: 150px;
   height: 150px;
-  border-radius: 10px;
-  line-height: 30px;
-//  margin: 15px;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   overflow: hidden;
   position: relative;
   list-style: none;
