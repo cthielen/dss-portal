@@ -7,6 +7,8 @@ class PeopleController < ApplicationController
     
     @person.update_attributes(params[:person])
 
-    respond_with @person
+    respond_with (@person) do |format|
+      format.json {render json: @person}
+    end
   end
 end

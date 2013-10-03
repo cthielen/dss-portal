@@ -29,7 +29,6 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
       @$('a').attr('href', href)
       @$('img').attr('src', @model.get('cached_application').icon_path)
       @$('h4').html @model.get('cached_application').name
-    
     @
   
   isFavorite: ->
