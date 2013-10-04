@@ -44,6 +44,7 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
       person_id: DssPortal.current_user.get("id")
       bookmark: true
       cached_application:
+        id: @model.get('cached_application').id unless isNew
         name: $("input[name='name']").val()
         url: $("input[name='url']").val()
         icon_path: "/assets/#{$("input[name='name']").val().toLowerCase()[0]}.jpg"

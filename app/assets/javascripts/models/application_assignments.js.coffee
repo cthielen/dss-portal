@@ -14,6 +14,7 @@ DssPortal.Models.ApplicationAssignment = Backbone.Model.extend(
 
     if @get('bookmark') is true
       json.cached_application_attributes = {
+        id: @get('cached_application').id
         url: @get('cached_application').url
         name: @get('cached_application').name
         icon_path: @get('cached_application').icon_path
