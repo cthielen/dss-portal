@@ -1,5 +1,5 @@
 DssPortal.Models.ApplicationAssignment = Backbone.Model.extend(
-  url: Routes.application_assignments_path()
+  urlRoot: Routes.application_assignments_path()
 
   defaults:
     name: null
