@@ -6,21 +6,21 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   events:
     "click .new-bookmark": "newBookmark"
     "keyup #search" : "searchCards"
-
+    "hover" : "removeFavoritesPlaceholder"
+    
   initialize: ->
     @assignmentCardViews = []
     
     @$el.html JST["templates/application_assignments/index"]()
     
-    @listenTo DssPortal.current_user, "sync", @render
+    @listenTo DssPortal.current_user.applicationAssignments, "sort", @render
     @listenTo DssPortal.current_user.applicationAssignments, "destroy", @render
-    
+
     # Create views for each favorite/bookmark but only if they have a URL
     DssPortal.current_user.applicationAssignments.each (assignment) =>
       if assignment.get('cached_application').url
         assignmentView = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
-        @assignmentCardViews.push assignmentView
-    
+        @assignmentCardViews.push assignmentView    
     @newBookmarkView = new DssPortal.Views.ApplicationAssignmentCard()
   
     $(document).ready =>
@@ -31,10 +31,8 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
         items: "li:not(.ui-state-disabled)"
         update: (event, ui) ->
           DssPortal.current_user.syncAssignmentPositions() if this is ui.item.parent()[0]
-          if $('#favorites li').length >= 1
-            $('#favorites>span').remove() 
         connectWith: ".connectedSortable"
-    
+
   render: ->
     # Empty both card container areas
     @$('#favorites').empty()
