@@ -6,7 +6,8 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   events:
     "click .new-bookmark": "newBookmark"
     "keyup #search" : "searchCards"
-    "hover" : "removeFavoritesPlaceholder"
+    "over #favorites" : "removeFavoritesPlaceholder"
+    "mouseleave #favorites" : "addFavoritesPlaceholder"
     
   initialize: ->
     @assignmentCardViews = []
@@ -31,8 +32,22 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
         items: "li:not(.ui-state-disabled)"
         update: (event, ui) ->
           DssPortal.current_user.syncAssignmentPositions() if this is ui.item.parent()[0]
+        over: (event, ui) ->
+          if ui.placeholder.parent()[0].id == "favorites"
+            $('#favorites>span').remove()             
+        out: (event, ui) ->
+          if $('#favorites li').length < 1
+            $('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
         connectWith: ".connectedSortable"
-
+        
+        
+  removeFavoritesPlaceholder: ->
+    $('#favorites>span').remove() 
+    
+  addFavoritesPlaceholder: ->
+    if $('#favorites li').length < 1
+      @$('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
+  
   render: ->
     # Empty both card container areas
     @$('#favorites').empty()
