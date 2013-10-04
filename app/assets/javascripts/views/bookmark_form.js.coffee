@@ -6,7 +6,7 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
       @model = DssPortal.current_user.applicationAssignments.get(@options.id)
     else
       # If no ID, create an empty model
-      @model = new DssPortal.current_user.applicationAssignments.model()
+      @model = new DssPortal.Models.ApplicationAssignment()
     
     @$el.html JST["templates/application_assignments/bookmark_form"]()
     # Modal documentation requires non-event arrays?
@@ -21,41 +21,42 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     errors = false
     $('p.error-message').remove()
     $('.error').removeClass('error')
-    @$("input[type='text']").each (i,e) =>
-      if $(e).val() is ''
-        errors = true
-        modal.preventClose()
-        $(e).closest('.control-group').addClass('error')
-        $(e).closest('.control-group .controls').append('<p class="help-block error-message">May not be blank</p>')
-    @save() if !errors
+    # Validate name is not empty
+    if @$("input[name='name']").val() is ''
+      errors = true
+      @$("input[name='name']").closest('.control-group').addClass('error')
+      @$("input[name='name']").closest('.control-group .controls').append('<p class="help-block error-message">Name may not be blank</p>')
+    # Validate URL
+    if !/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(@$("input[name='url']").val())
+      errors = true
+      @$("input[name='url']").closest('.control-group').addClass('error')
+      @$("input[name='url']").closest('.control-group .controls').append('<p class="help-block error-message">Use a valid URL</p>')
+
+    if errors
+      modal.preventClose()
+    else
+      @save()
 
   save: (modal) ->
-    if @options.id
-      @model.save(
-        person_id: DssPortal.current_user.get("id")
-        bookmark: true
-        cached_application:
-          name: $("input[name='name']").val()
-          url: $("input[name='url']").val()
-          icon_path: "/assets/#{$("input[name='name']").val().toLowerCase()[0]}.jpg"
-      )
-    else
-      DssPortal.current_user.applicationAssignments.add(
-        person_id: DssPortal.current_user.get("id")
-        bookmark: true
-        cached_application:
-          name: $("input[name='name']").val()
-          url: $("input[name='url']").val()
-          icon_path: "/assets/#{$("input[name='name']").val().toLowerCase()[0]}.jpg"
-      )
-
-    DssPortal.current_user.save(null,
-      success: (person) =>
+    isNew = @model.isNew()
+    
+    @model.save(
+      person_id: DssPortal.current_user.get("id")
+      bookmark: true
+      cached_application:
+        id: @model.get('cached_application').id unless isNew
+        name: $("input[name='name']").val()
+        url: $("input[name='url']").val()
+        icon_path: "/assets/#{$("input[name='name']").val().toLowerCase()[0]}.jpg"
+    ,
+      success: =>
+        DssPortal.current_user.applicationAssignments.add @model if isNew
         window.location.hash = "#/index"
-      error: (person, error) =>
+          
+      error: (bookmark, error) =>
         console.log error
     )
-    
+
   render: ->
     _.defer =>
       @$("input[name='name']").val(@model.get('cached_application').name)

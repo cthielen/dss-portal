@@ -15,6 +15,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
       @$el.html JST["templates/application_assignments/new_card"]()
     else
       @$el.html JST["templates/application_assignments/card"]()
+      @listenTo @model, "sync", @render
     
   render: ->
     unless @isNewBookmarkCard()
@@ -52,6 +53,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
       if result
         # delete the bookmark and remove card
         @model.destroy()
+        @el.remove()
         # dismiss the dialog
         @$(".modal-header a.close").trigger "click"
 

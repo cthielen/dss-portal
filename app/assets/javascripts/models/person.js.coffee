@@ -51,6 +51,7 @@ DssPortal.Models.Person = Backbone.Model.extend
         node = {}
         if assignment.get('bookmark') is true
           node.cached_application_attributes = {
+            id: assignment.get('cached_application').id
             url: assignment.get('cached_application').url
             name: assignment.get('cached_application').name
             icon_path: assignment.get('cached_application').icon_path
