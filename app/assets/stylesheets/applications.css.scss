@@ -29,16 +29,15 @@ body {
 
 // placeholder style on drag-drop operation
 .target {
-  background-color: #C2FFC2;
-  float:left;
-  margin: 15px; 
-  padding: 5px;
-  width: 150px; 
-  height: 150px; 
-}
-
-.target-areas {
-  background-color: #333333;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	list-style: none;
+	border-radius: 15px;
+	border: 1px #ccc solid;
 }
 
 // main containers
