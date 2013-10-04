@@ -21,13 +21,21 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     errors = false
     $('p.error-message').remove()
     $('.error').removeClass('error')
-    @$("input[type='text']").each (i,e) =>
-      if $(e).val() is ''
-        errors = true
-        modal.preventClose()
-        $(e).closest('.control-group').addClass('error')
-        $(e).closest('.control-group .controls').append('<p class="help-block error-message">May not be blank</p>')
-    @save() if !errors
+    # Validate name is not empty
+    if @$("input[name='name']").val() is ''
+      errors = true
+      @$("input[name='name']").closest('.control-group').addClass('error')
+      @$("input[name='name']").closest('.control-group .controls').append('<p class="help-block error-message">Name may not be blank</p>')
+    # Validate URL
+    if !/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(@$("input[name='url']").val())
+      errors = true
+      @$("input[name='url']").closest('.control-group').addClass('error')
+      @$("input[name='url']").closest('.control-group .controls').append('<p class="help-block error-message">Use a valid URL</p>')
+
+    if errors
+      modal.preventClose()
+    else
+      @save()
 
   save: (modal) ->
     isNew = @model.isNew()
