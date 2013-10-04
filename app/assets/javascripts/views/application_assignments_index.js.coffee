@@ -31,6 +31,8 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
         items: "li:not(.ui-state-disabled)"
         update: (event, ui) ->
           DssPortal.current_user.syncAssignmentPositions() if this is ui.item.parent()[0]
+          if $('#favorites li').length >= 1
+            $('#favorites>span').remove() 
         connectWith: ".connectedSortable"
     
   render: ->
