@@ -15,6 +15,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
       @$el.html JST["templates/application_assignments/new_card"]()
     else
       @$el.html JST["templates/application_assignments/card"]()
+      @listenTo @model, "sync", @render
     
   render: ->
     unless @isNewBookmarkCard()

@@ -8,17 +8,10 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     "keyup #search" : "searchCards"
 
   initialize: ->
-    @assignmentCardViews = []
-    
     @$el.html JST["templates/application_assignments/index"]()
     
     # @listenTo DssPortal.current_user, "sync", @render
-    
-    # Create views for each favorite/bookmark but only if they have a URL
-    DssPortal.current_user.applicationAssignments.each (assignment) =>
-      if assignment.get('cached_application').url
-        assignmentView = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
-        @assignmentCardViews.push assignmentView
+    @listenTo DssPortal.current_user.applicationAssignments, "add", @renderAndAppendNewBookmark
     
     @newBookmarkView = new DssPortal.Views.ApplicationAssignmentCard()
   
@@ -35,6 +28,7 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
             $('#favorites>span').remove() 
         connectWith: ".connectedSortable"
     
+  # Note: This 'render' is designed to only be called once, else the new views will leak memory.
   render: ->
     # Empty both card container areas
     @$('#favorites').empty()
@@ -56,6 +50,10 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     # Render the 'New Bookmark' card. It is always at the end
     @$('#applications').append @newBookmarkView.render().$el
     @
+  
+  renderAndAppendNewBookmark: (assignment) ->
+    view = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
+    @$('#applications li.new-bookmark').before view.render().$el
 
   newBookmark: ->
     window.location.hash = "#/bookmarks/new"
