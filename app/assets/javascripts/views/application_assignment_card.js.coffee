@@ -52,6 +52,7 @@ DssPortal.Views.ApplicationAssignmentCard = Backbone.View.extend
       if result
         # delete the bookmark and remove card
         @model.destroy()
+        @el.remove()
         # dismiss the dialog
         @$(".modal-header a.close").trigger "click"
 

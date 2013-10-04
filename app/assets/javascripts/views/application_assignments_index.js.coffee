@@ -12,8 +12,7 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
     
     @$el.html JST["templates/application_assignments/index"]()
     
-    @listenTo DssPortal.current_user, "sync", @render
-    @listenTo DssPortal.current_user.applicationAssignments, "destroy", @render
+    # @listenTo DssPortal.current_user, "sync", @render
     
     # Create views for each favorite/bookmark but only if they have a URL
     DssPortal.current_user.applicationAssignments.each (assignment) =>
