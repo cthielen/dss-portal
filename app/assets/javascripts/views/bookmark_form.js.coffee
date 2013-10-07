@@ -18,6 +18,10 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     modal.close()
 
   validate: (modal) ->
+    # Disable save button and change its text.
+    $("a.ok").text("Saving...").attr('disabled', 'disabled').addClass('btn-inverse');
+    modal.preventClose()
+
     errors = false
     $('p.error-message').remove()
     $('.error').removeClass('error')
@@ -32,10 +36,8 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
       @$("input[name='url']").closest('.control-group').addClass('error')
       @$("input[name='url']").closest('.control-group .controls').append('<p class="help-block error-message">Use a valid URL</p>')
 
-    if errors
-      modal.preventClose()
-    else
-      @save()
+    if !errors
+      @save(modal)
 
   save: (modal) ->
     isNew = @model.isNew()
@@ -49,11 +51,14 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
         url: $("input[name='url']").val()
         icon_path: "/assets/#{$("input[name='name']").val().toLowerCase()[0]}.jpg"
     ,
+      wait:true
       success: =>
         DssPortal.current_user.applicationAssignments.add @model if isNew
+        modal.close()
         window.location.hash = "#/index"
           
       error: (bookmark, error) =>
+        $("a.ok").text("Try saving again").removeAttr('disabled').removeClass('btn-inverse');
         console.log error
     )
 
