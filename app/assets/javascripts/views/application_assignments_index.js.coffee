@@ -25,11 +25,15 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
         update: (event, ui) ->
           DssPortal.current_user.syncAssignmentPositions() if this is ui.item.parent()[0]
         over: (event, ui) ->
-          if ui.placeholder.parent()[0].id == "favorites"
-            $('#favorites>span').remove()             
-        out: (event, ui) ->
-          if $('#favorites li').length < 1
+          if ($('#favorites li').length < 1) and ($('#favorites .target').length < 1)
             $('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
+          else
+            $('#favorites>span').remove()              
+        out: (event, ui) ->
+          if ($('#favorites li').length < 1) and ($('#favorites .target').length < 1)
+            $('#favorites').html '<span id="favorites-hint">Drag favorite applications here for quick access</span>'
+          else
+            $('#favorites>span').remove()             
         connectWith: ".connectedSortable"
     
   # Note: This 'render' is designed to only be called once, else the new views will leak memory.
