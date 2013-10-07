@@ -61,7 +61,7 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
   
   renderAndAppendNewBookmark: (assignment) ->
     view = new DssPortal.Views.ApplicationAssignmentCard({model: assignment})
-    @$('#applications li.new-bookmark').before view.render().$el
+    @$('#applications').append view.render().$el
 
   newBookmark: ->
     window.location.hash = "#/bookmarks/new"
