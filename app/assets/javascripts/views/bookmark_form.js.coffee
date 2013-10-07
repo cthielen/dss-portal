@@ -1,5 +1,5 @@
 DssPortal.Views.BookmarkForm = Backbone.View.extend
-
+  
   initialize: ->
     if @options.id
       # Get the model if we passed an ID
@@ -12,7 +12,9 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     # Modal documentation requires non-event arrays?
     @bind("cancel", @removeFromDOM)
     @bind("ok", @validate)
-    
+        
+
+  
   removeFromDOM: (modal) ->
     window.location.hash = "#/index"
     modal.close()

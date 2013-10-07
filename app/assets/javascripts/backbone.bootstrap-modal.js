@@ -80,6 +80,18 @@
         if (this.options.okCloses) {
           this.close();
         }
+      },
+      'keypress': function(event) {
+        if (event.which == 13) {
+          event.preventDefault();
+          this.trigger('ok');
+          if (this.options.content && this.options.content.trigger) {
+            this.options.content.trigger('ok', this);
+          }
+          if (this.options.okCloses) {
+            this.close();
+          }
+        }
       }
     },
 
