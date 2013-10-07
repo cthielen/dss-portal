@@ -56,7 +56,7 @@ DssPortal.Views.ApplicationAssignmentsIndex = Backbone.View.extend
           @$('#applications').append view.render().$el
     
     # Render the 'New Bookmark' card. It is always at the end
-    @$('#applications').append @newBookmarkView.render().$el
+    @$('#newBookmark').append @newBookmarkView.render().$el
     @
   
   renderAndAppendNewBookmark: (assignment) ->
