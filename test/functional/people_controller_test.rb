@@ -1,51 +1,20 @@
 require 'test_helper'
 
 class PeopleControllerTest < ActionController::TestCase
-=begin
-  setup do
-    @person = people(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:people)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create person" do
-    assert_difference('Person.count') do
-      post :create, person: { loginid: @person.loginid, name: @person.name }
+  begin
+    setup do
+      @person = people(:one)
     end
 
-    assert_redirected_to person_path(assigns(:person))
-  end
-
-  test "should show person" do
-    get :show, id: @person
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @person
-    assert_response :success
-  end
-
-  test "should update person" do
-    put :update, id: @person, person: { loginid: @person.loginid, name: @person.name }
-    assert_redirected_to person_path(assigns(:person))
-  end
-
-  test "should destroy person" do
-    assert_difference('Person.count', -1) do
-      delete :destroy, id: @person
+    test "should update person, and return valid JSON" do
+      put :update, format: :json, id: @person, person: { loginid: @person.loginid, name: @person.name }
+      assigns(:person)
+      assert_response :success
+      body = JSON.parse(@response.body)
+      assert_not_nil body["id"]
+      assert_not_nil body["loginid"]
+      assert_not_nil body["application_assignments"]
     end
 
-    assert_redirected_to people_path
   end
-=end
 end

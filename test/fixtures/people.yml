@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  loginid: MyString
-  name: MyString
-
-two:
-  loginid: MyString
-  name: MyString
+  id: 1
+  loginid: okadri
+  name: Obada Kadri
