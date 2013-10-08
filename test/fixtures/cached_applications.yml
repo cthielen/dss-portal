@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: Roles Management
+  description: Roles Management Application
+  url: http://roles.dss.ucdavis.edu
+  rm_id: 1
+  icon_path: https://roles.dss.ucdavis.edu//system/applications/icons/000/000/001/normal/dss-roles-management.jpg
+
+two:
+  id: 2
+  name: two
+  description: Number two
+  url: http://www.two.com

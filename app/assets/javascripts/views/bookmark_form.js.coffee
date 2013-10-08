@@ -20,8 +20,6 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     modal.close()
 
   validate: (modal) ->
-    # Disable save button and change its text.
-    $("a.ok").text("Saving...").attr('disabled', 'disabled').addClass('btn-inverse');
     modal.preventClose()
 
     errors = false
@@ -42,6 +40,9 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
       @save(modal)
 
   save: (modal) ->
+    # Disable save button and change its text.
+    $("a.ok").text("Saving...").attr('disabled', 'disabled').addClass('btn-inverse');
+
     isNew = @model.isNew()
     
     @model.save(
