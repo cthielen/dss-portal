@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  position: 1
+  favorite: false
+  person_id: 1
+  bookmark: false
+  cached_application_id: 1
+
+two:
+  id: 2
+  position: 2
+  favorite: true
+  person_id: 1
+  bookmark: true
+  cached_application_id: 2
