@@ -47,5 +47,11 @@ class ApplicationAssignmentsControllerTest < ActionController::TestCase
         delete :destroy, format: :json, id: @application_assignment
       end
     end
+    
+    test "unauthorized users redirected to CAS" do
+      revoke_all_access
+      get :index
+      assert_response 302
+    end
   end
 end
