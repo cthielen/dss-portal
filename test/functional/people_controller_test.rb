@@ -16,6 +16,6 @@ class PeopleControllerTest < ActionController::TestCase
       assert_not_nil body["loginid"]
       assert_not_nil body["application_assignments"]
     end
-
+    
   end
 end
