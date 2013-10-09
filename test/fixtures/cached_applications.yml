@@ -13,3 +13,10 @@ two:
   name: two
   description: Number two
   url: http://www.two.com
+  
+three:
+  id: 3
+  name: Writer Hub
+  description: Many writers
+  url: http://www.writershub.com
+  icon_path: https://roles.dss.ucdavis.edu//system/applications/icons/000/000/001/normal/dss-roles-management.jpg
