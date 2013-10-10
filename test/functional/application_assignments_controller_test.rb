@@ -47,5 +47,19 @@ class ApplicationAssignmentsControllerTest < ActionController::TestCase
         delete :destroy, format: :json, id: @application_assignment
       end
     end
+    
+    test "unauthorized users redirected to CAS" do
+      revoke_all_access
+      get :index
+      assert_response 302
+    end
+    
+    test "should fail to modify another users data" do
+      with_user(:one) do
+        put :update, format: :json, id: 3, application_assignment: { position: 3 }
+        assert_response 403
+      end
+    end    
+
   end
 end

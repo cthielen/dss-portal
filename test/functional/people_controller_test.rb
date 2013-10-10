@@ -4,6 +4,7 @@ class PeopleControllerTest < ActionController::TestCase
   begin
     setup do
       @person = people(:one)
+      CASClient::Frameworks::Rails::Filter.fake("okadri")
     end
 
     test "should update person, and return valid JSON" do
@@ -15,6 +16,6 @@ class PeopleControllerTest < ActionController::TestCase
       assert_not_nil body["loginid"]
       assert_not_nil body["application_assignments"]
     end
-
+    
   end
 end
