@@ -14,7 +14,7 @@ class ApplicationAssignmentsControllerTest < ActionController::TestCase
       assert_not_nil assigns(:current_user)
     end
 
-    test "current_user shoudl have basic attributes" do
+    test "current_user should have basic attributes" do
       get :index
       assert_response :success
       assert_not_nil assigns(:current_user).loginid
