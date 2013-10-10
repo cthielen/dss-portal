@@ -1,5 +1,9 @@
 DssPortal.Views.BookmarkForm = Backbone.View.extend
-  
+
+  events:
+    "keyup input[name='name']": "validateName"
+    "keyup input[name='url']": "validateURL"
+
   initialize: ->
     if @options.id
       # Get the model if we passed an ID
@@ -22,22 +26,30 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
   validate: (modal) ->
     modal.preventClose()
 
-    errors = false
-    $('p.error-message').remove()
-    $('.error').removeClass('error')
+    @errors = false
+    @validateName()
+    @validateURL()
+
+    if !@errors
+      @save(modal)
+
+  validateName: ->
+    @$("input[name='name']").closest('.control-group .controls').children('p.error-message').remove()
+    @$("input[name='name']").closest('.control-group').removeClass('error')
     # Validate name is not empty
     if @$("input[name='name']").val() is ''
-      errors = true
+      @errors = true
       @$("input[name='name']").closest('.control-group').addClass('error')
       @$("input[name='name']").closest('.control-group .controls').append('<p class="help-block error-message">Name may not be blank</p>')
+
+  validateURL: ->
+    @$("input[name='url']").closest('.control-group .controls').children('p.error-message').remove()
+    @$("input[name='url']").closest('.control-group').removeClass('error')
     # Validate URL
     if !/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(@$("input[name='url']").val())
-      errors = true
+      @errors = true
       @$("input[name='url']").closest('.control-group').addClass('error')
-      @$("input[name='url']").closest('.control-group .controls').append('<p class="help-block error-message">Use a valid URL</p>')
-
-    if !errors
-      @save(modal)
+      @$("input[name='url']").closest('.control-group .controls').append('<p class="help-block error-message">Use a valid URL. Example: ucdavis.edu</p>')
 
   save: (modal) ->
     # Disable save button and change its text.
