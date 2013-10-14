@@ -16,7 +16,7 @@ gem 'declarative_authorization'
 gem 'rubycas-client'
 
 gem "activeresource", :require => 'active_resource'
-
+gem 'whenever', :require => false
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'jquery-ui-rails', '~> 4.0.4'
