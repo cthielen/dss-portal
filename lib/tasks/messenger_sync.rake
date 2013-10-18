@@ -3,7 +3,7 @@ namespace :messenger do
   task :sync => :environment do
     puts "MESSENGER SYNC RAKE START"
     m = Message.new
-    m.syncgo()
+    m.sync()
     # code goes here
   end
 end
