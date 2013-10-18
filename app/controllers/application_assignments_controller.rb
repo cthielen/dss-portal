@@ -6,7 +6,7 @@ class ApplicationAssignmentsController < ApplicationController
     logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Loaded application assignments index (main page)."
     
     current_user.refresh!
-    
+    @messages = Message.all
     @current_user = current_user
   end
 
