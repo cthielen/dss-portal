@@ -195,6 +195,11 @@ a {
   color: #000;
 }
 
-.message-list{
-  background-color: red;
+.message-list, a{
+  color: #777777;
+  background-color: #FFFCCF;
+  margin-left: 18%;
+  margin-right: 50%;
+  margin-top: 10px;
+  text-align: center;
 }

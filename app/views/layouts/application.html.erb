@@ -28,8 +28,16 @@
       <div class="row-fluid">
         <div class="span12">
           <div class="jumbotron">
+            <% if @messages.length >= 1 %>    
+              <div class="well message-list">
+                <h4>DSS IT Messages</h4>
+                <% @messages.each do |message| %>
+                <hr>
+                <a href= "<%= message.guid%>"><%= message.title %></a>
+                <% end %>
+              </div>
+            <% end %>
             <h1>Welcome, <%= @current_user.name %></h1>
-            <div class="well message-list"> Messages from Dss-Messenger</div>
           </div>
         </div> <!-- span12 -->
       </div> <!-- row-fluid -->
