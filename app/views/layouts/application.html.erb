@@ -28,12 +28,12 @@
       <div class="row-fluid">
         <div class="span12">
           <div class="jumbotron">
-            <% if @messages.length >= 1 %>    
+            <% unless @messages.blank? %>  
               <div class="well message-list">
                 <h4>DSS IT Messages</h4>
                 <% @messages.each do |message| %>
                 <hr>
-                <a href= "<%= message.guid%>"><%= message.title %></a>
+                <a href= "<%= message['guid']%>"><%= message['title'] %></a>
                 <% end %>
               </div>
             <% end %>

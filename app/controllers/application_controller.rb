@@ -25,4 +25,54 @@ class ApplicationController < ActionController::Base
     end
     true
   end
+  
+  def currentMessagesTest
+       
+       messages = Array.new
+       message = Hash.new
+       message['title'] = "waffle"
+       message['description'] = "crunchy"
+       message['published'] = "recently"
+       message['guid'] = "http://www.google.com"
+       messages << message
+       
+       message['title'] = "burrito"
+       message['description'] = "soft"
+       message['published'] = "later"
+       message['guid'] = "http://www.google.com"
+       
+       messages << message
+  end
+  
+  def currentMessages
+    require 'rexml/document'
+
+    # read dss-messeenger rss feed for 'most recent messages''
+    uri = URI.parse("https://messenger.dss.ucdavis.edu/messages/open.rss")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE # read into this
+    response = http.request(Net::HTTP::Get.new(uri.request_uri))
+    xml_data = response.body
+    doc = REXML::Document.new(xml_data)
+    titles = []
+    links = []
+
+    messages = Array.new
+    message = Hash.new
+    # populate messages array
+    doc.elements.each('rss/channel/item') do |ele|
+       title = ele.elements['title'].text
+       description = ele.elements['description'].text
+       published = ele.elements['pubDate'].text
+       guid = ele.elements['guid'].text
+       
+       message['title'] = title
+       message['description'] = description
+       message['published'] = published
+       message['guid'] = guid
+       messages << message
+    end
+    messages
+  end
 end

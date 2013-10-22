@@ -1,12 +1,21 @@
 class ApplicationAssignmentsController < ApplicationController
   filter_resource_access
   respond_to :html, :json
+  before_filter only: [:index] do
+   @messages = Rails.cache.fetch("algo", expires_in: 1.minutes) do
+    currentMessages
+   end
+   logger.info "---------------------------------------------------------------------" 
+   logger.info "---------------------------------------------------------------------" 
+   logger.info @messages
+   logger.info @messages.length
+   logger.info "---------------------------------------------------------------------" 
+  end
   
   def index
     logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Loaded application assignments index (main page)."
     
     current_user.refresh!
-    @messages = Message.all
     @current_user = current_user
   end
 
