@@ -15,14 +15,11 @@ DssPortal.Views.BookmarkForm = Backbone.View.extend
     
     @$el.html JST["templates/application_assignments/bookmark_form"]()
     # Modal documentation requires non-event arrays?
-    @bind("cancel", @removeFromDOM)
+    @bind("cancel", @redirectToIndex)
     @bind("ok", @validate)
-        
 
-  
-  removeFromDOM: (modal) ->
+  redirectToIndex: (modal) ->
     window.location.hash = "#/index"
-    modal.close()
 
   validate: (modal) ->
     modal.preventClose()
