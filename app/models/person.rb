@@ -14,7 +14,12 @@ class Person < ActiveRecord::Base
   end
 
   def rm_person
-    @rm_person ||= RmPerson.find(loginid)
+    begin
+      @rm_person ||= RmPerson.find(loginid)
+    rescue Exception => e
+      Rails.logger.error "ActiveResource error while fetching user with login #{loginid}: '#{e}'."
+      raise ActionController::RoutingError.new('Roles Management not reachable')
+    end
   end
 
   # Returns identifying string for logging purposes. Useful if you need multiple models for users
