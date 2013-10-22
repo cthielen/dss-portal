@@ -14,4 +14,15 @@ class ApplicationController < ActionController::Base
   def set_current_user
     Authorization.current_user = current_user
   end
+  
+  # Handling errors
+  class RmUnreachable < StandardError; end
+  rescue_from RmUnreachable, :with => :render_rm_unreachable
+
+  def render_rm_unreachable
+    respond_to do |format| 
+      format.html { render :template => "errors/tech_difficulties", :status => 500, :layout => "error" } 
+    end
+    true
+  end
 end

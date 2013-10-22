@@ -16,9 +16,9 @@ class Person < ActiveRecord::Base
   def rm_person
     begin
       @rm_person ||= RmPerson.find(loginid)
-    rescue Exception => e
+    rescue => e
       Rails.logger.error "ActiveResource error while fetching user with login #{loginid}: '#{e}'."
-      raise ActionController::RoutingError.new('Roles Management not reachable')
+      raise ApplicationController::RmUnreachable
     end
   end
 
@@ -31,7 +31,7 @@ class Person < ActiveRecord::Base
     tokens = []
 
     rm_person.role_assignments.each do |r|
-      tokens << r.token.to_sym if r.application_name == "DSS Messenger"
+      tokens << r.token.to_sym if r.application_name == "DSS Portal"
       end
     tokens
   end
