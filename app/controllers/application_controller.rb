@@ -25,25 +25,7 @@ class ApplicationController < ActionController::Base
     end
     true
   end
-  
-  def currentMessagesTest
-       
-       messages = Array.new
-       message = Hash.new
-       message['title'] = "waffle"
-       message['description'] = "crunchy"
-       message['published'] = "recently"
-       message['guid'] = "http://www.google.com"
-       messages << message
-       
-       message['title'] = "burrito"
-       message['description'] = "soft"
-       message['published'] = "later"
-       message['guid'] = "http://www.google.com"
-       
-       messages << message
-  end
-  
+    
   def currentMessages
     require 'rexml/document'
 
