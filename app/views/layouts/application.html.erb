@@ -31,7 +31,7 @@
             <% unless @messages.blank? %>  
               <div class="message-list">
                 <% @messages.each do |message| %>
-                 <div class="alert alert-warning"><a href= "<%= message['guid']%>"><%= message['title'] %></a></div>
+                 <div class="alert alert-info"><a href= "<%= message['guid']%>"><%= message['title'] %></a></div>
                 <% end %>
               </div>
             <% end %>
