@@ -1,2 +1,6 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+DSS Portal
+==========
+
+DSS Portal provides a homepage for users. It automatically features accessible applications assigned to them via DSS Roles Management and also allows for the creation of per-user bookmarks.
+
+DSS Portal was written in Rails 3.2 and has been tested with Ruby 2.0. It has been deployed using nginx, Unicorn, and PostgreSQL.
