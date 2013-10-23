@@ -29,11 +29,9 @@
         <div class="span12">
           <div class="jumbotron">
             <% unless @messages.blank? %>  
-              <div class="well message-list">
-                <h4>DSS IT Messages</h4>
+              <div class="message-list">
                 <% @messages.each do |message| %>
-                <hr>
-                <a href= "<%= message['guid']%>"><%= message['title'] %></a>
+                 <div class="alert alert-warning"><a href= "<%= message['guid']%>"><%= message['title'] %></a></div>
                 <% end %>
               </div>
             <% end %>
