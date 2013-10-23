@@ -11,13 +11,13 @@ authorization do
     end
 
     # Allow creating of bookmarks (cached_application with rm_id == nil)
-    has_permission_on :cached_applications, :to => :manage do
+    has_permission_on :cached_applications, :to => :manage, :join_by => :and do
       if_attribute :rm_id => is { nil }
       if_permitted_to :manage, :application_assignments
     end
     
     # Allow (only) creating new of RM-based cached applications
-    has_permission_on :cached_applications, :to => [:create]
+    has_permission_on :cached_applications, :to => :create
   end
 end
 
