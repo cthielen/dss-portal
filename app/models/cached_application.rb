@@ -19,8 +19,6 @@ class CachedApplication < ActiveRecord::Base
     if self.updated_at.nil? or self.updated_at < DateTime.yesterday
       rm_app_data = RmApplication.find(rm_id)
       
-      Rails.logger.info "updated from rm application"
-      
       self.name = rm_app_data.name
       self.description = rm_app_data.description
       self.url = rm_app_data.url
