@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014232010) do
+ActiveRecord::Schema.define(:version => 20131023222055) do
 
   create_table "application_assignments", :force => true do |t|
     t.integer  "position"
@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(:version => 20131014232010) do
     t.datetime "updated_at",  :null => false
     t.integer  "rm_id"
     t.string   "icon_path"
-  end
-
-  create_table "messages", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
-    t.date     "published"
-    t.string   "guid"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "people", :force => true do |t|
