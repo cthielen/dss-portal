@@ -16,11 +16,8 @@ authorization do
       if_permitted_to :manage, :application_assignments
     end
     
-    # Allow creating new RM-based cached applications
-    has_permission_on :cached_applications, :to => [:create] #do
-      #if_attribute :rm_id => is { not nil }
-      #if_permitted_to :manage, :application_assignments
-      #end
+    # Allow (only) creating new of RM-based cached applications
+    has_permission_on :cached_applications, :to => [:create]
   end
 end
 
