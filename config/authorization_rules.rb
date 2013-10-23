@@ -1,20 +1,26 @@
 authorization do
   role :access do
     # Allow access to the main page
-    has_permission_on :application_assignments, :to => [:index, :update, :create, :destroy, :delete] do
-      if_attribute :person_id => is {user.id}
+    has_permission_on :application_assignments, :to => :manage do
+      if_attribute :person_id => is { user.id }
     end
 
     # Allow updating of self (happens automatically on main page load)
     has_permission_on :people, :to => [:create, :update] do
-      if_attribute :loginid => is {user.loginid}
+      if_attribute :loginid => is { user.loginid }
     end
 
-    # Allow creating cached_application only for bookmarks
-    # has_permission_on :cached_applications, :to => [:create, :update, :delete] do
-    #   if_attribute :rm_id => is {nil}
-    #   if_attribute :bookmark => is {true}
-    # end
+    # Allow creating of bookmarks (cached_application with rm_id == nil)
+    has_permission_on :cached_applications, :to => :manage do
+      if_attribute :rm_id => is { nil }
+      if_permitted_to :manage, :application_assignments
+    end
+    
+    # Allow creating new RM-based cached applications
+    has_permission_on :cached_applications, :to => [:create] #do
+      #if_attribute :rm_id => is { not nil }
+      #if_permitted_to :manage, :application_assignments
+      #end
   end
 end
 

@@ -29,14 +29,16 @@ class ApplicationAssignmentsController < ApplicationController
   end
 
   def create
-    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Created assignment."
+    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Creating assignment ..."
 
     @assignment = ApplicationAssignment.new(params[:application_assignment])
 
     respond_to do |format|
       if @assignment.save
+        logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Assignment created."
         format.json { render json: @assignment, status: :created, location: @assignment }
       else
+        logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Assignment creation failed."
         format.json { render json: @assignment.errors, status: :unprocessable_entity }
       end
     end

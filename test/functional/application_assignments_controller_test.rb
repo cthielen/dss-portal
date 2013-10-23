@@ -13,7 +13,7 @@ class ApplicationAssignmentsControllerTest < ActionController::TestCase
       assert_response :success
       assert_not_nil assigns(:current_user)
     end
-
+    
     test "current_user should have basic attributes" do
       get :index
       assert_response :success
@@ -59,7 +59,6 @@ class ApplicationAssignmentsControllerTest < ActionController::TestCase
         put :update, format: :json, id: 3, application_assignment: { position: 3 }
         assert_response 403
       end
-    end    
-
+    end
   end
 end
