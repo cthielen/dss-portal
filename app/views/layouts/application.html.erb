@@ -24,22 +24,7 @@
         </div> <!-- span10 -->
         <div class="span1"></div>
       </div> <!-- row-fluid -->
-
-      <div class="row-fluid">
-        <div class="span12">
-          <div class="jumbotron">
-            <% unless @messages.blank? %>  
-              <div class="message-list">
-                <% @messages.each do |message| %>
-                 <div class="alert alert-info"><a href= "<%= message['guid']%>"><%= message['title'] %></a></div>
-                <% end %>
-              </div>
-            <% end %>
-            <h1>Welcome, <%= @current_user.name %></h1>
-          </div>
-        </div> <!-- span12 -->
-      </div> <!-- row-fluid -->
-  
+      
       <%= yield %>
 
     </div> <!-- container-fluid -->
