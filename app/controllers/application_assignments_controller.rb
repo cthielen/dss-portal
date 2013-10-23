@@ -11,7 +11,7 @@ class ApplicationAssignmentsController < ApplicationController
   end
 
   def destroy
-    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Destroyed bookmark #{params[:id]}."
+    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Destroying bookmark #{params[:id]} ..."
     
     @bookmark_app = ApplicationAssignment.find(params[:id])
     @bookmark_app.destroy
@@ -20,7 +20,7 @@ class ApplicationAssignmentsController < ApplicationController
   end
 
   def update
-    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Updated bookmark #{params[:id]}."
+    logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Updating bookmark #{params[:id]} ..."
     
     @assignment = ApplicationAssignment.find(params[:id])
     @assignment.update_attributes(params[:application_assignment])
