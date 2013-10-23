@@ -41,29 +41,32 @@ class Person < ActiveRecord::Base
     # Update basic attributes
     self.name = rm_person.name
     self.rm_id = rm_person.id
+
+    # Disable access control as a regular user will be updating a CachedApplication.
+    # This is safe as the data is pulled from RM and is self-contained in this function.
+    # There's no simple way to do this in authorization_rules AFAIK.
+    Authorization.ignore_access_control(true)
     
     # Update accessible applications (application_assignments)
     rm_person.accessible_applications.each do |app|
-      # Disable access control as a regular user will be updating a CachedApplication.
-      # This is safe as the data is pulled from RM and is self-contained in this function.
-      # There's no simple way to do this in authorization_rules afaik.
-      Authorization.ignore_access_control(true)
       
       application = CachedApplication.find_or_initialize_by_rm_id(app[:id])
       
       application.refresh!
-      
-      Authorization.ignore_access_control(false)
       
       # Ensure this application_assignment exists
       application_assignments.find_or_create_by_person_id_and_cached_application_id(self.id, application.id)
     end
     
     # Removing non-bookmarked assignments no longer in RM
-    application_assignments.keep_if do |assignment|
-      assignment.bookmark or rm_person.accessible_applications.find_index{ |r| r[:id] == assignment.cached_application.rm_id }
+    application_assignments.each do |assignment|
+      unless assignment.bookmark or rm_person.accessible_applications.find_index{ |r| r[:id] == assignment.cached_application.rm_id }
+        assignment.delete
+      end
     end
+    
+    Authorization.ignore_access_control(false)
   
-    save!
+    self.save!
   end
 end
