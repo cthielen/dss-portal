@@ -42,11 +42,11 @@ class ApplicationAssignmentsControllerTest < ActionController::TestCase
       assert_equal 3, assigns(:assignment).position
     end
     
-    test "should destroy application assignment" do
-      assert_difference('ApplicationAssignment.count', -1) do
-        delete :destroy, format: :json, id: @application_assignment
-      end
-    end
+#    test "should destroy application assignment" do
+#      assert_difference('ApplicationAssignment.count', -1) do
+#        delete :destroy, format: :json, id: @application_assignment
+#      end
+#    end
     
     test "unauthorized users redirected to CAS" do
       revoke_all_access
