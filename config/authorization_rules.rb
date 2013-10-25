@@ -17,7 +17,7 @@ authorization do
     end
     
     # Allow (only) creating new of RM-based cached applications
-    has_permission_on :cached_applications, :to => :create
+    has_permission_on :cached_applications, :to => [:create, :update]
   end
 end
 
