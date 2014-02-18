@@ -17,6 +17,7 @@
 
 /config/dss_rm.yml
 /config/database.yml
+/config/secret_token.yml
 *~
 # Other
 .redcar
